@@ -30,7 +30,7 @@ let title = ScrollReveal({
 // HEADER
 
 
-title.reveal(".user", { origin: "right", delay: 1000 });
+title.reveal(".user", { origin: "right", delay: 350 });
 
 
 /* INDEX */
@@ -54,11 +54,14 @@ title.reveal(".user", { origin: "right", delay: 1000 });
   /* SEARCH BAR */
 
   let input = document.querySelector(".input");
-  let btn = document.querySelector(".btn");
+  // let btn = document.querySelector(".btn");
   let parent = document.querySelector(".search");
   console.log(parent);
 
-  btn.addEventListener("click", () => {
-    parent.classList.toggle("active");
-    input.focus();
-  });
+  // btn.addEventListener("click", () => {
+  //   parent.classList.toggle("active");
+  //   input.focus();
+  // });
+
+
+

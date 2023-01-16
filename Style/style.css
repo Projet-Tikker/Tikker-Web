@@ -16,7 +16,6 @@ body {
     height: 100%;
     overflow-x: hidden;
     font-family: "Open Sans";
-    /* background-color: #F0C807; */
 }
 
 
@@ -73,12 +72,14 @@ nav ul {
     transition: 0.3s;
 }
 
-nav ul li.header-static {
-    margin-left: 3rem;
-}
+
 
 nav ul li a.link-header-static {
-    margin: 6px 15px;
+    margin: 4rem;
+}
+
+button{
+    outline: none;
 }
 
 .search-button {
@@ -95,7 +96,7 @@ nav ul li a.link-header-static {
 
 .user-img {
     position: relative;
-    width: 4rem;
+    width: 5rem;
     transition: all 0.3s ease 0s;
 
 }
@@ -113,7 +114,7 @@ nav ul li a.link-header-static {
 
 .user {
     position: absolute;
-    margin-top: 5rem;
+    margin-top: 6rem;
     margin-right: 5rem;
     right: 0;
 }
@@ -228,6 +229,66 @@ a.link-header-dynamic:hover {
 a.link-header-dynamic:active {
     transform: translateY(-1px);
 }
+
+
+/******* Drop Down *********/
+
+
+
+
+#icondd{
+    width: 1.5rem;
+}
+
+  
+.dropbutton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 0;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    color: #f9f9f9;
+  }
+
+  .menu {
+    overflow: hidden;
+    position: absolute;
+    width: 231%;
+    right: -50px;
+    z-index: 1;
+    translate: 0 -15px;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.45);
+    transition: 0.4s;
+  }
+  
+  .menu.open {
+    translate: 0 0;
+    opacity: 1;
+    visibility: visible;
+
+  }
+
+  .menu-title{
+    font-size: 1rem;
+  }
+  
+  .menu > .dropbutton {
+    gap: 10px;
+    width: 100%;
+    height: 56px;
+    padding: 0 18px;
+  }
+  
+  .menu > .dropbutton:hover {
+    background: rgba(0, 0, 0, 0.26);
+  }
+
+
 
 
 
@@ -632,6 +693,59 @@ a.link-header-dynamic:active {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /********************* Pages de connexion/inscriptions ********************/
 
 .login-container {
@@ -877,6 +991,125 @@ span {
 }
 
 
+/********************* Page Profil ********************/
+
+
+.section-profil {
+    width: 100%;
+    height: 100vh;
+    background-color: red;
+}
+
+.background-profil{
+    background-color: #F0C807;
+    width: 100%;
+    height: 40vh;
+}
+
+.panellogo-profil{
+    width: 15%;
+    margin-left: 45%;
+    margin-top: 7%;
+}
+
+.photo-profil{
+    border-radius: 50%;
+    width: 30vh;
+    height: 30vh;
+    position: absolute;
+    margin-top: -10.3%;
+    margin-left: 2%;
+    box-shadow: 0px 10px 15px #0c0d0d;
+    background-color: white;
+    z-index: 1;
+
+}
+
+.photo-profil > img {
+    width: 100%;
+    height: 100%;
+}
+
+.profil{
+    width: 100%;
+    height: 100%;
+    background-color: #19CAFC;
+    z-index: 0;
+    position: absolute;
+    gap: 4%;
+    display: flex;
+}
+
+.desc-profil{
+    position: relative;
+    font-family: "Montez";
+    background-color: white;
+    width: 45vh;
+    height: 50%;
+    margin-top: 5%;
+    margin-left: 1%;
+    border-radius: 3%;
+    box-shadow: 0px 15px 20px #0c0d0d;
+    padding: 10px;
+}
+
+.nav-profil{
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1)
+    );
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
+    border: 1px solid rgba(255,255,255,0.16);
+    width: 100%;
+    height: 100%;
+}
+
+.container-desc{
+    width: 100%;
+    height: 100%;
+}
+
+.modif-profil{
+    bottom: 0;
+    margin: 1rem;
+    margin-left: 26px;
+    position: absolute;
+    padding: 0.7em 1.7em;
+     font-size: 18px;
+     border-radius: 0.5em;
+     background: #e8e8e8;
+     border: 1px solid #e8e8e8;
+     transition: all .3s;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                 -6px -6px 12px #ffffff;
+}
+
+.link-modif{
+    text-decoration: none;
+    size: 20rem;
+    color: #090909;
+
+}
+.modif-profil:hover {
+    border: 1px solid white;
+  }
+.modif-profil:active {
+    box-shadow: 4px 4px 12px #c5c5c5,
+               -4px -4px 12px #ffffff;
+  }
+
+.nav-profil > h1{
+    color: #000;
+    font-size: 5rem;
+    font-family: "Montez";
+    margin-left: 0.5rem;
+    text-shadow: 5px 5px 1px #fff;
+}
+
+
 
 /********************* RESPONSIVE ********************/
 
@@ -885,7 +1118,7 @@ span {
 
     /********************* INDEX ********************/
     .user-img {
-        width: 3.5rem;
+        width: 4rem;
     }
 
 
@@ -963,6 +1196,8 @@ span {
 
 
 @media only screen and (max-width: 1540px) {
+
+    /********************* INDEX ********************/
 
 
     .user-img {
@@ -1043,6 +1278,18 @@ span {
 
 
 @media only screen and (max-width: 600px) {
+
+    /********************* INDEX ********************/
+
+    .user{
+        margin-right: 0.2rem;
+        margin-top: 5rem;
+    }
+
+    .user-img {
+        width: 4rem;
+    }
+
 
     nav ul li.header-static {
         margin-left: 1rem;
