@@ -8,6 +8,8 @@ import {
   getAuth,
   signOut,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
 
 import {
@@ -55,16 +57,9 @@ const database = getDatabase(app);
 
 const analytics = getAnalytics(app);
 
-export const Deconnexion = () => {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      // An error happened.
-      alert(error);
-    });
-};
+// Initialize Functions
+
+//Controllers
 
 export const ControllerAccueil = () => {
   onAuthStateChanged(auth, (user) => {
@@ -77,35 +72,153 @@ export const ControllerAccueil = () => {
         profilbutton.addEventListener("click", function () {
           window.location.href = "./Pages/Profil";
         });
-        
-        Custombutton.addEventListener("click", function(){
+
+        Custombutton.addEventListener("click", function () {
           window.location.href = "./Pages/Profil/Modification";
         });
 
-        const userImg = document.getElementById("pp-img").src = "assets/users/user-default.svg";
-
-
+        const userImg = (document.getElementById("pp-img").src =
+          "assets/users/user-default.svg");
       });
     } else {
       console.log("Aucun Utilisateur connecté!");
 
-
       const menu1 = document.getElementById("menu-1");
-      menu1.innerHTML  = "Se connecter";
+      menu1.innerHTML = "Se connecter";
 
       profilbutton.addEventListener("click", function () {
         window.location.href = "./Pages/Login";
       });
 
-      const menu2 =document.getElementById("Custombutton");
-      menu2.style.display ="none";
+      const menu2 = document.getElementById("Custombutton");
+      menu2.style.display = "none";
 
-      
       const menu3 = document.getElementById("logoutbutton");
-      menu3.style.display ="none";
+      menu3.style.display = "none";
 
       const msgiconhead = document.getElementById("msg-head");
       msgiconhead.style.display = "none";
     }
   });
 };
+
+//Logout
+
+export const Deconnexion = () => {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
+      alert(error);
+    });
+};
+
+//Login
+
+export function Connexion(email, password) {
+  const errorinput = () =>
+    document
+      .querySelectorAll("span")
+      .forEach((node) => (node.style.color = "#fc4103"));
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      // ...
+      var lgDate = new Date().toLocaleDateString("fr-FR", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      update(ref(database, "users/" + user.uid), {
+        last_login: lgDate,
+      })
+        .then(() => {
+          // Data saved successfully!
+          window.location.href = "../../";
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          alert(errorCode);
+        });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = "Mot de passe ou Email Incorrect.";
+      alert(errorMessage);
+      errorinput();
+    });
+}
+
+
+//SignIn
+
+export function Inscription(email, prenom, nom, password) {
+  const errorinput = () =>
+    document
+      .querySelectorAll("span")
+      .forEach((node) => (node.style.color = "#fc4103"));
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Inscription
+      const user = userCredential.user;
+      let CreaDate = new Date().toLocaleDateString("fr-FR");
+      // ...
+      set(ref(database, "users/" + user.uid), {
+        email: email,
+        prenom: prenom,
+        nom: nom,
+        password: password,
+        created: CreaDate,
+      })
+        .then(() => {
+          // Data saved successfully!
+          alert("Compte créer avec succès !");
+          Deconnexion();
+          window.location.href = "../Login";
+        })
+        .catch((error) => {
+          // The write failed...
+          alert(error);
+        });
+    })
+    .catch((error) => {
+      errorinput();
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          var errorMessage = "L'adresse email renseigné est déja utilisée.";
+          ErrorRobot(errorMessage);
+          break;
+        case "auth/invalid-email":
+          var errorMessage ="L'email que vous avez renseigné n'est pas valide.";
+          ErrorRobot(errorMessage);
+          break;
+        case "auth/weak-password":
+          var errorMessage ="Le Mot de passe est trop faible. ";
+          ErrorRobot(errorMessage);
+          break;
+        default:
+          var errorMessage = "Des champs sont incorrect.";
+          ErrorRobot(error.code);
+      }
+    });
+}
+
+
+
+
+
+
+//ROBOT ERROR, TAKE ME FOR ERROR ALERTS <3
+
+function ErrorRobot(feedme) {
+  alert(feedme);
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 24 24"
+   fill="none"
+   version="1.1"
+   id="svg3046"
+   sodipodi:docname="showpwdon.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3050" />
+  <sodipodi:namedview
+     id="namedview3048"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="0.7327394"
+     inkscape:cx="124.19149"
+     inkscape:cy="509.04865"
+     inkscape:window-width="1536"
+     inkscape:window-height="793"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3046" />
+  <path
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="M3 12c5.4-8 12.6-8 18 0-5.4 8-12.6 8-18 0z"
+     id="path3042"
+     style="stroke-width:0.92001;stroke-dasharray:none;fill:#ffffff" />
+  <path
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="m 12.011215,11.959058 a 3,3 0 1 1 -5.9999992,0 3,3 0 0 1 5.9999992,0 z"
+     id="path3044"
+     style="fill:#2ca9bc;fill-opacity:1;stroke-width:0.92001;stroke-dasharray:none" />
+  <path
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="2"
+     d="m 9.5549645,11.944856 a 1.3522059,1.3114135 0 1 1 -2.7044102,0 1.3522059,1.3114135 0 0 1 2.7044102,0 z"
+     id="path3044-2"
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.408378;stroke-dasharray:none" />
+  <path
+     d="m 17.672748,8.2636562 1.575395,-1.81056 M 4.1906621,10.399239 C 4.8474411,9.511123 6.1121634,8.3895516 7.1398347,7.4971295 m 0,0 C 8.5642714,6.4696864 10.346984,5.8061327 12.545823,5.9659511 m -5.4059883,1.5311784 6.962e-4,0.00101 M 7.1398347,7.4971295 5.8435031,5.478806 m 6.7023199,0.4871451 c 3.829897,0.2783686 6.15093,3.1065893 7.803992,5.1848799 M 12.545823,5.9659511 12.719803,3.5722654 M 9.6386047,6.2359118 8.8551107,3.7726339 M 15.38345,6.6534646 16.514905,4.3293712"
+     stroke="#121923"
+     stroke-width="1.2"
+     id="path2917"
+     style="stroke:#000000;stroke-width:0.9;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="cccccccccccccccccc" />
+</svg>

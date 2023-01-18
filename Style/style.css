@@ -95,7 +95,7 @@ nav ul li a.link-header-static {
 
 .user-img {
     position: relative;
-    width: 4rem;
+    width: 5.5rem;
     transition: all 0.3s ease 0s;
 
 }
@@ -113,8 +113,8 @@ nav ul li a.link-header-static {
 
 .user {
     position: absolute;
-    margin-top: 5rem;
-    margin-right: 5rem;
+    margin-top: 5.5rem;
+    margin-right: 5.9rem;
     right: 0;
 }
 
@@ -659,9 +659,13 @@ a.link-header-dynamic:active {
 }
 
 .form-block {
-    margin: auto;
-    width: 50%;
-    padding: 5%;
+    margin: 1rem auto auto auto;
+    width: 100%;
+}
+
+.log{
+    margin: 2.5rem auto auto auto;
+
 }
 
 
@@ -675,6 +679,14 @@ a.link-header-dynamic:active {
     position: relative;
     margin: 20px 0 40px;
     width: 190px;
+    display: flex;
+}
+
+#showpwd{
+    position: absolute;
+    width: 3rem;
+    top: 5px;
+    margin-left: 10px;    
 }
 
 .form-control input {
@@ -1021,16 +1033,30 @@ span {
 @media only screen and (max-width: 1700px) {
 
     .user-img {
-        width: 3.5rem;
+        width: 5rem;
     }
-
 
     .user {
         position: absolute;
-        margin-top: 3rem;
+        margin-top: 4rem;
         margin-right: 5rem;
         right: 0;
     }
+
+    .menu {
+        overflow: hidden;
+        position: absolute;
+        width: 235%;
+        right: -50px;
+        z-index: 1;
+        translate: 0 -15px;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.45);
+        transition: 0.4s;
+      }    
+
 
     .title-context {
         font-size: 4rem;
@@ -1102,16 +1128,31 @@ span {
 
 
     .user-img {
-        width: 3rem;
+        width: 4.5rem;
     }
 
 
     .user {
         position: absolute;
         margin-top: 3rem;
-        margin-right: 5rem;
+        margin-right: 4.5rem;
         right: 0;
     }
+
+    .menu {
+        overflow: hidden;
+        position: absolute;
+        width: 260%;
+        right: -55px;
+        z-index: 1;
+        translate: 0 -15px;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.45);
+        transition: 0.4s;
+      }    
+
 
     .h1-accueil {
         font-size: 11rem;
