@@ -1122,6 +1122,36 @@ span {
     text-shadow: 5px 5px 1px #fff;
 }
 
+/********************* Page Modification Profil  ********************/
+
+.background-modif{
+    background-color: #19CAFC;
+    width: 100%;
+    height: 100vh;
+}
+
+.center-form{
+    display: flex;
+    justify-content: center;
+}
+
+.background-form{
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1)
+    );
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+    width: 200vh;
+    height: 90vh;
+    margin-top: 2%;
+}
+
+
 
 
 /********************* RESPONSIVE ********************/
