@@ -16,6 +16,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     font-family: "Open Sans";
+    /* background-color: #F0C807; */
 }
 
 
@@ -72,14 +73,12 @@ nav ul {
     transition: 0.3s;
 }
 
-
-
-nav ul li a.link-header-static {
-    margin: 4rem;
+nav ul li.header-static {
+    margin-left: 3rem;
 }
 
-button{
-    outline: none;
+nav ul li a.link-header-static {
+    margin: 6px 15px;
 }
 
 .search-button {
@@ -96,7 +95,7 @@ button{
 
 .user-img {
     position: relative;
-    width: 5rem;
+    width: 4rem;
     transition: all 0.3s ease 0s;
 
 }
@@ -114,7 +113,7 @@ button{
 
 .user {
     position: absolute;
-    margin-top: 6rem;
+    margin-top: 5rem;
     margin-right: 5rem;
     right: 0;
 }
@@ -229,66 +228,6 @@ a.link-header-dynamic:hover {
 a.link-header-dynamic:active {
     transform: translateY(-1px);
 }
-
-
-/******* Drop Down *********/
-
-
-
-
-#icondd{
-    width: 1.5rem;
-}
-
-  
-.dropbutton {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: transparent;
-    backdrop-filter: blur(5px);
-    cursor: pointer;
-    color: #f9f9f9;
-  }
-
-  .menu {
-    overflow: hidden;
-    position: absolute;
-    width: 231%;
-    right: -50px;
-    z-index: 1;
-    translate: 0 -15px;
-    opacity: 0;
-    visibility: hidden;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.45);
-    transition: 0.4s;
-  }
-  
-  .menu.open {
-    translate: 0 0;
-    opacity: 1;
-    visibility: visible;
-
-  }
-
-  .menu-title{
-    font-size: 1rem;
-  }
-  
-  .menu > .dropbutton {
-    gap: 10px;
-    width: 100%;
-    height: 56px;
-    padding: 0 18px;
-  }
-  
-  .menu > .dropbutton:hover {
-    background: rgba(0, 0, 0, 0.26);
-  }
-
-
 
 
 
@@ -693,59 +632,6 @@ a.link-header-dynamic:active {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /********************* Pages de connexion/inscriptions ********************/
 
 .login-container {
@@ -759,10 +645,10 @@ a.link-header-dynamic:active {
     position: relative;
     margin: auto;
     border-radius: 20px;
-    width: 30%;
-    height: 55%;
+    width: 600px;
+    height: 550px;
     display: block;
-    justify-content: flex-end;
+    justify-content: center;
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.2),
             rgba(255, 255, 255, 0.2));
@@ -772,15 +658,10 @@ a.link-header-dynamic:active {
 
 }
 
-.Inscription {
-    height: 80%;
-    margin: auto auto 3rem auto;
-
-}
-
 .form-block {
     margin: auto;
-    width: 100%;
+    width: 50%;
+    padding: 5%;
 }
 
 
@@ -792,7 +673,7 @@ a.link-header-dynamic:active {
 
 .form-control {
     position: relative;
-    margin: 0 auto 40px auto;
+    margin: 20px 0 40px;
     width: 190px;
 }
 
@@ -804,7 +685,7 @@ a.link-header-dynamic:active {
     width: 100%;
     padding: 15px 0;
     font-size: 18px;
-    color: #000;
+    color: #fff;
 }
 
 .form-control input:focus,
@@ -836,8 +717,6 @@ a.link-header-dynamic:active {
 
 
 .cont {
-    margin: auto;
-    width: 50%;
     display: flex;
     align-items: center;
     transform: scale(1);
@@ -845,9 +724,10 @@ a.link-header-dynamic:active {
 
 .check-p {
     position: relative;
+    margin-top: 5%;
     font-size: 13px;
     font-style: italic;
-    color: #000;
+    color: #fff;
     font-family: "Poppins", 'Trebuchet MS', sans-serif;
 
 }
@@ -855,6 +735,7 @@ a.link-header-dynamic:active {
 .check-connect {
     height: 1rem;
     width: 1rem;
+    margin: 5px;
     display: inline-block;
     appearance: none;
     position: relative;
@@ -862,6 +743,7 @@ a.link-header-dynamic:active {
     border-radius: 15%;
     cursor: pointer;
     overflow: hidden;
+    margin-top: 5%;
 }
 
 .check-connect::after {
@@ -916,33 +798,13 @@ span {
 
 
 
-.form-boutons {
-    position: absolute;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    bottom: 0;
-}
 
-.inscription {
-    position: relative;
-    bottom: 0;
-    align-self: end;
-    height: fit-content;
-    text-decoration: none;
-    font-style: italic;
-    color: #191b1d;
-}
 
-.inscription:hover {
-    color: #626262;
-}
 
 
 .btn {
     position: relative;
-    font-size: 13px;
+    font-size: 17px;
     text-transform: uppercase;
     text-decoration: none;
     padding: 1em 2.5em;
@@ -955,11 +817,10 @@ span {
     color: black;
     background-color: white;
     height: 15%;
-    cursor: pointer;
 }
 
 .btn:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -991,6 +852,16 @@ span {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 /********************* Page Profil ********************/
 
 
@@ -1001,15 +872,9 @@ span {
 }
 
 .background-profil{
-    background-color: #F0C807;
+    background-color: yellow;
     width: 100%;
     height: 40vh;
-}
-
-.panellogo-profil{
-    width: 15%;
-    margin-left: 45%;
-    margin-top: 7%;
 }
 
 .photo-profil{
@@ -1073,6 +938,7 @@ span {
 }
 
 .modif-profil{
+    font-family: "Poppins", 'Trebuchet MS', sans-serif;
     bottom: 0;
     margin: 1rem;
     margin-left: 26px;
@@ -1109,6 +975,44 @@ span {
     text-shadow: 5px 5px 1px #fff;
 }
 
+/********************* Page Modification Profil ********************/
+
+.background-modif{
+    background-color: #19CAFC;
+    width: 100%;
+    height: 100vh;
+}
+
+.center-form{
+    display: flex;
+    justify-content: center;
+}
+
+.background-form{
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1)
+    );
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 20px;
+    width: 200vh;
+    height: 90vh;
+    margin-top: 2%;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /********************* RESPONSIVE ********************/
@@ -1116,9 +1020,8 @@ span {
 
 @media only screen and (max-width: 1700px) {
 
-    /********************* INDEX ********************/
     .user-img {
-        width: 4rem;
+        width: 3.5rem;
     }
 
 
@@ -1197,8 +1100,6 @@ span {
 
 @media only screen and (max-width: 1540px) {
 
-    /********************* INDEX ********************/
-
 
     .user-img {
         width: 3rem;
@@ -1263,33 +1164,29 @@ span {
         height: 50px;
     }
 
-    /********************* LOGIN ********************/
-
-    .formulaire {
-        height: 60%;
-    }
-
-    .Inscription{
-        height: 90%;
-    }
-
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 600px) {
-
-    /********************* INDEX ********************/
-
-    .user{
-        margin-right: 0.2rem;
-        margin-top: 5rem;
-    }
-
-    .user-img {
-        width: 4rem;
-    }
-
 
     nav ul li.header-static {
         margin-left: 1rem;
@@ -1393,28 +1290,8 @@ span {
         height: 40px;
     }
 
-      /********************* LOGIN ********************/
-
-      .formulaire {
-        width: 80%;
-        height: 60%;
-    }
-
-    .form-block{
-        margin-top: 20%;
-    }
-
-    .Inscription{
-        height: 80%;
-    }
-
-    .inscription{
-        font-size: 0.8rem;
-    }
-
-    .btn{
-        font-size: 0.7rem;
-    }
-
 
 }
+
+
+
