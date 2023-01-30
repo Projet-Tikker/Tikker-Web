@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tikker est une plateforme qui est spécialisé dans la mise en relation entre professionnels et particuliers qui souhaitent faire évoluer leur entreprise dans le monde numérique.">
+    <meta name="description"
+        content="Tikker est une plateforme qui est spécialisé dans la mise en relation entre professionnels et particuliers qui souhaitent faire évoluer leur entreprise dans le monde numérique.">
     <meta name="google-site-verification" content="-FXOtLpRul7UfJN9ksrTVQjZkfD3pLHd4xWeMy6bEIk" />
     <link rel="icon" type="ico" href="icon.ico" />
     <title>Tikker - Evoluer votre entreprise</title>
@@ -28,11 +29,17 @@
                 <ul>
                     <li class="header-static"><a class="link-header-static" href="../"><img
                                 src="assets/icons/home-active.svg" alt="Accueil" class="header-img"></a></li>
-                    <li class="header-static"><button class="search-button"><img src="assets/icons/search.svg"
-                                alt="Parcourir" class="header-img"></button>
+                    <div>
+                        <li class="header-static"><button class="search-button" id="search-action"><img
+                                    src="assets/icons/search.svg" alt="Parcourir" class="header-img"></button>
+                            <form action="Pages/Parcourir/" class="form-search">
+                                <input type="text" id="search-bar" class="bar-closed" name="research" placeholder="Webapp, App mobile ...">
+                            </form>
+                    </div>
                     </li>
-                    <li lass="header-static" id="msg-head"><a class="link-header-static" href="Pages/Profil/Messages/"><img
-                                src="assets/icons/messages-icon.svg" class="header-img" alt="MessagesIcon"></a>
+                    <li lass="header-static" id="msg-head"><a class="link-header-static"
+                            href="Pages/Profil/Messages/"><img src="assets/icons/messages-icon.svg" class="header-img"
+                                alt="MessagesIcon"></a>
                     </li>
 
                 </ul>
@@ -222,7 +229,7 @@
     </main>
 </body>
 
-    <!-------------- Feuilles Java Back-end ------------>
+<!-------------- Feuilles Java Back-end ------------>
 
 <script src="Style/style.js"></script>
 <script src="Services/Controllers/controller.js" type="module"></script>

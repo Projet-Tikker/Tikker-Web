@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* border: 2px solid red; */
+    /* border: 1px solid red;    */
 }
 
 body {
@@ -70,22 +70,52 @@ nav ul {
     list-style: none;
     opacity: 0.9;
     transition: 0.3s;
+    
 }
 
 
 
 nav ul li a.link-header-static {
     margin: 4rem;
+    
 }
 
-button{
+button {
     outline: none;
+}
+
+
+.form-search{
+width: fit-content;
+display: contents;
 }
 
 .search-button {
     border: none;
     background: none;
     cursor: pointer;
+}
+
+.bar-closed {
+    position: absolute;
+    width: 0%;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.bar-open {
+    position: relative;
+    display: initial;
+    margin-left: 1rem;
+    background-color: transparent;
+    border: 2px #19CAFC solid;
+    border-radius: 15px;
+    padding: 0.5rem;
+    width: 80%;
+    font-size: 18px;
+    color: #000;
+    transition: 1s;
+    opacity: 1;
 }
 
 .header-img {
@@ -236,11 +266,11 @@ a.link-header-dynamic:active {
 
 
 
-#icondd{
+#icondd {
     width: 1.5rem;
 }
 
-  
+
 .dropbutton {
     position: relative;
     display: flex;
@@ -250,9 +280,9 @@ a.link-header-dynamic:active {
     backdrop-filter: blur(5px);
     cursor: pointer;
     color: #f9f9f9;
-  }
+}
 
-  .menu {
+.menu {
     overflow: hidden;
     position: absolute;
     width: 231%;
@@ -264,29 +294,29 @@ a.link-header-dynamic:active {
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.45);
     transition: 0.4s;
-  }
-  
-  .menu.open {
+}
+
+.menu.open {
     translate: 0 0;
     opacity: 1;
     visibility: visible;
 
-  }
+}
 
-  .menu-title{
+.menu-title {
     font-size: 1rem;
-  }
-  
-  .menu > .dropbutton {
+}
+
+.menu>.dropbutton {
     gap: 10px;
     width: 100%;
     height: 56px;
     padding: 0 18px;
-  }
-  
-  .menu > .dropbutton:hover {
+}
+
+.menu>.dropbutton:hover {
     background: rgba(0, 0, 0, 0.26);
-  }
+}
 
 
 
@@ -783,7 +813,7 @@ a.link-header-dynamic:active {
     width: 100%;
 }
 
-.log{
+.log {
     margin: 2.5rem auto auto auto;
 
 }
@@ -797,16 +827,21 @@ a.link-header-dynamic:active {
 
 .form-control {
     position: relative;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 30px auto;
     width: 190px;
     display: flex;
 }
 
-#showpwd{
+.logi {
+    margin: 0 auto 50px auto;
+
+}
+
+#showpwd {
     position: absolute;
     width: 3rem;
     top: 5px;
-    margin-left: 10px;    
+    margin-left: 10px;
 }
 
 .form-control input {
@@ -1010,111 +1045,110 @@ span {
 .section-profil {
     width: 100%;
     height: 100vh;
-    background-color: red;
 }
 
-.background-profil{
+.background-profil {
     background-color: #F0C807;
     width: 100%;
     height: 40vh;
 }
 
-.panellogo-profil{
+.panellogo-profil {
     width: 15%;
     margin-left: 45%;
     margin-top: 7%;
 }
 
-.photo-profil{
+.photo-profil {
     border-radius: 50%;
-    width: 30vh;
-    height: 30vh;
+    width: 25vh;
+    height: 25vh;
     position: absolute;
-    margin-top: -10.3%;
-    margin-left: 2%;
+    margin-top: -9%;
+    margin-left: 5%;
     box-shadow: 0px 10px 15px #0c0d0d;
     background-color: white;
     z-index: 1;
 
 }
 
-.photo-profil > img {
+.photo-profil>img {
     width: 100%;
     height: 100%;
 }
 
-.profil{
+.profil {
     width: 100%;
     height: 100%;
     background-color: #19CAFC;
     z-index: 0;
     position: absolute;
-    gap: 4%;
+    gap: 2.5%;
     display: flex;
 }
 
-.desc-profil{
+.desc-profil {
     position: relative;
     font-family: "Montez";
     background-color: white;
-    width: 45vh;
+    width: 50vh;
     height: 50%;
     margin-top: 5%;
-    margin-left: 1%;
+    margin-left: 2%;
     border-radius: 3%;
     box-shadow: 0px 15px 20px #0c0d0d;
     padding: 10px;
 }
 
-.nav-profil{
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.1),
-        rgba(255,255,255,0.1)
-    );
+.nav-profil {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
-    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     width: 100%;
     height: 100%;
 }
 
-.container-desc{
+.container-desc {
     width: 100%;
     height: 100%;
 }
 
-.modif-profil{
+.modif-profil {
     bottom: 0;
     margin: 1rem;
     margin-left: 26px;
     position: absolute;
     padding: 0.7em 1.7em;
-     font-size: 18px;
-     border-radius: 0.5em;
-     background: #e8e8e8;
-     border: 1px solid #e8e8e8;
-     transition: all .3s;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
     box-shadow: 6px 6px 12px #c5c5c5,
-                 -6px -6px 12px #ffffff;
+        -6px -6px 12px #ffffff;
 }
 
-.link-modif{
+.link-modif {
     text-decoration: none;
     size: 20rem;
     color: #090909;
 
 }
+
 .modif-profil:hover {
     border: 1px solid white;
-  }
+}
+
 .modif-profil:active {
     box-shadow: 4px 4px 12px #c5c5c5,
-               -4px -4px 12px #ffffff;
-  }
+        -4px -4px 12px #ffffff;
+}
 
-.nav-profil > h1{
+.nav-profil>h1 {
     color: #000;
     font-size: 5rem;
     font-family: "Montez";
@@ -1124,32 +1158,130 @@ span {
 
 /********************* Page Modification Profil  ********************/
 
-.background-modif{
+.background-modif {
     background-color: #19CAFC;
     width: 100%;
     height: 100vh;
 }
 
-.center-form{
+.center-form {
     display: flex;
     justify-content: center;
 }
 
-.background-form{
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.1),
-        rgba(255,255,255,0.1)
-    );
+.background-form {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
-    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 20px;
     width: 200vh;
     height: 90vh;
     margin-top: 2%;
 }
+
+/********************* Page Messagerie Profil  ********************/
+
+
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.contact {
+    width: 25%;
+    height: 80%;
+    margin: 9rem 0rem 0rem 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact .title {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-context.disscu {
+    font-size: 3rem;
+    margin: auto;
+}
+
+.contact .container {
+    width: 75%;
+    height: 73%;
+    margin: 2rem auto;
+    backdrop-filter: blur(7px);
+    overflow: auto;
+    padding: 1.5rem;
+
+}
+
+
+.chatbox {
+    width: 59%;
+    height: 80%;
+    margin: 9rem 0rem 0rem 15rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chatbox .title {
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+}
+
+.title-context.chatboxfeed {
+    font-size: 4rem;
+    margin-left: 50%;
+}
+
+.chatbox .container {
+    width: 60%;
+    height: 73%;
+    margin: 9rem auto 4rem auto;
+    background-color: #F0C807;
+    border-radius: 25px;
+    overflow: auto;
+    padding: 1.5rem;
+}
+
+
+/* RECHERCHE PAGE */
+
+
+
+.research{
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    bottom: 0;
+}
+
+.research .container{
+    position: relative;
+    margin: auto;
+    width: 60%;
+    height: 80%;
+    border-radius: 26px;
+    background: #F0C807;
+    box-shadow: inset 9px 9px 6px #aa8e05,
+                inset -9px -9px 6px #ffff09;
+}
+
+
+
+
 
 
 
@@ -1183,7 +1315,7 @@ span {
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.45);
         transition: 0.4s;
-      }    
+    }
 
 
     .title-context {
@@ -1236,17 +1368,17 @@ span {
     }
 
 
+    .form-control input {
+        padding: 13px 0;
+        font-size: 15px;
+    }
+
+    .log {
+        margin: 1rem auto auto auto;
+    }
+
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1281,7 +1413,7 @@ span {
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.45);
         transition: 0.4s;
-      }    
+    }
 
 
     .h1-accueil {
@@ -1341,7 +1473,7 @@ span {
         height: 60%;
     }
 
-    .Inscription{
+    .Inscription {
         height: 90%;
     }
 
@@ -1353,7 +1485,7 @@ span {
 
     /********************* INDEX ********************/
 
-    .user{
+    .user {
         margin-right: 0.2rem;
         margin-top: 5rem;
     }
@@ -1465,26 +1597,26 @@ span {
         height: 40px;
     }
 
-      /********************* LOGIN ********************/
+    /********************* LOGIN ********************/
 
-      .formulaire {
+    .formulaire {
         width: 80%;
         height: 60%;
     }
 
-    .form-block{
+    .form-block {
         margin-top: 20%;
     }
 
-    .Inscription{
+    .Inscription {
         height: 80%;
     }
 
-    .inscription{
+    .inscription {
         font-size: 0.8rem;
     }
 
-    .btn{
+    .btn {
         font-size: 0.7rem;
     }
 

@@ -2,6 +2,7 @@ import { Inscription } from "../../IServices/Firebase.js";
 
 
 const EnterMail = document.getElementById("email");
+const EnterUsername = document.getElementById("pseudo");
 const EnterPre = document.getElementById("prenom");
 const EnterNom = document.getElementById("nom");
 const EnterPass1 = document.getElementById("pwd");
@@ -30,13 +31,32 @@ function errorpassword() {
 EnterMail.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     let email = document.getElementById("email").value;
+    let pseudo = document.getElementById("pseudo").value;
     let prenom = document.getElementById("prenom").value;
     let nom = document.getElementById("nom").value;
     let password = document.getElementById("pwd").value;
     let password2 = document.getElementById("pwd2").value;
 
     if (password == password2) {
-      Inscription(email, prenom, nom, password);
+      Inscription(email, pseudo,prenom, nom, password);
+    } else {
+      alert("Le Mot de passe ne correspond pas !");
+      errorpassword();
+    }
+  }
+});
+
+EnterUsername.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    let email = document.getElementById("email").value;
+    let pseudo = document.getElementById("pseudo").value;
+    let prenom = document.getElementById("prenom").value;
+    let nom = document.getElementById("nom").value;
+    let password = document.getElementById("pwd").value;
+    let password2 = document.getElementById("pwd2").value;
+
+    if (password == password2) {
+      Inscription(email, pseudo,prenom, nom, password);
     } else {
       alert("Le Mot de passe ne correspond pas !");
       errorpassword();
@@ -47,13 +67,14 @@ EnterMail.addEventListener("keyup", (e) => {
 EnterPre.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     let email = document.getElementById("email").value;
+    let pseudo = document.getElementById("pseudo").value;
     let prenom = document.getElementById("prenom").value;
     let nom = document.getElementById("nom").value;
     let password = document.getElementById("pwd").value;
     let password2 = document.getElementById("pwd2").value;
 
     if (password == password2) {
-      Inscription(email, prenom, nom, password);
+      Inscription(email,pseudo, prenom, nom, password);
     } else {
       alert("Le Mot de passe ne correspond pas !");
       errorpassword();
@@ -64,13 +85,14 @@ EnterPre.addEventListener("keyup", (e) => {
 EnterNom.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     let email = document.getElementById("email").value;
+    let pseudo = document.getElementById("pseudo").value;
     let prenom = document.getElementById("prenom").value;
     let nom = document.getElementById("nom").value;
     let password = document.getElementById("pwd").value;
     let password2 = document.getElementById("pwd2").value;
 
     if (password == password2) {
-      Inscription(email, prenom, nom, password);
+      Inscription(email,pseudo, prenom, nom, password);
     } else {
       alert("Le Mot de passe ne correspond pas !");
       errorpassword();
@@ -81,13 +103,14 @@ EnterNom.addEventListener("keyup", (e) => {
 EnterPass1.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     let email = document.getElementById("email").value;
+    let pseudo = document.getElementById("pseudo").value;
     let prenom = document.getElementById("prenom").value;
     let nom = document.getElementById("nom").value;
     let password = document.getElementById("pwd").value;
     let password2 = document.getElementById("pwd2").value;
 
     if (password == password2) {
-      Inscription(email, prenom, nom, password);
+      Inscription(email, pseudo,prenom, nom, password);
     } else {
       alert("Le Mot de passe ne correspond pas !");
       errorpassword();
@@ -98,13 +121,14 @@ EnterPass1.addEventListener("keyup", (e) => {
 EnterPass2.addEventListener("keyup", (e) => {
   if (e.keyCode === 13) {
     let email = document.getElementById("email").value;
+    let pseudo = document.getElementById("pseudo").value;
     let prenom = document.getElementById("prenom").value;
     let nom = document.getElementById("nom").value;
     let password = document.getElementById("pwd").value;
     let password2 = document.getElementById("pwd2").value;
 
     if (password == password2) {
-      Inscription(email, prenom, nom, password);
+      Inscription(email, pseudo,prenom, nom, password);
     } else {
       alert("Le Mot de passe ne correspond pas !");
       errorpassword();
@@ -114,13 +138,14 @@ EnterPass2.addEventListener("keyup", (e) => {
 
 submitaccount.addEventListener("click", function () {
   let email = document.getElementById("email").value;
+  let pseudo = document.getElementById("pseudo").value;
   let prenom = document.getElementById("prenom").value;
   let nom = document.getElementById("nom").value;
   let password = document.getElementById("pwd").value;
   let password2 = document.getElementById("pwd2").value;
 
   if (password == password2) {
-    Inscription(email, prenom, nom, password);
+    Inscription(email, pseudo,prenom, nom, password);
   } else {
     alert("Le Mot de passe ne correspond pas !");
     errorpassword();
