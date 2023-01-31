@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* border: 1px solid red;    */
+    /* border: 1px solid red; */
 }
 
 body {
@@ -70,14 +70,14 @@ nav ul {
     list-style: none;
     opacity: 0.9;
     transition: 0.3s;
-    
+
 }
 
 
 
 nav ul li a.link-header-static {
     margin: 4rem;
-    
+
 }
 
 button {
@@ -85,9 +85,9 @@ button {
 }
 
 
-.form-search{
-width: fit-content;
-display: contents;
+.form-search {
+    width: fit-content;
+    display: contents;
 }
 
 .search-button {
@@ -1089,41 +1089,61 @@ span {
 
 .desc-profil {
     position: relative;
-    font-family: "Montez";
     background-color: white;
-    width: 50vh;
-    height: 50%;
-    margin-top: 5%;
-    margin-left: 2%;
+    width: 55vh;
+    height: 70%;
+    margin: 5% 1%;
     border-radius: 3%;
     box-shadow: 0px 15px 20px #0c0d0d;
     padding: 10px;
 }
 
-.nav-profil {
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.1),
-            rgba(255, 255, 255, 0.1));
-    backdrop-filter: blur(21px);
-    -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    width: 100%;
-    height: 100%;
-}
 
 .container-desc {
     width: 100%;
     height: 100%;
+    overflow: auto;
+    scrollbar-color: #F0C807 #19CAFC;
+    padding: 1rem;
 }
 
+.container-value {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.container-bio {
+    margin-top: 1rem;
+}
+
+.title-profil {
+    font-size: 1rem;
+    width: 100%;
+}
+
+.value-profil {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+    color: #19CAFC;
+}
+
+.bio-profil {
+    padding: 1rem;
+    text-align: justify;
+}
+
+
+
+
 .modif-profil {
+    font-family: "Montez";
     bottom: 0;
-    margin: 1rem;
-    margin-left: 26px;
-    position: absolute;
+    margin: 2.5rem auto 1.5rem;
+    width: fit-content;
+    position: relative;
     padding: 0.7em 1.7em;
-    font-size: 18px;
+    font-size: 1.4rem;
     border-radius: 0.5em;
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
@@ -1148,13 +1168,55 @@ span {
         -4px -4px 12px #ffffff;
 }
 
-.nav-profil>h1 {
-    color: #000;
-    font-size: 5rem;
-    font-family: "Montez";
-    margin-left: 0.5rem;
-    text-shadow: 5px 5px 1px #fff;
+
+.publications {
+    width: 100%;
+    height: 100%;
 }
+
+.publications .container {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    width: 100%;
+    height: 100%;
+}
+
+.pub-title {
+    padding: 1rem;
+    height: fit-content;
+}
+
+.pub-title h1 {
+    width: fit-content;
+    margin: auto;
+    font-family: "Montez";
+    text-shadow: 5px 5px 1px #fff;
+    font-size: 3.5rem;
+
+}
+
+.pub-body {
+    border-radius: 49px;
+    background: #19CAFC;
+    box-shadow: inset 9px 9px 14px #0d6781,
+        inset -9px -9px 14px #25ffff;
+    width: 80%;
+    height: 80%;
+    margin: 2rem auto;
+    overflow: auto;
+}
+
+
+
+
+
+
+
 
 /********************* Page Modification Profil  ********************/
 
@@ -1261,14 +1323,14 @@ span {
 
 
 
-.research{
+.research {
     position: absolute;
     width: 100%;
     height: 80%;
     bottom: 0;
 }
 
-.research .container{
+.research .container {
     position: relative;
     margin: auto;
     width: 60%;
@@ -1276,7 +1338,7 @@ span {
     border-radius: 26px;
     background: #F0C807;
     box-shadow: inset 9px 9px 6px #aa8e05,
-                inset -9px -9px 6px #ffff09;
+        inset -9px -9px 6px #ffff09;
 }
 
 

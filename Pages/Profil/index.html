@@ -28,12 +28,18 @@
                 <ul>
                     <li class="header-static"><a class="link-header-static" href="../../"><img
                                 src="../../assets/icons/home.svg" alt="Accueil" class="header-img"></a></li>
-                    <li class="header-static"><button class="search-button"><img src="../../assets/icons/search.svg"
-                                alt="Parcourir" class="header-img"></button>
+                    <li class="header-static"><button class="search-button" id="search-action"><img
+                                src="../../assets/icons/search.svg" alt="Parcourir" class="header-img"></button>
+                        <form action="../Parcourir/" class="form-search">
+                            <input type="text" id="search-bar" class="bar-closed" name="research"
+                                placeholder="Webapp, App mobile ...">
+                        </form>
                     </li>
-                    <li lass="header-static" id="msg-head"><a class="link-header-static"
-                            href="Messages/"><img src="../../assets/icons/messages-icon.svg" class="header-img"
-                                alt="MessagesIcon"></a>
+                    <li class="header-static" id="add-head"><a class="link-header-static" href="Ajout/"><img
+                                src="../../assets/icons/add.svg" class="header-img" alt="AddIcon"></a>
+                    </li>
+                    <li lass="header-static" id="msg-head"><a class="link-header-static" href="Messages/"><img
+                                src="../../assets/icons/messages-icon.svg" class="header-img" alt="MessagesIcon"></a>
                     </li>
 
                 </ul>
@@ -58,24 +64,86 @@
                 <img src="../../assets/icons/panelogo.png" alt="PanelLogo" class="panellogo-profil">
 
             </div>
+
+
             <div class="photo-profil">
                 <img alt="photo de profil" src="../../assets/users/user-default.svg">
             </div>
+
+
             <div class="profil">
                 <div class="desc-profil">
                     <div class="container-desc">
-                        <h2> Nom d'utilisateur :</h2>
-                        <p></p>
-                        <h2> Description :</h2>
-                        <p></p>
-
-                        <div class="modif-profil">
-                            <a href="" class="link-modif"> Modifier le profil </a>
+                        <div class="container-value">
+                            <h2 class="title-profil"> Nom d'utilisateur :</h2>
+                            <h3 class="value-profil" id="pseudo">...</h3>
+                        </div>
+                        <div class="container-value">
+                            <h2 class="title-profil"> Nom :</h2>
+                            <h3 class="value-profil" id="nom">...</h3>
+                        </div>
+                        <div class="container-value">
+                            <h2 class="title-profil"> Prenom :</h2>
+                            <h3 class="value-profil" id="prenom">...</h3>
+                        </div>
+                        <div class="container-value">
+                            <h2 class="title-profil"> Email :</h2>
+                            <h3 class="value-profil" id="email">...</h3>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="container-bio">
+                            <h2 class="title-profil"> Bio :</h2>
+                            <p class="bio-profil">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et repudiandae accusantium
+                                voluptatum architecto aperiam delectus a, error ad dignissimos, autem minima asperiores
+                                vero sed, illum inventore sint perferendis culpa fuga.
+                                Veniam officia magnam, dignissimos aspernatur ad molestias ipsam quidem illum at! Sequi,
+                                doloremque? Harum dignissimos quod exercitationem sapiente quo debitis accusantium
+                                facilis fuga nam, quaerat et optio perspiciatis, doloribus similique.
+                                Dolore incidunt omnis vero aspernatur, fugiat iusto expedita qui cumque, dicta veniam
+                                recusandae veritatis laborum aperiam corporis pariatur aliquid sit hic doloremque
+                                consectetur aliquam sint quo voluptatibus. Sunt, enim odio.
+                                Distinctio fugiat impedit ipsam voluptas facere ab dignissimos, eaque eius deleniti, non
+                                illo. Necessitatibus placeat qui totam quasi et facere eveniet, mollitia quas reiciendis
+                                iure consequatur neque recusandae omnis quis!
+                                Nam exercitationem quibusdam perferendis excepturi id consequatur accusantium placeat
+                                laborum repellendus quo magnam quisquam ad, ipsa dignissimos inventore. Quod est vero
+                                voluptate culpa animi eius tempore ex natus earum nisi!
+                                Praesentium dolore commodi consequuntur sequi unde repudiandae sed sunt, dignissimos
+                                molestias dolorem distinctio nisi ratione laboriosam, est pariatur eos obcaecati dicta
+                                voluptatem. Expedita dignissimos adipisci praesentium, modi iusto pariatur harum!
+                                Eaque dolore non modi porro voluptas quasi vero quaerat architecto commodi fuga. Nihil
+                                tenetur laborum tempore quam doloribus facere rem earum? Pariatur commodi molestiae
+                                consequuntur suscipit quidem quis minus ducimus.
+                                Vero, consequuntur fuga laudantium quisquam quam ratione distinctio ex rem, asperiores
+                                cum iste, officiis minus. Sunt amet a quo quas maxime sed tempora ullam, deserunt,
+                                facere consectetur voluptate tenetur obcaecati.
+                                Eveniet possimus minus iste, mollitia commodi rerum. Culpa obcaecati, accusantium quis
+                                vel beatae pariatur sit eius temporibus autem voluptate! Harum, voluptatum. Eligendi
+                                perspiciatis culpa officia, laboriosam quisquam recusandae eaque animi.
+                                Ad molestias obcaecati ipsum cupiditate impedit distinctio excepturi ipsam eos ea
+                                voluptatum. Tenetur esse numquam magni itaque earum sint architecto omnis consectetur
+                                iste libero illum, voluptatem distinctio reiciendis unde quos.
+                            </p>
                         </div>
                     </div>
+                    <div class="modif-profil">
+                        <a href="Modification/" class="link-modif"> Modifier le profil </a>
+                    </div>
                 </div>
-                <div class="nav-profil">
-                    <h1> Mes Publications</h1>
+                <div class="publications">
+
+                    <div class="container">
+                        <div class="pub-title">
+                            <h1> Mes Publications</h1>
+
+                        </div>
+                        <div class="pub-body">
+
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -85,6 +153,8 @@
 
 <script src="../../Style/style.js"></script>
 <script src="../../Services/Controllers/LogedController.js" type="module"></script>
+<script src="../../Services/Profil/GetProfil.js" type="module"></script>
+
 
 
 </html>

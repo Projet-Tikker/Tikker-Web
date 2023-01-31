@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="ico" href="../../icon.ico" />
+    <title>Connexion - Tikker</title>
+
+    <!-- ---------- Feuilles de Style ------------- -->
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <link rel="stylesheet" href="../../Style/style.css">
+
+    <!-------------- Feuilles Java ------------>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+
+</head>
+
+<body>
+
+    <header>
+        <a href="../../"><img src="../../assets/icons/favicon2.png" alt="Logo" class="Logo" title="Logo"></a>
+
+        <nav class="container">
+            <div class="links">
+                <ul>
+                    <li class="header-static"><a class="link-header-static" href="../../"><img
+                                src="../../assets/icons/home.svg" alt="Accueil" class="header-img"></a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="accueil">
+            <div class="background-acceuil">
+                <img src="../../assets/background/back-connect.jpg" alt="Background-1" id="back">
+            </div>
+            <div class="custom-shape-divider-top-1671021536">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+            <div class="login-container">
+                <div class="formulaire">
+                    <div>
+                        <h1 class="title-context cat"> Se Connecter </h1>
+                    </div>
+                    <div class="form-block log">
+                        <div class="input-group" id="login">
+                            <div class="form-control logi">
+                                <input type="email" required="" id="email" autocomplete="off">
+                                <label>
+                                    <span style="transition-delay:0ms">E</span><span
+                                        style="transition-delay:50ms">m</span><span
+                                        style="transition-delay:100ms">a</span><span
+                                        style="transition-delay:150ms">i</span><span
+                                        style="transition-delay:200ms">l</span><span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group" id="login">
+                            <div class="form-control logi">
+                                <input type="password" required="" id="pwd" autocomplete="off">
+                                <label>
+                                    <span style="transition-delay:0ms">M</span><span
+                                        style="transition-delay:50ms">o</span><span
+                                        style="transition-delay:100ms">t</span><span style="transition-delay:150ms">
+                                    </span> <span style="transition-delay:200ms">d</span><span
+                                        style="transition-delay:250ms">e</span><span style="transition-delay:300ms">
+                                    </span> <span style="transition-delay:350ms">p</span><span
+                                        style="transition-delay:350ms">a</span><span
+                                        style="transition-delay:400ms">s</span><span
+                                        style="transition-delay:450ms">s</span><span
+                                        style="transition-delay:500ms">e</span>
+
+                                </label>
+                                <div>
+                                    <button class="search-button">
+                                        <img src="../../assets/icons/showpwdoff.svg" alt="showpwd off" id="showpwd" >
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="cont">
+                                <input type="checkbox" checked="" id="check" class="check-connect">
+                                <span></span>
+                                <label class="check-p" for="check">Se souvenir de moi</label>
+                                <h2 id="result"></h2>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-boutons">
+                        <a href="../Inscription" class="inscription">S'inscrire ?</a>
+                        <button type="button" id="submitdata" name="submitdata" class="btn">Connexion</button>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../../Services/Auth/connect.js" type="module"></script>
+</body>
+
+</html>
