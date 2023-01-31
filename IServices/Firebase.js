@@ -70,11 +70,11 @@ export const ControllerAccueil = () => {
         console.log("Connecté en tant que : " + data);
 
         profilbutton.addEventListener("click", function () {
-          window.location.href = "./Pages/Profil";
+          window.location.href = "Pages/Profil";
         });
 
         Custombutton.addEventListener("click", function () {
-          window.location.href = "./Pages/Profil/Modification";
+          window.location.href = "Pages/Profil/Modification";
         });
 
         const userImg = (document.getElementById("pp-img").src =
@@ -87,7 +87,7 @@ export const ControllerAccueil = () => {
       menu1.innerHTML = "Se connecter";
 
       profilbutton.addEventListener("click", function () {
-        window.location.href = "./Pages/Login";
+        window.location.href = "Pages/Login";
       });
 
       const menu2 = document.getElementById("Custombutton");
@@ -98,6 +98,24 @@ export const ControllerAccueil = () => {
 
       const msgiconhead = document.getElementById("msg-head");
       msgiconhead.style.display = "none";
+
+      const addiconhead = document.getElementById("add-head");
+      addiconhead.style.display = "none";
+    }
+  });
+};
+
+export const ControllerUserLoged = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const UserData = ref(database, "users/" + user.uid + "/pseudo");
+      onValue(UserData, (snapshot) => {
+        const data = snapshot.val();
+        console.log("Connecté en tant que : " + data);
+      });
+    } else {
+      console.log("Accès Refuser !");
+      window.location.href = "Pages/Login";
     }
   });
 };
@@ -157,10 +175,9 @@ export function Connexion(email, password) {
     });
 }
 
-
 //SignIn
 
-export function Inscription(email, prenom, nom, password) {
+export function Inscription(email, pseudo ,prenom, nom, password) {
   const errorinput = () =>
     document
       .querySelectorAll("span")
@@ -174,6 +191,7 @@ export function Inscription(email, prenom, nom, password) {
       // ...
       set(ref(database, "users/" + user.uid), {
         email: email,
+        pseudo: pseudo,
         prenom: prenom,
         nom: nom,
         password: password,
@@ -198,11 +216,12 @@ export function Inscription(email, prenom, nom, password) {
           ErrorRobot(errorMessage);
           break;
         case "auth/invalid-email":
-          var errorMessage ="L'email que vous avez renseigné n'est pas valide.";
+          var errorMessage =
+            "L'email que vous avez renseigné n'est pas valide.";
           ErrorRobot(errorMessage);
           break;
         case "auth/weak-password":
-          var errorMessage ="Le Mot de passe est trop faible. ";
+          var errorMessage = "Le Mot de passe est trop faible. ";
           ErrorRobot(errorMessage);
           break;
         default:
@@ -211,6 +230,59 @@ export function Inscription(email, prenom, nom, password) {
       }
     });
 }
+
+
+// GET ALL VALUES FOR PROFIL PAGE
+
+export function GetValues() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+
+      const ps = document.getElementById("pseudo");
+      const nom = document.getElementById("nom");
+      const prenom = document.getElementById("prenom");
+      const email = document.getElementById("email");
+
+      
+      const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
+      onValue(PseudoData, (snapshot) => {
+        const data = snapshot.val();
+        ps.innerHTML = data;
+      });
+      const NomData = ref(database, "users/" + user.uid + "/nom");
+      onValue(NomData, (snapshot) => {
+        const data = snapshot.val();
+        nom.innerHTML = data;
+      });
+      const PrenomData = ref(database, "users/" + user.uid + "/prenom");
+      onValue(PrenomData, (snapshot) => {
+        const data = snapshot.val();
+        prenom.innerHTML = data;
+      });
+      const EmailData = ref(database, "users/" + user.uid + "/email");
+      onValue(EmailData, (snapshot) => {
+        const data = snapshot.val();
+        email.innerHTML = data;
+      });
+
+
+
+    } else {
+      console.log("Accès Refuser !");
+      window.location.href = "/public/Pages/Login";
+    }
+  });
+
+
+
+
+
+
+}
+
+
+
+
 
 
 
