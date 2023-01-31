@@ -70,15 +70,15 @@ export const ControllerAccueil = () => {
         console.log("Connecté en tant que : " + data);
 
         profilbutton.addEventListener("click", function () {
-          window.location.href = "/public/Pages/Profil";
+          window.location.href = "Pages/Profil";
         });
 
         Custombutton.addEventListener("click", function () {
-          window.location.href = "/public//Pages/Profil/Modification";
+          window.location.href = "Pages/Profil/Modification";
         });
 
         const userImg = (document.getElementById("pp-img").src =
-          "/public/assets/users/user-default.svg");
+          "assets/users/user-default.svg");
       });
     } else {
       console.log("Aucun Utilisateur connecté!");
@@ -87,7 +87,7 @@ export const ControllerAccueil = () => {
       menu1.innerHTML = "Se connecter";
 
       profilbutton.addEventListener("click", function () {
-        window.location.href = "/public/Pages/Login";
+        window.location.href = "Pages/Login";
       });
 
       const menu2 = document.getElementById("Custombutton");
@@ -115,7 +115,7 @@ export const ControllerUserLoged = () => {
       });
     } else {
       console.log("Accès Refuser !");
-      window.location.href = "/public/Pages/Login";
+      window.location.href = "Pages/Login";
     }
   });
 };
