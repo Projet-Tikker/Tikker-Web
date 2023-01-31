@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* border: 2px solid red; */
+    /* border: 1px solid red; */
 }
 
 body {
@@ -70,22 +70,52 @@ nav ul {
     list-style: none;
     opacity: 0.9;
     transition: 0.3s;
+
 }
 
 
 
 nav ul li a.link-header-static {
     margin: 4rem;
+
 }
 
-button{
+button {
     outline: none;
+}
+
+
+.form-search {
+    width: fit-content;
+    display: contents;
 }
 
 .search-button {
     border: none;
     background: none;
     cursor: pointer;
+}
+
+.bar-closed {
+    position: absolute;
+    width: 0%;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.bar-open {
+    position: relative;
+    display: initial;
+    margin-left: 1rem;
+    background-color: transparent;
+    border: 2px #19CAFC solid;
+    border-radius: 15px;
+    padding: 0.5rem;
+    width: 80%;
+    font-size: 18px;
+    color: #000;
+    transition: 1s;
+    opacity: 1;
 }
 
 .header-img {
@@ -236,11 +266,11 @@ a.link-header-dynamic:active {
 
 
 
-#icondd{
+#icondd {
     width: 1.5rem;
 }
 
-  
+
 .dropbutton {
     position: relative;
     display: flex;
@@ -250,9 +280,9 @@ a.link-header-dynamic:active {
     backdrop-filter: blur(5px);
     cursor: pointer;
     color: #f9f9f9;
-  }
+}
 
-  .menu {
+.menu {
     overflow: hidden;
     position: absolute;
     width: 231%;
@@ -264,29 +294,29 @@ a.link-header-dynamic:active {
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.45);
     transition: 0.4s;
-  }
-  
-  .menu.open {
+}
+
+.menu.open {
     translate: 0 0;
     opacity: 1;
     visibility: visible;
 
-  }
+}
 
-  .menu-title{
+.menu-title {
     font-size: 1rem;
-  }
-  
-  .menu > .dropbutton {
+}
+
+.menu>.dropbutton {
     gap: 10px;
     width: 100%;
     height: 56px;
     padding: 0 18px;
-  }
-  
-  .menu > .dropbutton:hover {
+}
+
+.menu>.dropbutton:hover {
     background: rgba(0, 0, 0, 0.26);
-  }
+}
 
 
 
@@ -312,6 +342,7 @@ a.link-header-dynamic:active {
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    filter: drop-shadow(5px 5px 3px rgb(49, 46, 46));
 
 
 }
@@ -783,7 +814,7 @@ a.link-header-dynamic:active {
     width: 100%;
 }
 
-.log{
+.log {
     margin: 2.5rem auto auto auto;
 
 }
@@ -797,15 +828,21 @@ a.link-header-dynamic:active {
 
 .form-control {
     position: relative;
+    margin: 0 auto 30px auto;
     width: 190px;
     display: flex;
 }
 
-#showpwd{
+.logi {
+    margin: 0 auto 50px auto;
+
+}
+
+#showpwd {
     position: absolute;
     width: 3rem;
     top: 5px;
-    margin-left: 10px;    
+    margin-left: 10px;
 }
 
 .form-control input {
@@ -1009,117 +1046,178 @@ span {
 .section-profil {
     width: 100%;
     height: 100vh;
-    background-color: red;
 }
 
-.background-profil{
+.background-profil {
     background-color: #F0C807;
     width: 100%;
     height: 40vh;
 }
 
-.panellogo-profil{
+.panellogo-profil {
     width: 15%;
     margin-left: 45%;
     margin-top: 7%;
 }
 
-.photo-profil{
+.photo-profil {
     border-radius: 50%;
-    width: 30vh;
-    height: 30vh;
+    width: 25vh;
+    height: 25vh;
     position: absolute;
-    margin-top: -10.3%;
-    margin-left: 2%;
+    margin-top: -9%;
+    margin-left: 5%;
     box-shadow: 0px 10px 15px #0c0d0d;
     background-color: white;
     z-index: 1;
 
 }
 
-.photo-profil > img {
+.photo-profil>img {
     width: 100%;
     height: 100%;
 }
 
-.profil{
+.profil {
     width: 100%;
     height: 100%;
     background-color: #19CAFC;
     z-index: 0;
     position: absolute;
-    gap: 4%;
+    gap: 2.5%;
     display: flex;
 }
 
-.desc-profil{
+.desc-profil {
     position: relative;
-    font-family: "Montez";
     background-color: white;
-    width: 45vh;
-    height: 50%;
-    margin-top: 5%;
-    margin-left: 1%;
+    width: 55vh;
+    height: 70%;
+    margin: 5% 1%;
     border-radius: 3%;
     box-shadow: 0px 15px 20px #0c0d0d;
     padding: 10px;
 }
 
-.nav-profil{
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.1),
-        rgba(255,255,255,0.1)
-    );
-    backdrop-filter: blur(21px);
-    -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
-    border: 1px solid rgba(255,255,255,0.16);
+
+.container-desc {
     width: 100%;
     height: 100%;
+    overflow: auto;
+    scrollbar-color: #F0C807 #19CAFC;
+    padding: 1rem;
 }
 
-.container-desc{
+.container-value {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.container-bio {
+    margin-top: 1rem;
+}
+
+.title-profil {
+    font-size: 1rem;
     width: 100%;
-    height: 100%;
 }
 
-.modif-profil{
+.value-profil {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+    color: #19CAFC;
+}
+
+.bio-profil {
+    padding: 1rem;
+    text-align: justify;
+}
+
+
+
+
+.modif-profil {
+    font-family: "Montez";
     bottom: 0;
-    margin: 1rem;
-    margin-left: 26px;
-    position: absolute;
+    margin: 2.5rem auto 1.5rem;
+    width: fit-content;
+    position: relative;
     padding: 0.7em 1.7em;
-     font-size: 18px;
-     border-radius: 0.5em;
-     background: #e8e8e8;
-     border: 1px solid #e8e8e8;
-     transition: all .3s;
+    font-size: 1.4rem;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
     box-shadow: 6px 6px 12px #c5c5c5,
-                 -6px -6px 12px #ffffff;
+        -6px -6px 12px #ffffff;
 }
 
-.link-modif{
+.link-modif {
     text-decoration: none;
     size: 20rem;
     color: #090909;
 
 }
+
 .modif-profil:hover {
     border: 1px solid white;
-  }
+}
+
 .modif-profil:active {
     box-shadow: 4px 4px 12px #c5c5c5,
-               -4px -4px 12px #ffffff;
-  }
-
-.nav-profil > h1{
-    color: #000;
-    font-size: 5rem;
-    font-family: "Montez";
-    margin-left: 0.5rem;
-    text-shadow: 5px 5px 1px #fff;
+        -4px -4px 12px #ffffff;
 }
+
+
+.publications {
+    width: 100%;
+    height: 100%;
+}
+
+.publications .container {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    width: 100%;
+    height: 100%;
+}
+
+.pub-title {
+    padding: 1rem;
+    height: fit-content;
+}
+
+.pub-title h1 {
+    width: fit-content;
+    margin: auto;
+    font-family: "Montez";
+    text-shadow: 5px 5px 1px #fff;
+    font-size: 3.5rem;
+
+}
+
+.pub-body {
+    border-radius: 49px;
+    background: #19CAFC;
+    box-shadow: inset 9px 9px 14px #0d6781,
+        inset -9px -9px 14px #25ffff;
+    width: 80%;
+    height: 80%;
+    margin: 2rem auto;
+    overflow: auto;
+}
+
+
+
+
+
+
+
 
 /********************* Page Modification Profil  ********************/
 
@@ -1133,7 +1231,7 @@ span {
 }
 .background-modif{
     /* background-color: #19CAFC; */
-    background-color: #000;
+    background-color: red;
     width: 100%;
     height: 100vh;
 }
@@ -1154,10 +1252,223 @@ span {
     box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
     border: 1px solid rgba(255,255,255,0.16);
     border-radius: 20px;
-    width: 200vh;
-    height: 95vh;
+    width: 150vh;
+    height: 80vh;
     margin-top: 2%;
     display: block;
+    bottom: 0;
+}
+.container-modif1{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+    height: 88%;
+}
+
+.space-left{
+    margin-top: 3%;
+    margin-left: 10%;
+    display: flex;
+    gap: 6rem;
+}
+
+.info-perso{
+    border-radius: 12px;
+    margin-top: 20%;
+    width: 100%;
+    height: 20vh;
+    background-color: yellow;
+}
+
+.descri{
+    width: 25vh;
+    height: 15vh;
+}
+
+.modif-desc{
+    display: block;
+}
+
+.title-desc{
+    color:#19CAFC;
+}
+
+textarea {
+    resize: none;
+    border: none;
+  }
+
+.modif-pp{
+    /* background-image: url("--pp1"); */
+    /* background-image: url("../assets/users/user-default.svg");
+    background-size: cover; */
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.choice-pp{
+    /* background-image: url("../assets/users/user-admin.svg");
+    background-size: cover; */
+    border-radius: 50%;
+    width: 5vh;
+    height: 5vh;
+}
+
+.modif-pp > input {
+    margin-top: 45%;
+    opacity: 0;
+}
+
+/********************* Page Messagerie Profil  ********************/
+
+
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+
+.contact {
+    width: 25%;
+    height: 80%;
+    margin: 9rem 0rem 0rem 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact .title {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-context.disscu {
+    font-size: 3rem;
+    margin: auto;
+}
+
+.contact .container {
+    width: 75%;
+    height: 73%;
+    margin: 2rem auto;
+    backdrop-filter: blur(7px);
+    overflow: auto;
+    padding: 1.5rem;
+
+}
+
+
+.chatbox {
+    width: 59%;
+    height: 80%;
+    margin: 9rem 0rem 0rem 15rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chatbox .title {
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+}
+
+.title-context.chatboxfeed {
+    font-size: 4rem;
+    margin-left: 50%;
+}
+
+.chatbox .container {
+    width: 60%;
+    height: 73%;
+    margin: 9rem auto 4rem auto;
+    background-color: #F0C807;
+    border-radius: 25px;
+    overflow: auto;
+    padding: 1.5rem;
+}
+
+
+/* RECHERCHE PAGE */
+
+
+
+.research {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    bottom: 0;
+}
+
+.research .container {
+    position: relative;
+    margin: auto;
+    width: 60%;
+    height: 80%;
+    border-radius: 26px;
+    background: #F0C807;
+    box-shadow: inset 9px 9px 6px #aa8e05,
+        inset -9px -9px 6px #ffff09;
+}
+
+
+/* CHOICE ADD PUB PAGE */
+
+.add-choice{
+    width: 100%;
+    height: 100%;
+    padding: 10rem;
+    position: relative;
+}
+.add-choice .container{
+    width: 70%;
+    height: 60%;
+    margin: 5rem auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.demande-button{
+    background-color: #fff;
+    width: 40%;
+    height: 100%;
+    border-radius: 25px;
+    position: relative;
+    box-shadow: 0px 15px 20px #0c0d0d;
+
+}
+
+.offre-button{
+    background-color: #fff;
+    width: 40%;
+    height: 100%;
+    border-radius: 25px;
+
+    position: relative;
+    box-shadow: 0px 15px 20px #0c0d0d;
+
+}
+
+.title-add{
+    margin: 1rem;
+    font-family: "Montez";
+    font-size: 2.5rem;
+}
+
+.txt-add{
+    margin: 1rem;
+    font-family: "Open Sans";
+    padding: 0.5rem;
+
 }
 
 .space-left{
@@ -1182,6 +1493,38 @@ span {
 
 .modif-desc{
     display: block;
+}
+
+.log-in {
+    position: absolute;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #FFF;
+    border: 2px solid #000;
+    background-color: #000;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    bottom: 0;
+    right: 0;
+    margin: 1.5rem;
+}
+
+.log-in:hover {
+    background-color: #19CAFC;
+    box-shadow: 0px 15px 20px #147e9b;
+    color: #FFF;
+    border: 2px solid #19CAFC;
+    transform: translateY(-7px);
+}
+
+.log-in:active {
+    transform: translateY(-1px);
 }
 
 /********************* RESPONSIVE ********************/
@@ -1213,7 +1556,7 @@ span {
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.45);
         transition: 0.4s;
-      }    
+    }
 
 
     .title-context {
@@ -1266,17 +1609,17 @@ span {
     }
 
 
+    .form-control input {
+        padding: 13px 0;
+        font-size: 15px;
+    }
+
+    .log {
+        margin: 1rem auto auto auto;
+    }
+
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1311,7 +1654,7 @@ span {
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.45);
         transition: 0.4s;
-      }    
+    }
 
 
     .h1-accueil {
@@ -1371,7 +1714,7 @@ span {
         height: 60%;
     }
 
-    .Inscription{
+    .Inscription {
         height: 90%;
     }
 
@@ -1383,7 +1726,7 @@ span {
 
     /********************* INDEX ********************/
 
-    .user{
+    .user {
         margin-right: 0.2rem;
         margin-top: 5rem;
     }
@@ -1495,26 +1838,26 @@ span {
         height: 40px;
     }
 
-      /********************* LOGIN ********************/
+    /********************* LOGIN ********************/
 
-      .formulaire {
+    .formulaire {
         width: 80%;
         height: 60%;
     }
 
-    .form-block{
+    .form-block {
         margin-top: 20%;
     }
 
-    .Inscription{
+    .Inscription {
         height: 80%;
     }
 
-    .inscription{
+    .inscription {
         font-size: 0.8rem;
     }
 
-    .btn{
+    .btn {
         font-size: 0.7rem;
     }
 
