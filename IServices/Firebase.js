@@ -10,6 +10,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
 
 import {
@@ -177,7 +178,7 @@ export function Connexion(email, password) {
 
 //SignIn
 
-export function Inscription(email, pseudo ,prenom, nom, password) {
+export function Inscription(email, pseudo, prenom, nom, password) {
   const errorinput = () =>
     document
       .querySelectorAll("span")
@@ -231,54 +232,75 @@ export function Inscription(email, pseudo ,prenom, nom, password) {
     });
 }
 
-
 // GET ALL VALUES FOR PROFIL PAGE
 
 export function GetValues() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-
       const ps = document.getElementById("pseudo");
       const nom = document.getElementById("nom");
       const prenom = document.getElementById("prenom");
       const email = document.getElementById("email");
 
-      
       const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
       onValue(PseudoData, (snapshot) => {
         const data = snapshot.val();
         ps.innerHTML = data;
+        ps.setAttribute("value", data);
       });
       const NomData = ref(database, "users/" + user.uid + "/nom");
       onValue(NomData, (snapshot) => {
         const data = snapshot.val();
         nom.innerHTML = data;
+        nom.setAttribute("value", data);
       });
       const PrenomData = ref(database, "users/" + user.uid + "/prenom");
       onValue(PrenomData, (snapshot) => {
         const data = snapshot.val();
         prenom.innerHTML = data;
+        prenom.setAttribute("value", data);
       });
       const EmailData = ref(database, "users/" + user.uid + "/email");
       onValue(EmailData, (snapshot) => {
         const data = snapshot.val();
         email.innerHTML = data;
       });
-
-
-
     } else {
       console.log("Accès Refuser !");
       window.location.href = "/public/Pages/Login";
     }
   });
-
-
-
-
-
-
 }
+
+// RESET PASSWORD
+
+export function ResetPassword(email) {
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      ErrorRobot("Lien envoyé !");
+      console.log("Lien envoyé avec succès à :" + email);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      ErrorRobot(errorMessage);
+      
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -291,6 +313,6 @@ export function GetValues() {
 
 //ROBOT ERROR, TAKE ME FOR ERROR ALERTS <3
 
-function ErrorRobot(feedme) {
+export function ErrorRobot(feedme) {
   alert(feedme);
 }
