@@ -47,6 +47,32 @@
 
                 </ul>
             </div>
+            <div class="user">
+                <ul>
+                    <li class="header-static"><button type="button" id="dropdown" class="user-button"> <img
+                                src="../../../assets/icons/user-default.svg" class="user-img" id="pp-img" alt="user">
+                        </button></li>
+                </ul>
+
+                <div id="menu" class="menu">
+                    <button class="dropbutton" id="profilbutton">
+                        <span class="material-symbols-outlined"><img src="../../../assets/icons/user.svg" alt="modif-profil"
+                                id="icondd"></span>
+                        <div class="menu-title" id="menu-1"> Profil</div>
+                    </button>
+                    <button class="dropbutton" id="Custombutton">
+                        <span class="material-symbols-outlined"> <img src="../../../assets/icons/custom-user.svg"
+                                alt="modif-profil" id="icondd"> </span>
+                        <div class="menu-title" id="menu-2"> Modifier le Profil</div>
+                    </button>
+                    <button class="dropbutton" id="logoutbutton">
+                        <span class="material-symbols-outlined"> <img src="../../../assets/icons/log-out.svg" alt="log-out"
+                                id="icondd"> </span>
+                        <div class="menu-title" id="menu-3">Se déconnecter</div>
+                    </button>
+                </div>
+
+            </div>
         </nav>
 
     </header>
@@ -71,7 +97,7 @@
                         </div>
                         <div class="space-left">
                             <div>
-                                <h1 class="title-desc"> Informations personnelles :</h1>
+                                <h1 class="title-titles"> Informations personnelles :</h1>
                                 <div class="form-block log">
                                     <div class="input-group" id="login">
                                         <div class="form-control">
@@ -124,27 +150,34 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-block log">
+                                    <div class="input-group" id="login">
+                                        <div class="form-control">
+                                            <input type="text" class="killian" required="" id="email" autocomplete="off"
+                                                readonly>
+                                            <label>
+                                                <span style="transition-delay:0ms" class="focused">E</span><span
+                                                    style="transition-delay:50ms" class="focused">m</span><span
+                                                    style="transition-delay:100ms" class="focused">a</span><span
+                                                    style="transition-delay:150ms" class="focused">i</span><span
+                                                    style="transition-delay:200ms" class="focused">l</span> </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="info-perso">
-                                    <label class="title-modif">Email</label>
-                                    <p  class="mail" id="email"></p>
-                                    <br />
-                                    <label class="title-modif"> Mot de passe </label>
-                                    <a class="mail" id="resetpassword" href="">Réinisialisé le mot de passe ?</a>
+                                    <button class="email-reset" id="resetemail" >Réinisialiser l'email ?</button>
+                                    <button class="pass-reset" id="resetpassword">Réinisialiser le mot de passe ?</button>
+                                    <button class="ok-btn" id="okmodif">Valider</button>
+
                                 </div>
                             </div>
                             <div class="modif-desc">
-                                <h1 class="title-desc">Description : </h1>
+                                <h1 class="title-titles">Description : </h1>
                                 </br>
-                                <textarea rows="10" cols="55" maxlength="230"></textarea>
+                                <textarea rows="10" cols="55" maxlength="480" id="bio"></textarea>
                             </div>
-                            <!-- <div>
-                                <h1 class="title-desc"> Photo de profil </h1>
-                                </br>
-                                <div class="modif-pp"><input type="file" id="1" accept="image/png, image/jpeg"></div>
-                                <button class="choice-pp" onclick="ppchange()"></button>
-                            </div> -->
                             <div>
-                                <h1 class="title-desc"> Photo de profil : </h1>
+                                <h1 class="title-titles"> Photo de profil : </h1>
                                 </br>
                                 <img class="modif-pp" src="../../../assets/users/user-default.svg" id="imgmain">
                                 <img class="choice-pp" src="../../../assets/users/user-default.svg">
@@ -153,7 +186,6 @@
                             </div>
 
                         </div>
-                        <!-- <button type="button" id="submitdata" name="submitdata" class="btn">Accepter les Modification</button> -->
                         </form>
                     </div>
                 </div>
@@ -164,9 +196,12 @@
 </body>
 
 <script src="../../../Style/style.js"></script>
+<script src="../../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../../Services/Controllers/LogedController.js" type="module"></script>
 <script src="../../../Services/Profil/GetProfil.js" type="module"></script>
-<script src="../../../Services/Auth/ResetPassword.js" type="module"></script>
+<script src="../../../Services/Auth/ResetDataUser.js" type="module"></script>
+<script src="../../../Services/Profil/Modification/UpdateDataUser.js" type="module"></script>
+
 
 
 

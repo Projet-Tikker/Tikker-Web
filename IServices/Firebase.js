@@ -71,15 +71,15 @@ export const ControllerAccueil = () => {
         console.log("Connecté en tant que : " + data);
 
         profilbutton.addEventListener("click", function () {
-          window.location.href = "Pages/Profil";
+          window.location.href = "/public/Pages/Profil";
         });
 
         Custombutton.addEventListener("click", function () {
-          window.location.href = "Pages/Profil/Modification";
+          window.location.href = "/public/Pages/Profil/Modification";
         });
 
         const userImg = (document.getElementById("pp-img").src =
-          "assets/users/user-default.svg");
+          "/public/assets/users/user-default.svg");
       });
     } else {
       console.log("Aucun Utilisateur connecté!");
@@ -88,7 +88,7 @@ export const ControllerAccueil = () => {
       menu1.innerHTML = "Se connecter";
 
       profilbutton.addEventListener("click", function () {
-        window.location.href = "Pages/Login";
+        window.location.href = "/public/Pages/Login";
       });
 
       const menu2 = document.getElementById("Custombutton");
@@ -126,11 +126,11 @@ export const ControllerUserLoged = () => {
 export const Deconnexion = () => {
   signOut(auth)
     .then(() => {
-      // Sign-out successful.
-    })
+      window.location.href = "/public/";
+        })
     .catch((error) => {
       // An error happened.
-      alert(error);
+      ErrorRobot(error);
     });
 };
 
@@ -165,13 +165,13 @@ export function Connexion(email, password) {
         })
         .catch((error) => {
           const errorCode = error.code;
-          alert(errorCode);
+          ErrorRobot(errorCode);
         });
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = "Mot de passe ou Email Incorrect.";
-      alert(errorMessage);
+      ErrorRobot(errorMessage);
       errorinput();
     });
 }
@@ -200,13 +200,13 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       })
         .then(() => {
           // Data saved successfully!
-          alert("Compte créer avec succès !");
+          ErrorRobot("Compte créer avec succès !");
           Deconnexion();
           window.location.href = "../Login";
         })
         .catch((error) => {
           // The write failed...
-          alert(error);
+          ErrorRobot(error);
         });
     })
     .catch((error) => {
@@ -241,6 +241,7 @@ export function GetValues() {
       const nom = document.getElementById("nom");
       const prenom = document.getElementById("prenom");
       const email = document.getElementById("email");
+      const bio = document.getElementById("bio");
 
       const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
       onValue(PseudoData, (snapshot) => {
@@ -264,6 +265,13 @@ export function GetValues() {
       onValue(EmailData, (snapshot) => {
         const data = snapshot.val();
         email.innerHTML = data;
+        email.setAttribute("value", data);
+      });
+      const BioData = ref(database, "users/" + user.uid + "/bio");
+      onValue(BioData, (snapshot) => {
+        const data = snapshot.val();
+        bio.innerHTML = data;
+        bio.setAttribute("value", data);
       });
     } else {
       console.log("Accès Refuser !");
@@ -272,10 +280,49 @@ export function GetValues() {
   });
 }
 
+// UPDATE DATA USER
+
+export function UpdateDataUsr(pseudo, nom, prenom, bio) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+
+      var LUDate = new Date().toLocaleDateString("fr-FR", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      update(ref(database, "users/" + uid), {
+        pseudo: pseudo,
+        nom: nom,
+        prenom: prenom,
+        bio: bio,
+        Last_Update: LUDate,
+      })
+        .then(() => {
+          // Data saved successfully!
+          ErrorRobot("Changements Appliquées !");
+          window.location.reload();
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          alert(errorCode);
+        });
+    } else {
+
+      /////
+    }
+  });
+}
+
 // RESET PASSWORD
 
 export function ResetPassword(email) {
-
   sendPasswordResetEmail(auth, email)
     .then(() => {
       ErrorRobot("Lien envoyé !");
@@ -285,31 +332,8 @@ export function ResetPassword(email) {
       const errorCode = error.code;
       const errorMessage = error.message;
       ErrorRobot(errorMessage);
-      
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //ROBOT ERROR, TAKE ME FOR ERROR ALERTS <3
 

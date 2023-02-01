@@ -77,11 +77,14 @@ nav ul {
 
 nav ul li a.link-header-static {
     margin: 4rem;
+    outline: none;
+
 
 }
 
 button {
     outline: none;
+
 }
 
 
@@ -881,6 +884,7 @@ a.link-header-dynamic:active {
 .form-control input:valid+label span {
     color: #19CAFC;
     transform: translateY(-30px);
+    text-shadow: 1px 1px 0.5px #fff;
 }
 
 
@@ -1222,6 +1226,7 @@ span {
 /********************* Page Modification Profil  ********************/
 
 .title-modif {
+    margin: 1.5rem;
     display: flex;
     justify-content: center;
     color: #000;
@@ -1238,41 +1243,43 @@ span {
 .center-form {
     display: flex;
     justify-content: center;
+    height: 100%;
+    width: 100%;
+    
 }
 
 .background-form {
     background: linear-gradient(135deg,
             rgba(255, 255, 255, 0.1),
             rgba(255, 255, 255, 0.1));
-    backdrop-filter: blur(21px);
-    -webkit-backdrop-filter: blur(21px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 20px;
-    width: 150vh;
-    height: 80vh;
-    margin-top: 2%;
+    width: 70%;
+    height: 80%;
     display: block;
-    bottom: 0;
+    bottom: 2rem;
+    position: absolute;
 }
 
 .container-modif1 {
-    position: absolute;
+    position: relative  ;
     bottom: 0;
     width: 100%;
-    height: 88%;
+    height: 100%;
 }
 
 .space-left {
-    margin-top: 3%;
-    margin-left: 10%;
+    margin-top: 3.5%;
+    margin-left: 5%;
     display: flex;
     gap: 6rem;
 }
 
 .info-perso {
     border-radius: 12px;
-    margin-top: 5%;
     width: 100%;
     height: 20vh;
 }
@@ -1292,13 +1299,16 @@ span {
 
 textarea {
     resize: none;
-    border: none;
+    border-color:  #19CAFC;
+    border-radius: 15px;
+    padding: 1.2rem;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: "Open Sans"
 }
 
+
 .modif-pp {
-    /* background-image: url("--pp1"); */
-    /* background-image: url("../assets/users/user-default.svg");
-    background-size: cover; */
     width: 20vh;
     height: 20vh;
     border-radius: 50%;
@@ -1307,8 +1317,6 @@ textarea {
 }
 
 .choice-pp {
-    /* background-image: url("../assets/users/user-admin.svg");
-    background-size: cover; */
     border-radius: 50%;
     width: 5vh;
     height: 5vh;
@@ -1324,6 +1332,117 @@ textarea {
     width: fit-content;
     display: flex;
     margin-top: 1rem;
+}
+
+.focused , .focused::before{
+    color: #F0C807;
+    transform: translateY(-30px);
+}
+
+.killian{
+    cursor: not-allowed;
+}
+
+.pass-reset {
+    text-decoration: none;
+    position: absolute;
+    padding: 1.3em 3em;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    border: 2px solid #fff;
+    background-color: #fff;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    bottom: 50px;
+    left: 60px;
+}
+
+.pass-reset:hover {
+    background-color: #e73c3c;
+    box-shadow: 0px 15px 20px #e01e14a2;
+    color: #fff;
+    border: 2px solid #e73c3c;
+    transform: translateY(-7px);
+}
+
+.pass-reset:active {
+    transform: translateY(-1px);
+}
+
+.email-reset {
+    text-decoration: none;
+    position: absolute;
+    padding: 1.3em 3em;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    border: 2px solid #fff;
+    background-color: #fff;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    bottom: 50px;
+    left: 400px;
+}
+
+.email-reset:hover {
+    background-color: #e73c3c;
+    box-shadow: 0px 15px 20px #e01e14a2;
+    color: #fff;
+    border: 2px solid #e73c3c;
+    transform: translateY(-7px);
+}
+
+.email-reset:active {
+    transform: translateY(-1px);
+}
+
+.ok-btn {
+    text-decoration: none;
+    position: absolute;
+    padding: 1.3em 3em;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    border: 2px solid #fff;
+    background-color: #fff;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    bottom: 50px;
+    right: 2rem;
+}
+
+.ok-btn:hover {
+    background-color: #2adb1d;
+    box-shadow: 0px 15px 20px #1d8715;
+    color: #fff;
+    border: 2px solid #2adb1d;
+    transform: translateY(-7px);
+}
+
+.ok-btn:active {
+    transform: translateY(-1px);
+}
+
+.title-titles{
+    display: flex;
+    justify-content: center;
+    color: #000;
+    font-size: 2rem;
+    font-family: "Montez";
+    text-shadow: 5px 5px 1px #fff;
 }
 
 /********************* Page Messagerie Profil  ********************/
