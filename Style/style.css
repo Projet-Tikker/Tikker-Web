@@ -1222,35 +1222,32 @@ span {
 /********************* Page Modification Profil  ********************/
 
 .title-modif {
-    display:flex;
+    display: flex;
     justify-content: center;
     color: #000;
     font-size: 2rem;
     font-family: "Montez";
     text-shadow: 5px 5px 1px #fff;
 }
-.background-modif{
-    /* background-color: #19CAFC; */
-    background-color: red;
+
+.background-modif {
     width: 100%;
     height: 100vh;
 }
 
-.center-form{
+.center-form {
     display: flex;
     justify-content: center;
 }
 
-.background-form{
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.1),
-        rgba(255,255,255,0.1)
-    );
+.background-form {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1));
     backdrop-filter: blur(21px);
     -webkit-backdrop-filter: blur(21px);
-    box-shadow: 0 8px 32px 0 rgba(0,0,0, 0.36);
-    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 20px;
     width: 150vh;
     height: 80vh;
@@ -1258,47 +1255,47 @@ span {
     display: block;
     bottom: 0;
 }
-.container-modif1{
-    position:absolute;
+
+.container-modif1 {
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 88%;
 }
 
-.space-left{
+.space-left {
     margin-top: 3%;
     margin-left: 10%;
     display: flex;
     gap: 6rem;
 }
 
-.info-perso{
+.info-perso {
     border-radius: 12px;
-    margin-top: 20%;
+    margin-top: 5%;
     width: 100%;
     height: 20vh;
-    background-color: yellow;
 }
 
-.descri{
+.descri {
     width: 25vh;
     height: 15vh;
 }
 
-.modif-desc{
+.modif-desc {
     display: block;
 }
 
-.title-desc{
-    color:#19CAFC;
+.title-desc {
+    color: #19CAFC;
 }
 
 textarea {
     resize: none;
     border: none;
-  }
+}
 
-.modif-pp{
+.modif-pp {
     /* background-image: url("--pp1"); */
     /* background-image: url("../assets/users/user-default.svg");
     background-size: cover; */
@@ -1309,7 +1306,7 @@ textarea {
     justify-content: center;
 }
 
-.choice-pp{
+.choice-pp {
     /* background-image: url("../assets/users/user-admin.svg");
     background-size: cover; */
     border-radius: 50%;
@@ -1317,9 +1314,16 @@ textarea {
     height: 5vh;
 }
 
-.modif-pp > input {
+.modif-pp>input {
     margin-top: 45%;
     opacity: 0;
+}
+
+.mail{
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    margin-top: 1rem;
 }
 
 /********************* Page Messagerie Profil  ********************/
@@ -1421,13 +1425,14 @@ textarea {
 
 /* CHOICE ADD PUB PAGE */
 
-.add-choice{
+.add-choice {
     width: 100%;
     height: 100%;
     padding: 10rem;
     position: relative;
 }
-.add-choice .container{
+
+.add-choice .container {
     width: 70%;
     height: 60%;
     margin: 5rem auto;
@@ -1437,7 +1442,7 @@ textarea {
 }
 
 
-.demande-button{
+.demande-button {
     background-color: #fff;
     width: 40%;
     height: 100%;
@@ -1447,7 +1452,7 @@ textarea {
 
 }
 
-.offre-button{
+.offre-button {
     background-color: #fff;
     width: 40%;
     height: 100%;
@@ -1458,13 +1463,13 @@ textarea {
 
 }
 
-.title-add{
+.title-add {
     margin: 1rem;
     font-family: "Montez";
     font-size: 2.5rem;
 }
 
-.txt-add{
+.txt-add {
     margin: 1rem;
     font-family: "Open Sans";
     padding: 0.5rem;

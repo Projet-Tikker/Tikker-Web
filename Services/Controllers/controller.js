@@ -4,6 +4,7 @@ ControllerAccueil();
 
 const menu = document.getElementById("menu");
 
+
 dropdown.addEventListener("click", function () {
   menu.classList.toggle("open");
 });

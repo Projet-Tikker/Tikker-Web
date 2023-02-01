@@ -22,13 +22,28 @@
 <body>
 
     <header>
-        <a href="../../"><img src="../../../assets/icons/favicon2.png" alt="Logo" class="Logo" title="Logo"></a>
+        <a href="../../../"><img src="../../../assets/icons/favicon2.png" alt="Logo" class="Logo" title="Logo"></a>
 
         <nav class="container">
             <div class="links">
                 <ul>
                     <li class="header-static"><a class="link-header-static" href="../../../"><img
-                                src="../../../assets/icons/home-active.svg" alt="Accueil" class="header-img"></a></li>
+                                src="../../../assets/icons/home.svg" alt="Accueil" class="header-img"></a></li>
+                    <li class="header-static"><button class="search-button" id="search-action"><img
+                                src="../../../assets/icons/search.svg" alt="Parcourir" class="header-img"></button>
+                        <form action="../../Parcourir/" class="form-search">
+                            <input type="text" id="search-bar" class="bar-closed" name="research"
+                                placeholder="Webapp, App mobile ...">
+                        </form>
+                    </li>
+                    <li class="header-static" id="add-head"><a class="link-header-static"
+                            href="../../Profil/Ajout/"><img src="../../../assets/icons/add.svg" class="header-img"
+                                alt="AddIcon"></a>
+                    </li>
+                    <li class="header-static" id="msg-head"><a class="link-header-static"
+                            href="../../Profil/Messages/"><img src="../../../assets/icons/messages-icon.svg"
+                                class="header-img" alt="MessagesIcon"></a>
+                    </li>
 
                 </ul>
             </div>
@@ -36,15 +51,18 @@
 
     </header>
     <main>
-        <div class="custom-shape-divider-top-1671021536">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
         <section class="background-modif">
+            <div class="background-acceuil">
+                <img src="../../../assets/background/back-modif-profil.jpg" alt="Background-1" id="back-4">
+            </div>
+            <div class="custom-shape-divider-top-1671021536">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
             <div class="container-modif1">
                 <div class="center-form">
                     <div class="background-form">
@@ -57,7 +75,7 @@
                                 <div class="form-block log">
                                     <div class="input-group" id="login">
                                         <div class="form-control">
-                                            <input type="text" required="" id="pseudo" autocomplete="off" value="test">
+                                            <input type="text" required="" id="pseudo" autocomplete="off">
                                             <label>
                                                 <span style="transition-delay:0ms">N</span><span
                                                     style="transition-delay:50ms">o</span><span
@@ -82,7 +100,7 @@
                                 <div class="form-block log">
                                     <div class="input-group" id="login">
                                         <div class="form-control">
-                                            <input type="text" required="" id="nom" autocomplete="off" value="test">
+                                            <input type="text" required="" id="nom" autocomplete="off">
                                             <label>
                                                 <span style="transition-delay:0ms">N</span><span
                                                     style="transition-delay:50ms">o</span><span
@@ -94,7 +112,7 @@
                                 <div class="form-block log">
                                     <div class="input-group" id="login">
                                         <div class="form-control">
-                                            <input type="text" required="" id="prenom" autocomplete="off" value="test">
+                                            <input type="text" required="" id="prenom" autocomplete="off">
                                             <label>
                                                 <span style="transition-delay:0ms">P</span><span
                                                     style="transition-delay:50ms">r</span><span
@@ -107,10 +125,11 @@
                                     </div>
                                 </div>
                                 <div class="info-perso">
-                                    <label>Email</label>
+                                    <label class="title-modif">Email</label>
+                                    <p  class="mail" id="email"></p>
                                     <br />
-                                    <!-- <label> Mots de passe </label> -->
-                                    <a href="">Mot de passe oublié?</a>
+                                    <label class="title-modif"> Mot de passe </label>
+                                    <a class="mail" id="resetpassword" href="">Réinisialisé le mot de passe ?</a>
                                 </div>
                             </div>
                             <div class="modif-desc">
@@ -128,9 +147,9 @@
                                 <h1 class="title-desc"> Photo de profil : </h1>
                                 </br>
                                 <img class="modif-pp" src="../../../assets/users/user-default.svg" id="imgmain">
-                                <img class="choice-pp" src="../../../assets/users/user-default.svg" onclick="changepp()">
-                                <img class="choice-pp" src="../../../assets/users/user-admin.svg" onclick="changepp1()">
-                                <img class="choice-pp" src="../../../assets/users/user-eye.svg" onclick="changepp2()">
+                                <img class="choice-pp" src="../../../assets/users/user-default.svg">
+                                <img class="choice-pp" src="../../../assets/users/user-admin.svg">
+                                <img class="choice-pp" src="../../../assets/users/user-eye.svg">
                             </div>
 
                         </div>
@@ -145,8 +164,10 @@
 </body>
 
 <script src="../../../Style/style.js"></script>
-<script src="../../../Services/Controllers/controller.js" type="module"></script>*
-<script src="../../../Services/ModifPageBack.js" type="module"></script>
+<script src="../../../Services/Controllers/LogedController.js" type="module"></script>
+<script src="../../../Services/Profil/GetProfil.js" type="module"></script>
+<script src="../../../Services/Auth/ResetPassword.js" type="module"></script>
+
 
 
 
