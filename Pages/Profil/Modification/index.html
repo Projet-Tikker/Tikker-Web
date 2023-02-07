@@ -31,7 +31,7 @@
                                 src="../../../assets/icons/home.svg" alt="Accueil" class="header-img"></a></li>
                     <li class="header-static"><button class="search-button" id="search-action"><img
                                 src="../../../assets/icons/search.svg" alt="Parcourir" class="header-img"></button>
-                        <form action="../../Parcourir/" class="form-search">
+                        <form action="/Pages/Parcourir/" class="form-search">
                             <input type="text" id="search-bar" class="bar-closed" name="research"
                                 placeholder="Webapp, App mobile ...">
                         </form>
@@ -179,9 +179,9 @@
                                 <h1 class="title-titles"> Photo de profil : </h1>
                                 </br>
                                 <img class="modif-pp" src="../../../assets/users/user-default.svg" id="imgmain">
-                                <img class="choice-pp" src="../../../assets/users/user-default.svg">
-                                <img class="choice-pp" src="../../../assets/users/user-admin.svg">
-                                <img class="choice-pp" src="../../../assets/users/user-eye.svg">
+                                <img class="choice-pp" onclick="changepp()" src="../../../assets/users/user-default.svg">
+                                <img class="choice-pp" onclick="changepp1()" src="../../../assets/users/user-admin.svg">
+                                <img class="choice-pp" onclick="changepp2()" src="../../../assets/users/user-eye.svg">
                             </div>
 
                         </div>
@@ -195,6 +195,7 @@
 </body>
 
 <script src="../../../Style/style.js"></script>
+<script src="../../../Services/Profil/Modification/ModifPageBack.js"></script>
 <script src="../../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../../Services/Controllers/LogedController.js" type="module"></script>
 <script src="../../../Services/Profil/GetProfil.js" type="module"></script>
