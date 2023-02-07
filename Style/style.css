@@ -1336,7 +1336,6 @@ textarea {
 }
 
 .focused , .focused::before{
-    color: #F0C807;
     transform: translateY(-30px);
 }
 
@@ -1603,13 +1602,6 @@ textarea {
     gap: 6rem;
 }
 
-.info-perso{
-    border-radius: 12px;
-    margin-top: 20%;
-    width: 100%;
-    height: 20vh;
-    background-color: yellow;
-}
 
 .descri{
     width: 25vh;
