@@ -67,12 +67,13 @@ export const ControllerAccueil = () => {
   onAuthStateChanged(auth, (user) => {
     //Si il y a un utililisateur logged
     if (user) {
-      //Prendre le prenom de la base users
+      //Prendre le prenom et pp de la base users
       const UserData = ref(database, "users/" + user.uid + "/prenom");
+      const PPData = ref(database, "users/" + user.uid + "/pp");
       //Le stocker et le print dans la console
       onValue(UserData, (snapshot) => {
         const data = snapshot.val();
-        console.log("Connecté en tant que : " + data);
+        console.log("Accès Garantie à " + data);
 
         //Menu déroulant chemin Profil
         profilbutton.addEventListener("click", function () {
@@ -83,10 +84,24 @@ export const ControllerAccueil = () => {
         Custombutton.addEventListener("click", function () {
           window.location.href = "/Pages/Profil/Modification";
         });
-        //Appliquer la pp de l'utilisateur
-        const userImg = (document.getElementById("pp-img").src =
-          "/assets/users/user-default.svg");
+
       });
+
+      onValue(PPData, (snapshot) => {
+        const pp = snapshot.val();
+
+        //Appliquer la pp de l'utilisateur
+        if (pp == null) {
+          const userImg = (document.getElementById("pp-img").src =
+            "/assets/users/user-default.svg");
+        } else {
+          const userImg = (document.getElementById("pp-img").src = pp);
+        }
+
+      });
+
+
+
     } else {
       //Print dans la console
       console.log("Aucun Utilisateur connecté!");
@@ -251,6 +266,8 @@ export function GetValues() {
       const prenom = document.getElementById("prenom");
       const email = document.getElementById("email");
       const bio = document.getElementById("bio");
+      const pp = document.getElementById("imgmain");
+
 
       const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
       onValue(PseudoData, (snapshot) => {
@@ -281,6 +298,15 @@ export function GetValues() {
         const data = snapshot.val();
         bio.innerHTML = data;
         bio.setAttribute("value", data);
+      });
+      const PPData = ref(database, "users/" + user.uid + "/pp");
+      onValue(PPData, (snapshot) => {
+        const data = snapshot.val();
+
+        if (data == null) {
+        } else {
+          pp.setAttribute("src", data);
+        }
       });
     } else {
       console.log("Accès Refuser !");
@@ -313,7 +339,7 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
           prenom: prenom,
           bio: bio,
           Last_Update: LUDate,
-          pp : pp,
+          pp: pp,
         })
           .then(() => {
             // Data saved successfully!

@@ -12,6 +12,6 @@ okmodif.addEventListener("click", function () {
     if (confirm("Voulez-vous vraiment Appliquée les changements ?")) {
         UpdateDataUsr(pseudo, nom, prenom, bio, pp)
     } else {
-        console.log("[Action non-aboutie] - Refus Utilisateur");
+        console.log("[Action non-aboutie] - Refus User");
     }
 });
