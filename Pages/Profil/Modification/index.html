@@ -172,16 +172,16 @@
                             </div>
                             <div class="modif-desc">
                                 <h1 class="title-titles">Description : </h1>
-                                </br>
+                                <br>
                                 <textarea rows="10" cols="55" maxlength="480" id="bio"></textarea>
                             </div>
                             <div>
                                 <h1 class="title-titles"> Photo de profil : </h1>
-                                </br>
-                                <img class="modif-pp" src="../../../assets/users/user-default.svg" id="imgmain">
-                                <img class="choice-pp" onclick="changepp()" src="../../../assets/users/user-default.svg">
-                                <img class="choice-pp" onclick="changepp1()" src="../../../assets/users/user-admin.svg">
-                                <img class="choice-pp" onclick="changepp2()" src="../../../assets/users/user-eye.svg">
+                                <br>
+                                <img class="modif-pp" src="/assets/users/user-default.svg" id="imgmain">
+                                <img class="choice-pp" onclick="changepp()" src="/assets/users/user-default.svg">
+                                <img class="choice-pp" onclick="changepp1()" src="/assets/users/user-admin.svg">
+                                <img class="choice-pp" onclick="changepp2()" src="/assets/users/user-eye.svg">
                             </div>
 
                         </div>
@@ -194,13 +194,20 @@
     </main>
 </body>
 
+    <!-------------- Feuilles JavaS ------------>
+
 <script src="../../../Style/style.js"></script>
-<script src="../../../Services/Profil/Modification/ModifPageBack.js"></script>
+
 <script src="../../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../../Services/Controllers/LogedController.js" type="module"></script>
+
 <script src="../../../Services/Profil/GetProfil.js" type="module"></script>
+
+
 <script src="../../../Services/Auth/ResetDataUser.js" type="module"></script>
 <script src="../../../Services/Profil/Modification/UpdateDataUser.js" type="module"></script>
+<script src="../../../Services/Profil/Modification/ModifPageBack.js"></script>
+
 
 
 

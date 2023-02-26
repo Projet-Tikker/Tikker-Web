@@ -136,7 +136,7 @@ export const Deconnexion = () => {
   signOut(auth)
     .then(() => {
       window.location.href = "/";
-        })
+    })
     .catch((error) => {
       // An error happened.
       ErrorRobot(error);
@@ -291,7 +291,7 @@ export function GetValues() {
 
 // UPDATE DATA USER
 
-export function UpdateDataUsr(pseudo, nom, prenom, bio) {
+export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
@@ -306,22 +306,42 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio) {
         second: "2-digit",
       });
 
-      update(ref(database, "users/" + uid), {
-        pseudo: pseudo,
-        nom: nom,
-        prenom: prenom,
-        bio: bio,
-        Last_Update: LUDate,
-      })
-        .then(() => {
-          // Data saved successfully!
-          ErrorRobot("Changements Appliquées !");
-          window.location.reload();
+      if (pseudo.length > 3 && nom.length > 3 && /\d/.test(nom) == false && prenom.length > 2 && /\d/.test(prenom) == false) {
+        update(ref(database, "users/" + uid), {
+          pseudo: pseudo,
+          nom: nom,
+          prenom: prenom,
+          bio: bio,
+          Last_Update: LUDate,
+          pp : pp,
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          alert(errorCode);
-        });
+          .then(() => {
+            // Data saved successfully!
+            ErrorRobot("Changements Appliquées !");
+            window.location.reload();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            ErrorRobot(errorCode);
+          });
+      } else {
+        if (pseudo.length < 3) {
+          let problem = "'Nom Utilisateur'";
+          ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+        } else {
+          if (nom.length < 3 || /\d/.test(nom) == true) {
+            let problem = "'Nom'";
+            ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+
+          }
+          else {
+            if (prenom.length < 3 || /\d/.test(prenom) == true) {
+              let problem = "'Prenom'";
+              ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+            }
+          }
+        }
+      }
     } else {
 
       /////
