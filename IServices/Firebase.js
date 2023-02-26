@@ -63,27 +63,35 @@ const analytics = getAnalytics(app);
 //Controllers
 
 export const ControllerAccueil = () => {
+  //Détécteur d'utilisateur
   onAuthStateChanged(auth, (user) => {
+    //Si il y a un utililisateur logged
     if (user) {
+      //Prendre le prenom de la base users
       const UserData = ref(database, "users/" + user.uid + "/prenom");
+      //Le stocker et le print dans la console
       onValue(UserData, (snapshot) => {
         const data = snapshot.val();
         console.log("Connecté en tant que : " + data);
 
+        //Menu déroulant chemin Profil
         profilbutton.addEventListener("click", function () {
           window.location.href = "/Pages/Profil";
         });
 
+        //Menu déroulant chemin Modif profil
         Custombutton.addEventListener("click", function () {
           window.location.href = "/Pages/Profil/Modification";
         });
-
+        //Appliquer la pp de l'utilisateur
         const userImg = (document.getElementById("pp-img").src =
           "/assets/users/user-default.svg");
       });
     } else {
+      //Print dans la console
       console.log("Aucun Utilisateur connecté!");
 
+      //Changement du menu déroulant
       const menu1 = document.getElementById("menu-1");
       menu1.innerHTML = "Se connecter";
 
@@ -91,6 +99,7 @@ export const ControllerAccueil = () => {
         window.location.href = "/Pages/Login";
       });
 
+      //Désactivation du menu déroualnt non connecté
       const menu2 = document.getElementById("Custombutton");
       menu2.style.display = "none";
 
