@@ -302,7 +302,6 @@ export function GetValues() {
       const PPData = ref(database, "users/" + user.uid + "/pp");
       onValue(PPData, (snapshot) => {
         const data = snapshot.val();
-
         if (data == null) {
         } else {
           pp.setAttribute("src", data);

@@ -1317,11 +1317,19 @@ textarea {
     justify-content: center;
 }
 
+.grid-pp{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+}
+
 .choice-pp {
     border-radius: 50%;
     width: 5vh;
     height: 5vh;
-    margin-top: 2rem;
+    margin-top: 1rem;
     
     transition: 0.5s;
 }
