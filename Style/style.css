@@ -1308,6 +1308,15 @@ textarea {
 
 }
 
+.become-pro{
+margin-top: 3rem;
+}
+
+.pro{
+    font-size: 1.1rem;
+    margin-left: 1rem;
+}
+
 
 .modif-pp {
     width: 20vh;

@@ -84,7 +84,6 @@ export const ControllerAccueil = () => {
         Custombutton.addEventListener("click", function () {
           window.location.href = "/Pages/Profil/Modification";
         });
-
       });
 
       onValue(PPData, (snapshot) => {
@@ -97,11 +96,7 @@ export const ControllerAccueil = () => {
         } else {
           const userImg = (document.getElementById("pp-img").src = pp);
         }
-
       });
-
-
-
     } else {
       //Print dans la console
       console.log("Aucun Utilisateur connecté!");
@@ -137,6 +132,27 @@ export const ControllerUserLoged = () => {
       onValue(UserData, (snapshot) => {
         const data = snapshot.val();
         console.log("Connecté en tant que : " + data);
+      });
+    } else {
+      console.log("Accès Refuser !");
+      window.location.href = "/Pages/Login";
+    }
+  });
+};
+
+//PROFESSIONEL DETECTOR
+
+export const ProDetector = () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const UserData = ref(database, "users/" + user.uid + "/professionel");
+      onValue(UserData, (snapshot) => {
+        const data = snapshot.val();
+        if (data == true) {
+          console.log("Compte Professionel");
+        } else {
+          window.location.href = "/Pages/Profil/Ajout/Demande";
+        }
       });
     } else {
       console.log("Accès Refuser !");
@@ -208,52 +224,87 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       .querySelectorAll("span")
       .forEach((node) => (node.style.color = "#fc4103"));
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Inscription
-      const user = userCredential.user;
-      let CreaDate = new Date().toLocaleDateString("fr-FR");
-      // ...
-      set(ref(database, "users/" + user.uid), {
-        email: email,
-        pseudo: pseudo,
-        prenom: prenom,
-        nom: nom,
-        password: password,
-        created: CreaDate,
-      })
-        .then(() => {
-          // Data saved successfully!
-          ErrorRobot("Compte créer avec succès !");
-          Deconnexion();
-          window.location.href = "../Login";
+  if (
+    pseudo.length > 3 &&
+    nom.length > 3 &&
+    /\d/.test(nom) == false &&
+    prenom.length > 2 &&
+    /\d/.test(prenom) == false
+  ) {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Inscription
+        const user = userCredential.user;
+        let CreaDate = new Date().toLocaleDateString("fr-FR");
+        // ...
+        set(ref(database, "users/" + user.uid), {
+          email: email,
+          pseudo: pseudo,
+          prenom: prenom,
+          nom: nom,
+          password: password,
+          created: CreaDate,
         })
-        .catch((error) => {
-          // The write failed...
-          ErrorRobot(error);
-        });
-    })
-    .catch((error) => {
-      errorinput();
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          var errorMessage = "L'adresse email renseigné est déja utilisée.";
-          ErrorRobot(errorMessage);
-          break;
-        case "auth/invalid-email":
-          var errorMessage =
-            "L'email que vous avez renseigné n'est pas valide.";
-          ErrorRobot(errorMessage);
-          break;
-        case "auth/weak-password":
-          var errorMessage = "Le Mot de passe est trop faible. ";
-          ErrorRobot(errorMessage);
-          break;
-        default:
-          var errorMessage = "Des champs sont incorrect.";
-          ErrorRobot(error.code);
+          .then(() => {
+            // Data saved successfully!
+            ErrorRobot("Compte créer avec succès !");
+            Deconnexion();
+            window.location.href = "../Login";
+          })
+          .catch((error) => {
+            // The write failed...
+            ErrorRobot(error);
+          });
+      })
+      .catch((error) => {
+        errorinput();
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            var errorMessage = "L'adresse email renseigné est déja utilisée.";
+            ErrorRobot(errorMessage);
+            break;
+          case "auth/invalid-email":
+            var errorMessage =
+              "L'email que vous avez renseigné n'est pas valide.";
+            ErrorRobot(errorMessage);
+            break;
+          case "auth/weak-password":
+            var errorMessage = "Le Mot de passe est trop faible. ";
+            ErrorRobot(errorMessage);
+            break;
+          default:
+            var errorMessage = "Des champs sont incorrect.";
+            ErrorRobot(error.code);
+        }
+      });
+  } else {
+    if (pseudo.length < 3) {
+      let problem = "'Nom Utilisateur'";
+      ErrorRobot(
+        "Les changements sont invalides sur le " +
+          problem +
+          " ! Veuillez réesayez."
+      );
+    } else {
+      if (nom.length < 3 || /\d/.test(nom) == true) {
+        let problem = "'Nom'";
+        ErrorRobot(
+          "Les changements sont invalides sur le " +
+            problem +
+            " ! Veuillez réesayez."
+        );
+      } else {
+        if (prenom.length < 3 || /\d/.test(prenom) == true) {
+          let problem = "'Prenom'";
+          ErrorRobot(
+            "Les changements sont invalides sur le " +
+              problem +
+              " ! Veuillez réesayez."
+          );
+        }
       }
-    });
+    }
+  }
 }
 
 // GET ALL VALUES FOR PROFIL PAGE
@@ -268,6 +319,7 @@ export function GetValues() {
       const bio = document.getElementById("bio");
       const pp = document.getElementById("imgmain");
 
+      const pro = document.getElementById("pro");
 
       const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
       onValue(PseudoData, (snapshot) => {
@@ -307,6 +359,14 @@ export function GetValues() {
           pp.setAttribute("src", data);
         }
       });
+      const ProData = ref(database, "users/" + user.uid + "/professionel");
+      onValue(ProData, (snapshot) => {
+        const data = snapshot.val();
+        if (data == null) {
+        } else {
+          pro.checked = data;
+        }
+      });
     } else {
       console.log("Accès Refuser !");
       window.location.href = "/public/Pages/Login";
@@ -316,7 +376,7 @@ export function GetValues() {
 
 // UPDATE DATA USER
 
-export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
+export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
@@ -331,7 +391,13 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
         second: "2-digit",
       });
 
-      if (pseudo.length > 3 && nom.length > 3 && /\d/.test(nom) == false && prenom.length > 2 && /\d/.test(prenom) == false) {
+      if (
+        pseudo.length > 3 &&
+        nom.length > 3 &&
+        /\d/.test(nom) == false &&
+        prenom.length > 2 &&
+        /\d/.test(prenom) == false
+      ) {
         update(ref(database, "users/" + uid), {
           pseudo: pseudo,
           nom: nom,
@@ -339,6 +405,7 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
           bio: bio,
           Last_Update: LUDate,
           pp: pp,
+          professionel: pro,
         })
           .then(() => {
             // Data saved successfully!
@@ -352,23 +419,32 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
       } else {
         if (pseudo.length < 3) {
           let problem = "'Nom Utilisateur'";
-          ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+          ErrorRobot(
+            "Les changements sont invalides sur le " +
+              problem +
+              " ! Veuillez réesayez."
+          );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
-            ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
-
-          }
-          else {
+            ErrorRobot(
+              "Les changements sont invalides sur le " +
+                problem +
+                " ! Veuillez réesayez."
+            );
+          } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
-              ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+              ErrorRobot(
+                "Les changements sont invalides sur le " +
+                  problem +
+                  " ! Veuillez réesayez."
+              );
             }
           }
         }
       }
     } else {
-
       /////
     }
   });
