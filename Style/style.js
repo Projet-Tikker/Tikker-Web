@@ -22,7 +22,7 @@ let title = ScrollReveal({
 
 // HEADER
 
-title.reveal(".user", { origin: "right", delay: 350 });
+title.reveal(".userindex", { origin: "right", delay: 350 });
 
 /* INDEX */
 

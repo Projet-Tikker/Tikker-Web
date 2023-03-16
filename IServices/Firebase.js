@@ -63,34 +63,58 @@ const analytics = getAnalytics(app);
 //Controllers
 
 export const ControllerAccueil = () => {
+  //Détécteur d'utilisateur
   onAuthStateChanged(auth, (user) => {
+    //Si il y a un utililisateur logged
     if (user) {
+      //Prendre le prenom et pp de la base users
       const UserData = ref(database, "users/" + user.uid + "/prenom");
+      const PPData = ref(database, "users/" + user.uid + "/pp");
+      //Le stocker et le print dans la console
       onValue(UserData, (snapshot) => {
         const data = snapshot.val();
-        console.log("Connecté en tant que : " + data);
+        console.log("Accès Garantie à " + data);
 
+        //Menu déroulant chemin Profil
         profilbutton.addEventListener("click", function () {
-          window.location.href = "/public/Pages/Profil";
+          window.location.href = "/Pages/Profil";
         });
 
+        //Menu déroulant chemin Modif profil
         Custombutton.addEventListener("click", function () {
-          window.location.href = "/public/Pages/Profil/Modification";
+          window.location.href = "/Pages/Profil/Modification";
         });
 
-        const userImg = (document.getElementById("pp-img").src =
-          "/public/assets/users/user-default.svg");
       });
+
+      onValue(PPData, (snapshot) => {
+        const pp = snapshot.val();
+
+        //Appliquer la pp de l'utilisateur
+        if (pp == null) {
+          const userImg = (document.getElementById("pp-img").src =
+            "/assets/users/user-default.svg");
+        } else {
+          const userImg = (document.getElementById("pp-img").src = pp);
+        }
+
+      });
+
+
+
     } else {
+      //Print dans la console
       console.log("Aucun Utilisateur connecté!");
 
+      //Changement du menu déroulant
       const menu1 = document.getElementById("menu-1");
       menu1.innerHTML = "Se connecter";
 
       profilbutton.addEventListener("click", function () {
-        window.location.href = "/public/Pages/Login";
+        window.location.href = "/Pages/Login";
       });
 
+      //Désactivation du menu déroualnt non connecté
       const menu2 = document.getElementById("Custombutton");
       menu2.style.display = "none";
 
@@ -116,7 +140,7 @@ export const ControllerUserLoged = () => {
       });
     } else {
       console.log("Accès Refuser !");
-      window.location.href = "Pages/Login";
+      window.location.href = "/Pages/Login";
     }
   });
 };
@@ -126,8 +150,8 @@ export const ControllerUserLoged = () => {
 export const Deconnexion = () => {
   signOut(auth)
     .then(() => {
-      window.location.href = "/public/";
-        })
+      window.location.href = "/";
+    })
     .catch((error) => {
       // An error happened.
       ErrorRobot(error);
@@ -242,6 +266,8 @@ export function GetValues() {
       const prenom = document.getElementById("prenom");
       const email = document.getElementById("email");
       const bio = document.getElementById("bio");
+      const pp = document.getElementById("imgmain");
+
 
       const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
       onValue(PseudoData, (snapshot) => {
@@ -273,6 +299,14 @@ export function GetValues() {
         bio.innerHTML = data;
         bio.setAttribute("value", data);
       });
+      const PPData = ref(database, "users/" + user.uid + "/pp");
+      onValue(PPData, (snapshot) => {
+        const data = snapshot.val();
+        if (data == null) {
+        } else {
+          pp.setAttribute("src", data);
+        }
+      });
     } else {
       console.log("Accès Refuser !");
       window.location.href = "/public/Pages/Login";
@@ -282,7 +316,7 @@ export function GetValues() {
 
 // UPDATE DATA USER
 
-export function UpdateDataUsr(pseudo, nom, prenom, bio) {
+export function UpdateDataUsr(pseudo, nom, prenom, bio, pp) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
@@ -297,22 +331,42 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio) {
         second: "2-digit",
       });
 
-      update(ref(database, "users/" + uid), {
-        pseudo: pseudo,
-        nom: nom,
-        prenom: prenom,
-        bio: bio,
-        Last_Update: LUDate,
-      })
-        .then(() => {
-          // Data saved successfully!
-          ErrorRobot("Changements Appliquées !");
-          window.location.reload();
+      if (pseudo.length > 3 && nom.length > 3 && /\d/.test(nom) == false && prenom.length > 2 && /\d/.test(prenom) == false) {
+        update(ref(database, "users/" + uid), {
+          pseudo: pseudo,
+          nom: nom,
+          prenom: prenom,
+          bio: bio,
+          Last_Update: LUDate,
+          pp: pp,
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          alert(errorCode);
-        });
+          .then(() => {
+            // Data saved successfully!
+            ErrorRobot("Changements Appliquées !");
+            window.location.reload();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            ErrorRobot(errorCode);
+          });
+      } else {
+        if (pseudo.length < 3) {
+          let problem = "'Nom Utilisateur'";
+          ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+        } else {
+          if (nom.length < 3 || /\d/.test(nom) == true) {
+            let problem = "'Nom'";
+            ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+
+          }
+          else {
+            if (prenom.length < 3 || /\d/.test(prenom) == true) {
+              let problem = "'Prenom'";
+              ErrorRobot("Les changements sont invalides sur le " + problem + " ! Veuillez réesayez.");
+            }
+          }
+        }
+      }
     } else {
 
       /////

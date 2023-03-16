@@ -1304,7 +1304,8 @@ textarea {
     padding: 1.2rem;
     outline: none;
     font-size: 0.9rem;
-    font-family: "Open Sans"
+    font-family: "Open Sans";
+
 }
 
 
@@ -1316,10 +1317,27 @@ textarea {
     justify-content: center;
 }
 
+.grid-pp{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+}
+
 .choice-pp {
     border-radius: 50%;
     width: 5vh;
     height: 5vh;
+    margin-top: 1rem;
+    
+    transition: 0.5s;
+}
+
+.choice-pp:hover {
+    cursor: pointer;
+    width: 6vh;
+    height: 6vh;
 }
 
 .modif-pp>input {
@@ -1335,7 +1353,6 @@ textarea {
 }
 
 .focused , .focused::before{
-    color: #F0C807;
     transform: translateY(-30px);
 }
 
@@ -1371,37 +1388,6 @@ textarea {
 }
 
 .pass-reset:active {
-    transform: translateY(-1px);
-}
-
-.email-reset {
-    text-decoration: none;
-    position: absolute;
-    padding: 1.3em 3em;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    border: 2px solid #fff;
-    background-color: #fff;
-    border-radius: 45px;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    bottom: 50px;
-    left: 400px;
-}
-
-.email-reset:hover {
-    background-color: #e73c3c;
-    box-shadow: 0px 15px 20px #e01e14a2;
-    color: #fff;
-    border: 2px solid #e73c3c;
-    transform: translateY(-7px);
-}
-
-.email-reset:active {
     transform: translateY(-1px);
 }
 
@@ -1602,13 +1588,6 @@ textarea {
     gap: 6rem;
 }
 
-.info-perso{
-    border-radius: 12px;
-    margin-top: 20%;
-    width: 100%;
-    height: 20vh;
-    background-color: yellow;
-}
 
 .descri{
     width: 25vh;

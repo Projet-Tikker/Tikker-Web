@@ -30,7 +30,7 @@
                                 src="../../assets/icons/home.svg" alt="Accueil" class="header-img"></a></li>
                     <li class="header-static"><button class="search-button" id="search-action"><img
                                 src="../../assets/icons/search.svg" alt="Parcourir" class="header-img"></button>
-                        <form action="../Parcourir/" class="form-search">
+                        <form action="/Pages/Parcourir/" class="form-search">
                             <input type="text" id="search-bar" class="bar-closed" name="research"
                                 placeholder="Webapp, App mobile ...">
                         </form>
@@ -43,6 +43,32 @@
                     </li>
 
                 </ul>
+            </div>
+            <div class="user">
+                <ul>
+                    <li class="header-static"><button type="button" id="dropdown" class="user-button"> <img
+                                src="../../assets/icons/user-default.svg" class="user-img" id="pp-img" alt="user">
+                        </button></li>
+                </ul>
+
+                <div id="menu" class="menu">
+                    <button class="dropbutton" id="profilbutton">
+                        <span class="material-symbols-outlined"><img src="../../assets/icons/user.svg" alt="modif-profil"
+                                id="icondd"></span>
+                        <div class="menu-title" id="menu-1"> Profil</div>
+                    </button>
+                    <button class="dropbutton" id="Custombutton">
+                        <span class="material-symbols-outlined"> <img src="../../assets/icons/custom-user.svg"
+                                alt="modif-profil" id="icondd"> </span>
+                        <div class="menu-title" id="menu-2"> Modifier le Profil</div>
+                    </button>
+                    <button class="dropbutton" id="logoutbutton">
+                        <span class="material-symbols-outlined"> <img src="../../assets/icons/log-out.svg" alt="log-out"
+                                id="icondd"> </span>
+                        <div class="menu-title" id="menu-3">Se déconnecter</div>
+                    </button>
+                </div>
+
             </div>
 
         </nav>
@@ -67,7 +93,7 @@
 
 
             <div class="photo-profil">
-                <img alt="photo de profil" src="../../assets/users/user-default.svg">
+                <img id="imgmain" alt="photo de profil" src="../../assets/users/user-default.svg">
             </div>
 
 
@@ -123,6 +149,7 @@
 </body>
 
 <script src="../../Style/style.js"></script>
+<script src="../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../Services/Controllers/LogedController.js" type="module"></script>
 <script src="../../Services/Profil/GetProfil.js" type="module"></script>
 
