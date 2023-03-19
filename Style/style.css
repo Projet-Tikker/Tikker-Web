@@ -1235,6 +1235,20 @@ span {
     text-shadow: 5px 5px 1px #fff;
 }
 
+#goprevious{
+    width: 3rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2rem;
+}
+
+#previousbutton{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .background-modif {
     width: 100%;
     height: 100vh;
