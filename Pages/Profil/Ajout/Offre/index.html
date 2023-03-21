@@ -121,49 +121,28 @@
                                         </div>
                                     </div>
                                     <div class="form-block log">
-                                        <div><label>Tags n°1</label>
-                                            <select>
-                                                <option value="">Site internet</option>
-                                                <option value="">Application Web</option>
-                                                <option value="">Application mobile</option>
-                                                <option value="">Base de donnée</option>
-                                                <option value="">Cybersécurité</option>
-                                                <option value="">Front End</option>
-                                                <option value="">Back End</option>
-                                                <option value="">Full Stack</option>
+                                        <div><label>Tag Domaine</label>
+                                            <select class="ajout" id="liste-domaines" onchange="changeDomain(this)">
+                                                <option value="none" disabled selected>Choisir un domaine</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-block log">
-                                        <div><label>Tags n°2</label>
-                                            <select>
-                                                <option value="">Site internet</option>
-                                                <option value="">Application Web</option>
-                                                <option value="">Application mobile</option>
-                                                <option value="">Base de donnée</option>
-                                                <option value="">Cybersécurité</option>
-                                                <option value="">Front End</option>
-                                                <option value="">Back End</option>
-                                                <option value="">Full Stack</option>
+                                        <div><label>Tag Spécialité</label>
+                                            <select class="ajout" id="liste-spe">
+                                                <option value="none" disabled selected>Choisir une Spécialité</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-block log">
-                                        <div><label>Tags n°3</label>
-                                            <select>
-                                                <option value="">Site internet</option>
-                                                <option value="">Application Web</option>
-                                                <option value="">Application mobile</option>
-                                                <option value="">Base de donnée</option>
-                                                <option value="">Cybersécurité</option>
-                                                <option value="">Front End</option>
-                                                <option value="">Back End</option>
-                                                <option value="">Full Stack</option>
+                                        <div><label>Tag Langage</label>
+                                            <select class="ajout" id="liste-lang">
+                                                <option value="none" disabled selected>Choisir un Langage</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div>
-                                        <button class="ok-btn" id="okmodif">Créer Demande</button>
+                                        <button class="ok-btn" id="okmodif">Créer Offre</button>
                                     </div>
                                 </div>
                                 <div class="modif-desc">
@@ -176,7 +155,7 @@
                                 <div>
                                     <h1 class="title-titles"> Images(Facultatif) : </h1>
                                     <br>
-
+                                    <img src="../../../../assets/icons/add-photo.svg" alt="add_photo" class="add-photo">
                                 </div>
                             </div>
                         </form>
@@ -193,6 +172,8 @@
 <script src="../../../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../../../Services/Controllers/LogedController.js" type="module"></script>
 <script src="../../../../Services/Controllers/Professionel-accoount.js" type="module"></script>
+<script src="../../../../Services/Ajout/communAjout.js"></script>
+
 
 
 </html>
