@@ -19,6 +19,8 @@ import {
   ref,
   update,
   onValue,
+  push,
+  child,
 } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -282,24 +284,24 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       let problem = "'Nom Utilisateur'";
       ErrorRobot(
         "Les changements sont invalides sur le " +
-          problem +
-          " ! Veuillez réesayez."
+        problem +
+        " ! Veuillez réesayez."
       );
     } else {
       if (nom.length < 3 || /\d/.test(nom) == true) {
         let problem = "'Nom'";
         ErrorRobot(
           "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+          problem +
+          " ! Veuillez réesayez."
         );
       } else {
         if (prenom.length < 3 || /\d/.test(prenom) == true) {
           let problem = "'Prenom'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
           );
         }
       }
@@ -320,6 +322,8 @@ export function GetValues() {
       const pp = document.getElementById("imgmain");
 
       const pro = document.getElementById("pro");
+
+      const protag = document.getElementById("protag");
 
       const PseudoData = ref(database, "users/" + user.uid + "/pseudo");
       onValue(PseudoData, (snapshot) => {
@@ -362,9 +366,14 @@ export function GetValues() {
       const ProData = ref(database, "users/" + user.uid + "/professionel");
       onValue(ProData, (snapshot) => {
         const data = snapshot.val();
-        if (data == null) {
+        if (data == false || data == null) {
         } else {
-          pro.checked = data;
+          if (protag != null) {
+            protag.style.display = "block";
+          }
+          if (pro != null) {
+            pro.checked = data;
+          }
         }
       });
     } else {
@@ -421,24 +430,24 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
           let problem = "'Nom Utilisateur'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
           );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
             ErrorRobot(
               "Les changements sont invalides sur le " +
-                problem +
-                " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
             );
           } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
               ErrorRobot(
                 "Les changements sont invalides sur le " +
-                  problem +
-                  " ! Veuillez réesayez."
+                problem +
+                " ! Veuillez réesayez."
               );
             }
           }
@@ -448,6 +457,51 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
       /////
     }
   });
+}
+
+// CREATE DEMANDE
+
+export function CreateDemande(intitule, tagdomaine, tagspecial, taglangue, desc) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+
+      var DateCreation = new Date().toLocaleDateString("fr-FR", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      const newPostDemande = push(child(ref(database), 'Posts/Demande/' + uid)).key;
+
+      if (
+        intitule.length > 3
+      ) {
+        set(ref(database, 'Posts/Demande/' + uid + "/" + newPostDemande), {
+          id_demande: newPostDemande,
+          intitule: intitule,
+          tagdomaine: tagdomaine,
+          tagspecial: tagspecial,
+          taglangue: taglangue,
+          desc: desc,
+          datecrea: DateCreation,
+        }).then(() => {
+          // Data saved successfully!
+          ErrorRobot("Poste créer avec succès !");
+          window.location.href = window.location.href;
+        }).catch((error) => {
+          alert("Erreur :" + error);
+        });
+      } else {
+        ErrorRobot("Veuillez précisez l'intitulé.");
+      }
+    }
+  }
+  )
 }
 
 // RESET PASSWORD
