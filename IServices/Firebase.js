@@ -153,6 +153,7 @@ export const ProDetector = () => {
         if (data == true) {
           console.log("Compte Professionel");
         } else {
+          ErrorRobot("Cette page est réserver uniqument pour les comptes professionels.")
           window.location.href = "/Pages/Profil/Ajout/Demande";
         }
       });
