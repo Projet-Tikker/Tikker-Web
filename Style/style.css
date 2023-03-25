@@ -1231,6 +1231,9 @@ span {
     height: 80%;
     margin: 2rem auto;
     overflow: auto;
+    scrollbar-color: #F0C807 #19CAFC;
+    scrollbar-width:thin;
+
 }
 
 .pub-content{
