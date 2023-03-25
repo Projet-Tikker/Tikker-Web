@@ -320,8 +320,7 @@ export function GetValues() {
       const prenom = document.getElementById("prenom");
       const email = document.getElementById("email");
       const bio = document.getElementById("bio");
-      const pp = document.getElementById("imgmain");
-
+      const pp = document.querySelectorAll("#imgmain");
       const pro = document.getElementById("pro");
 
       const protag = document.getElementById("protag");
@@ -361,7 +360,9 @@ export function GetValues() {
         const data = snapshot.val();
         if (data == null) {
         } else {
-          pp.setAttribute("src", data);
+          pp.forEach(img =>{
+            img.src = data;
+          })
         }
       });
       const ProData = ref(database, "users/" + user.uid + "/professionel");
@@ -484,6 +485,51 @@ export function CreateDemande(intitule, tagdomaine, tagspecial, taglangue, desc)
       ) {
         set(ref(database, 'Posts/Demande/' + uid + "/" + newPostDemande), {
           id_demande: newPostDemande,
+          intitule: intitule,
+          tagdomaine: tagdomaine,
+          tagspecial: tagspecial,
+          taglangue: taglangue,
+          desc: desc,
+          datecrea: DateCreation,
+        }).then(() => {
+          // Data saved successfully!
+          ErrorRobot("Poste créer avec succès !");
+          window.location.href = window.location.href;
+        }).catch((error) => {
+          alert("Erreur :" + error);
+        });
+      } else {
+        ErrorRobot("Veuillez précisez l'intitulé.");
+      }
+    }
+  }
+  )
+}
+
+// CREATE OFFRE
+
+export function CreateOffre(intitule, tagdomaine, tagspecial, taglangue, desc) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+
+      var DateCreation = new Date().toLocaleDateString("fr-FR", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      const newPostOffre = push(child(ref(database), 'Posts/Offre/' + uid)).key;
+
+      if (
+        intitule.length > 3
+      ) {
+        set(ref(database, 'Posts/Offre/' + uid + "/" + newPostOffre), {
+          id_offre: newPostOffre,
           intitule: intitule,
           tagdomaine: tagdomaine,
           tagspecial: tagspecial,

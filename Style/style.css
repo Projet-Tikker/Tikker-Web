@@ -1233,6 +1233,70 @@ span {
     overflow: auto;
 }
 
+.pub-content{
+    position: relative;
+    margin: 5rem auto;
+    height: 40%;
+    width: 80%;
+    background-color: #e8e8e8;
+    border-radius: 25px;
+    box-shadow: 5px 15px 20px #0c0d0d;
+
+}
+
+.pub-content-header{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.intitule{
+    font-family: "Montez";
+    width: fit-content;
+    margin: 1rem;
+    font-size: 2.5rem;
+}
+
+.pub-tags{
+    width: fit-content;
+    height: fit-content;
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+.pub-content-desc{
+    position: absolute;
+    right: 0;
+    height: 55%;
+    width: 60%;
+    margin: 1.5rem;
+}
+
+.pub-content-footer{
+bottom: 0;
+position: absolute;
+margin: 1.5rem;
+display: flex;
+align-items: end;
+}
+
+.publierpar{
+    font-size: 1rem;
+}
+
+.publierpar span{
+    font-size: 1.2rem;
+    font-style: italic;
+    width: fit-content;
+    height: fit-content;
+}
+
+.loading-pp-publication{
+    width: 2.3rem;
+    margin-left: 1rem;
+}
+
+
 
 
 
