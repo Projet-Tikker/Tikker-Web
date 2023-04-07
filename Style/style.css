@@ -656,6 +656,10 @@ a.link-header-dynamic:active {
     width: fit-content;
 }
 
+.homepage_search_decoration{
+    text-decoration: none;
+}
+
 .card:hover {
     width: 335px;
     transform: scale(1.15) rotate(5deg);
