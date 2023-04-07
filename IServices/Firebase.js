@@ -359,6 +359,9 @@ export function GetValues() {
       onValue(PPData, (snapshot) => {
         const data = snapshot.val();
         if (data == null) {
+          pp.forEach(img =>{
+            img.src = "/assets/users/user-default.svg";
+          })
         } else {
           pp.forEach(img =>{
             img.src = data;

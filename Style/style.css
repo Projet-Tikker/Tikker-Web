@@ -675,7 +675,6 @@ a.link-header-dynamic:active {
     background: radial-gradient(#a3e1f0, #19CAFC);
     border-radius: 50%;
     position: absolute;
-    animation: move-up6 10s ease-in infinite alternate-reverse;
     z-index: 1;
 }
 
@@ -690,11 +689,6 @@ a.link-header-dynamic:active {
     animation-name: move-down1;
 }
 
-@keyframes move-up6 {
-    to {
-        transform: translateY(270px);
-    }
-}
 
 @keyframes move-down1 {
     to {
