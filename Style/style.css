@@ -1047,7 +1047,7 @@ span {
 
 .section-profil {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .background-profil {
@@ -1099,7 +1099,7 @@ span {
 
 .profil {
     width: 100%;
-    height: 100%;
+    height: 130%;
     background-color: #19CAFC;
     z-index: 0;
     position: absolute;
@@ -1220,7 +1220,12 @@ span {
 
 }
 
+.types{
+    text-align: center;
+}
+
 .pub-body {
+    position: relative;
     border-radius: 49px;
     background: #19CAFC;
     box-shadow: inset 9px 9px 14px #0d6781,
@@ -1237,7 +1242,8 @@ span {
 .pub-content{
     position: relative;
     margin: 5rem auto;
-    height: 40%;
+    height: calc(fit-content + 3rem);
+    min-height: fit-content;
     width: 80%;
     background-color: #e8e8e8;
     border-radius: 25px;
@@ -1248,14 +1254,28 @@ span {
 .pub-content-header{
     display: flex;
     align-items: center;
-    width: fit-content;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .intitule{
     font-family: "Montez";
     width: fit-content;
-    margin: 1rem;
-    font-size: 2.5rem;
+    margin: 1.5rem;
+    font-size: 3rem;
+}
+
+.type{
+    font-family: "Montez";
+    width: fit-content;
+    margin: 1.5rem 3rem;
+    font-size: 2rem;
+}
+
+.div-tags{
+    width: fit-content;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .pub-tags{
@@ -1265,20 +1285,53 @@ span {
     font-size: 1rem;
 }
 
+._1{
+    color: #c034eb;
+}
+._2{
+    color: #ed8115;
+}
+._3{
+    color: #152eed;
+}
+
+
+
 .pub-content-desc{
-    position: absolute;
+    position: relative;
     right: 0;
     height: 55%;
-    width: 60%;
-    margin: 1.5rem;
+    width: 100%;
+    display: flex;
 }
+
+.div-img{
+    padding:3.5rem;
+}
+
+.pub-desc{
+    width: 70%;
+    overflow: auto;
+    padding: 1rem;
+    margin: 0 5%;
+    border: #000 1px solid;
+    border-radius: 25px;
+}
+
 
 .pub-content-footer{
 bottom: 0;
-position: absolute;
+position: relative;
 margin: 1.5rem;
+padding-bottom: 1rem;
 display: flex;
-align-items: end;
+justify-content: space-between;
+}
+
+.div-publier{
+    position: relative;
+    display: flex;
+    align-items: end;
 }
 
 .publierpar{
@@ -1293,13 +1346,32 @@ align-items: end;
 }
 
 .loading-pp-publication{
-    width: 2.3rem;
+    width: 3rem;
     margin-left: 1rem;
+}
+
+.div-edits{
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.pencil{
+    width: 2.5rem;
+    cursor: pointer;
+}
+
+.bin{
+width: 2.2rem;
+cursor: pointer;
 }
 
 
 
-
+.img-notfound{
+    width: 6rem;
+    padding: auto 2rem;
+}
 
 
 

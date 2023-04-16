@@ -134,89 +134,22 @@
                     </div>
                 </div>
                 <div class="publications">
-
                     <div class="container">
                         <div class="pub-title">
                             <h1> Mes Publications</h1>
-
                         </div>
-                        <div class="pub-body">
-                            <div class="pub-content">
-                                <div class="pub-content-header">
-                                    <h1 class="intitule">Tikker-Web</h1>
-                                    <h2 class="pub-tags">• Site Web •</h2>
-                                    <h2 class="pub-tags">• Web-App •</h2>
-                                    <h2 class="pub-tags">• .NET 7 •</h2>
-                                </div>
-                                <div class="pub-content-desc">
-                                    <p>
-                                        Je cherche un site, ou je peux regarder Rick et Morty svp
-                                    </p>
-                                </div>
-                                <div class="pub-content-footer">
-                                    <h2 class="publierpar">Publié par <span>TheDi4nier</span></h2>
-                                    <img id="imgmain" class="loading-pp-publication" alt="photo de profil"
-                                        src="../../assets/icons/loading.gif">
-                                </div>
-                            </div>
-                            <div class="pub-content">
-                                <div class="pub-content-header">
-                                    <h1 class="intitule">NewGame</h1>
-                                    <h2 class="pub-tags">• Jeux Vidéo •</h2>
-                                    <h2 class="pub-tags">• Aventure •</h2>
-                                    <h2 class="pub-tags">• Unity •</h2>
-                                </div>
-                                <div class="pub-content-desc">
-                                    <p>
-                                        Gamerrr
-                                    </p>
-                                </div>
-                                <div class="pub-content-footer">
-                                    <h2 class="publierpar">Publié par <span>TheDi4nier</span></h2>
-                                    <img id="imgmain" class="loading-pp-publication" alt="photo de profil"
-                                        src="../../assets/icons/loading.gif">
-                                </div>
-                            </div>
-                            <div class="pub-content">
-                                <div class="pub-content-header">
-                                    <h1 class="intitule">Base de donnée de google</h1>
-                                    <h2 class="pub-tags">• Base de données •</h2>
-                                    <h2 class="pub-tags">• a détérminer •</h2>
-                                    <h2 class="pub-tags">• NoSQL•</h2>
-                                </div>
-                                <div class="pub-content-desc">
-                                    <p>
-                                        Je voudrais reproduire la bdd de google si possible
-                                    </p>
-                                </div>
-                                <div class="pub-content-footer">
-                                    <h2 class="publierpar">Publié par <span>TheDi4nier</span></h2>
-                                    <img id="imgmain" class="loading-pp-publication" alt="photo de profil"
-                                        src="../../assets/icons/loading.gif">
-                                </div>
-                            </div>
-                            <div class="pub-content">
-                                <div class="pub-content-header">
-                                    <h1 class="intitule">Tikker-Web 2</h1>
-                                    <h2 class="pub-tags">• Site Web •</h2>
-                                    <h2 class="pub-tags">• Web-App •</h2>
-                                    <h2 class="pub-tags">• HTML / CSS / PHP •</h2>
-                                </div>
-                                <div class="pub-content-desc">
-                                    <p>
-                                        Je voudrais de l'aide pour un projet car je suis seul.
-                                    </p>
-                                </div>
-                                <div class="pub-content-footer">
-                                    <h2 class="publierpar">Publié par <span>TheDi4nier</span></h2>
-                                    <img id="imgmain" class="loading-pp-publication" alt="photo de profil"
-                                        src="../../assets/icons/loading.gif">
-                                </div>
-                            </div>
+                        <div class="types">
+                            <select name="type-posts" id="type-posts">
+                                <option value="all">Tous</option>
+                                <option value="demande">Demandes</option>
+                                <option value="offre">Offres</option>
+                            </select>
+                        </div>
+
+                        <div class="pub-body" id="pub-bodyy">
+                           <!-- ICI sont GENERER LES POSTS -->
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </section>
@@ -227,6 +160,8 @@
 <script src="../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../Services/Controllers/LogedController.js" type="module"></script>
 <script src="../../Services/Profil/GetProfil.js" type="module"></script>
+<script src="../../Services/Profil/post/GetPost.js" type="module"></script>
+
 
 
 
