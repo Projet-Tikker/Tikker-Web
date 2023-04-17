@@ -420,6 +420,7 @@ export function GetPostsDemandes() {
       //INFO GET
 
       function AddFicheForfaitToTable1(
+        id_demande,
         intitule,
         tag1,
         tag2,
@@ -482,10 +483,32 @@ export function GetPostsDemandes() {
         imgautor.setAttribute("alt", "photo de profil");
         let div_edits = document.createElement("div");
         div_edits.className = "div-edits";
+
+        let pencilbutton = document.createElement("button");
+        pencilbutton.className = 'button-post';
+
         let imgpencil = document.createElement("img");
         imgpencil.src = "../../assets/icons/pencil.svg";
         imgpencil.alt = "pencil_edit";
         imgpencil.className = "pencil";
+        imgpencil.setAttribute('id', 'edit')
+        
+        let binbutton = document.createElement("button");
+        binbutton.className = 'button-post';
+
+        binbutton.onclick = function (e){
+          if (confirm("Voulez-vous vraiment suprrimer cette demande ?")) {
+
+            remove(ref(database, 'Posts/Demande/' + userID + '/' + id_demande))
+                .then(() => {
+                    alert("Demande supprimer avec succès !");
+                    location.reload();
+                })
+        } else {
+            console.log("Action annulé !");
+        }
+        }
+
         let imgbin = document.createElement("img");
         imgbin.src = "../../assets/icons/bin.svg";
         imgbin.className = "bin";
@@ -524,13 +547,18 @@ export function GetPostsDemandes() {
         h2autor.appendChild(autorspan);
         div_publier.appendChild(imgautor);
         pub_content_footer.appendChild(div_edits);
-        div_edits.appendChild(imgpencil);
-        div_edits.appendChild(imgbin);
+
+        div_edits.appendChild(pencilbutton);
+        pencilbutton.appendChild(imgpencil);
+
+        div_edits.appendChild(binbutton);
+        binbutton.appendChild(imgbin);
       }
 
       function AddAllFichesForfaitToTable1(FichesForfait1) {
         FichesForfait1.forEach((element) => {
           AddFicheForfaitToTable1(
+            element.id_demande,
             element.intitule,
             element.tagdomaine,
             element.taglangue,
@@ -590,6 +618,7 @@ export function GetPostsOffres() {
       //INFO GET
 
       function AddFicheForfaitToTable1(
+        id_offre,
         intitule,
         tag1,
         tag2,
@@ -653,10 +682,32 @@ export function GetPostsOffres() {
         imgautor.setAttribute("alt", "photo de profil");
         let div_edits = document.createElement("div");
         div_edits.className = "div-edits";
+
+        let pencilbutton = document.createElement("button");
+        pencilbutton.className = 'button-post';
+
         let imgpencil = document.createElement("img");
         imgpencil.src = "../../assets/icons/pencil.svg";
         imgpencil.alt = "pencil_edit";
         imgpencil.className = "pencil";
+        imgpencil.setAttribute('id', 'edit')
+        
+        let binbutton = document.createElement("button");
+        binbutton.className = 'button-post';
+
+        binbutton.onclick = function (e){
+          if (confirm("Voulez-vous vraiment suprrimer cette offre ?")) {
+
+            remove(ref(database, 'Posts/Demande/' + userID + '/' + id_offre))
+                .then(() => {
+                    alert("Demande supprimer avec succès !");
+                    location.reload();
+                })
+        } else {
+            console.log("Action annulé !");
+        }
+        }
+
         let imgbin = document.createElement("img");
         imgbin.src = "../../assets/icons/bin.svg";
         imgbin.className = "bin";
@@ -695,13 +746,18 @@ export function GetPostsOffres() {
         h2autor.appendChild(autorspan);
         div_publier.appendChild(imgautor);
         pub_content_footer.appendChild(div_edits);
-        div_edits.appendChild(imgpencil);
-        div_edits.appendChild(imgbin);
+
+        div_edits.appendChild(pencilbutton);
+        pencilbutton.appendChild(imgpencil);
+
+        div_edits.appendChild(binbutton);
+        binbutton.appendChild(imgbin);
       }
 
       function AddAllFichesForfaitToTable1(FichesForfait1) {
         FichesForfait1.forEach((element) => {
           AddFicheForfaitToTable1(
+            element.id_offre,
             element.intitule,
             element.tagdomaine,
             element.taglangue,

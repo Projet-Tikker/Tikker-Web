@@ -1358,13 +1358,30 @@ justify-content: space-between;
 
 .pencil{
     width: 2.5rem;
-    cursor: pointer;
 }
 
 .bin{
 width: 2.2rem;
-cursor: pointer;
 }
+
+.button-post{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.choix-type{
+        height: 3rem;
+        padding: 0px 24px;
+        margin: 0.5rem;
+        font-size: 1rem;
+        color: #000;
+        background-color: transparent;
+        background-image: none;
+        border: 2.5px solid #F0C807;
+        border-radius: 1rem;
+}
+
 
 
 
