@@ -289,24 +289,24 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       let problem = "'Nom Utilisateur'";
       ErrorRobot(
         "Les changements sont invalides sur le " +
-          problem +
-          " ! Veuillez réesayez."
+        problem +
+        " ! Veuillez réesayez."
       );
     } else {
       if (nom.length < 3 || /\d/.test(nom) == true) {
         let problem = "'Nom'";
         ErrorRobot(
           "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+          problem +
+          " ! Veuillez réesayez."
         );
       } else {
         if (prenom.length < 3 || /\d/.test(prenom) == true) {
           let problem = "'Prenom'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
           );
         }
       }
@@ -487,26 +487,35 @@ export function GetPostsDemandes() {
         let pencilbutton = document.createElement("button");
         pencilbutton.className = 'button-post';
 
+        pencilbutton.onclick = function (e) {
+
+          window.location = '/Pages/Profil/Ajout/Demande/?intitule=' + intitule + '&' + 'tag1=' + tag1 + '&' + 'tag2=' + tag2 + '&' + 'tag3=' + tag3 + '&' + 'desc=' + desc;
+
+        }
+
+
         let imgpencil = document.createElement("img");
         imgpencil.src = "../../assets/icons/pencil.svg";
         imgpencil.alt = "pencil_edit";
         imgpencil.className = "pencil";
         imgpencil.setAttribute('id', 'edit')
-        
+
+
+
         let binbutton = document.createElement("button");
         binbutton.className = 'button-post';
 
-        binbutton.onclick = function (e){
+        binbutton.onclick = function (e) {
           if (confirm("Voulez-vous vraiment suprrimer cette demande ?")) {
 
             remove(ref(database, 'Posts/Demande/' + userID + '/' + id_demande))
-                .then(() => {
-                    alert("Demande supprimer avec succès !");
-                    location.reload();
-                })
-        } else {
+              .then(() => {
+                alert("Demande supprimer avec succès !");
+                location.reload();
+              })
+          } else {
             console.log("Action annulé !");
-        }
+          }
         }
 
         let imgbin = document.createElement("img");
@@ -627,7 +636,7 @@ export function GetPostsOffres() {
         user,
         pp
       ) {
-        
+
         let pub_body = document.getElementById("pub-bodyy");
 
         let pub_content = document.createElement("div");
@@ -686,26 +695,32 @@ export function GetPostsOffres() {
         let pencilbutton = document.createElement("button");
         pencilbutton.className = 'button-post';
 
+        pencilbutton.onclick = function (e) {
+
+          window.location = '/Pages/Profil/Ajout/Offre/?intitule=' + intitule + '&' + 'tag1=' + tag1 + '&' + 'tag2=' + tag2 + '&' + 'tag3=' + tag3 + '&' + 'desc=' + desc;
+
+        }
+
         let imgpencil = document.createElement("img");
         imgpencil.src = "../../assets/icons/pencil.svg";
         imgpencil.alt = "pencil_edit";
         imgpencil.className = "pencil";
         imgpencil.setAttribute('id', 'edit')
-        
+
         let binbutton = document.createElement("button");
         binbutton.className = 'button-post';
 
-        binbutton.onclick = function (e){
+        binbutton.onclick = function (e) {
           if (confirm("Voulez-vous vraiment suprrimer cette offre ?")) {
 
-            remove(ref(database, 'Posts/Demande/' + userID + '/' + id_offre))
-                .then(() => {
-                    alert("Demande supprimer avec succès !");
-                    location.reload();
-                })
-        } else {
+            remove(ref(database, 'Posts/Offre/' + userID + '/' + id_offre))
+              .then(() => {
+                alert("Demande supprimer avec succès !");
+                location.reload();
+              })
+          } else {
             console.log("Action annulé !");
-        }
+          }
         }
 
         let imgbin = document.createElement("img");
@@ -836,24 +851,24 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
           let problem = "'Nom Utilisateur'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
           );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
             ErrorRobot(
               "Les changements sont invalides sur le " +
-                problem +
-                " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
             );
           } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
               ErrorRobot(
                 "Les changements sont invalides sur le " +
-                  problem +
-                  " ! Veuillez réesayez."
+                problem +
+                " ! Veuillez réesayez."
               );
             }
           }

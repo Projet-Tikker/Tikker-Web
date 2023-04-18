@@ -920,8 +920,8 @@ a.link-header-dynamic:active {
     display: block;
     height: 0.9rem;
     width: .4rem;
-    border-bottom: .10rem solid #a0ffe7;
-    border-right: .10rem solid #a0ffe7;
+    border-bottom: .10rem solid #000;
+    border-right: .10rem solid #000;
     opacity: 0;
     transform: rotate(45deg) translate(-50%, -50%);
     position: absolute;
