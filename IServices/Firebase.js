@@ -289,24 +289,24 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       let problem = "'Nom Utilisateur'";
       ErrorRobot(
         "Les changements sont invalides sur le " +
-        problem +
-        " ! Veuillez réesayez."
+          problem +
+          " ! Veuillez réesayez."
       );
     } else {
       if (nom.length < 3 || /\d/.test(nom) == true) {
         let problem = "'Nom'";
         ErrorRobot(
           "Les changements sont invalides sur le " +
-          problem +
-          " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
         );
       } else {
         if (prenom.length < 3 || /\d/.test(prenom) == true) {
           let problem = "'Prenom'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
           );
         }
       }
@@ -485,38 +485,33 @@ export function GetPostsDemandes() {
         div_edits.className = "div-edits";
 
         let pencilbutton = document.createElement("button");
-        pencilbutton.className = 'button-post';
+        pencilbutton.className = "button-post";
 
         pencilbutton.onclick = function (e) {
-
-          window.location = '/Pages/Profil/Ajout/Demande/?intitule=' + intitule + '&' + 'tag1=' + tag1 + '&' + 'tag2=' + tag2 + '&' + 'tag3=' + tag3 + '&' + 'desc=' + desc;
-
-        }
-
+          window.location = "/Pages/Profil/Ajout/Demande/?id=" + id_demande + "&type=demande";
+        };
 
         let imgpencil = document.createElement("img");
         imgpencil.src = "../../assets/icons/pencil.svg";
         imgpencil.alt = "pencil_edit";
         imgpencil.className = "pencil";
-        imgpencil.setAttribute('id', 'edit')
-
-
+        imgpencil.setAttribute("id", "edit");
 
         let binbutton = document.createElement("button");
-        binbutton.className = 'button-post';
+        binbutton.className = "button-post";
 
         binbutton.onclick = function (e) {
           if (confirm("Voulez-vous vraiment suprrimer cette demande ?")) {
-
-            remove(ref(database, 'Posts/Demande/' + userID + '/' + id_demande))
-              .then(() => {
-                alert("Demande supprimer avec succès !");
-                location.reload();
-              })
+            remove(
+              ref(database, "Posts/Demande/" + userID + "/" + id_demande)
+            ).then(() => {
+              alert("Demande supprimer avec succès !");
+              location.reload();
+            });
           } else {
             console.log("Action annulé !");
           }
-        }
+        };
 
         let imgbin = document.createElement("img");
         imgbin.src = "../../assets/icons/bin.svg";
@@ -636,7 +631,6 @@ export function GetPostsOffres() {
         user,
         pp
       ) {
-
         let pub_body = document.getElementById("pub-bodyy");
 
         let pub_content = document.createElement("div");
@@ -693,35 +687,33 @@ export function GetPostsOffres() {
         div_edits.className = "div-edits";
 
         let pencilbutton = document.createElement("button");
-        pencilbutton.className = 'button-post';
+        pencilbutton.className = "button-post";
 
         pencilbutton.onclick = function (e) {
-
-          window.location = '/Pages/Profil/Ajout/Offre/?intitule=' + intitule + '&' + 'tag1=' + tag1 + '&' + 'tag2=' + tag2 + '&' + 'tag3=' + tag3 + '&' + 'desc=' + desc;
-
-        }
+          window.location = "/Pages/Profil/Ajout/Offre/?id=" + id_offre + "&type=offre";
+        };
 
         let imgpencil = document.createElement("img");
         imgpencil.src = "../../assets/icons/pencil.svg";
         imgpencil.alt = "pencil_edit";
         imgpencil.className = "pencil";
-        imgpencil.setAttribute('id', 'edit')
+        imgpencil.setAttribute("id", "edit");
 
         let binbutton = document.createElement("button");
-        binbutton.className = 'button-post';
+        binbutton.className = "button-post";
 
         binbutton.onclick = function (e) {
           if (confirm("Voulez-vous vraiment suprrimer cette offre ?")) {
-
-            remove(ref(database, 'Posts/Offre/' + userID + '/' + id_offre))
-              .then(() => {
-                alert("Demande supprimer avec succès !");
-                location.reload();
-              })
+            remove(
+              ref(database, "Posts/Offre/" + userID + "/" + id_offre)
+            ).then(() => {
+              alert("Demande supprimer avec succès !");
+              location.reload();
+            });
           } else {
             console.log("Action annulé !");
           }
-        }
+        };
 
         let imgbin = document.createElement("img");
         imgbin.src = "../../assets/icons/bin.svg";
@@ -804,6 +796,98 @@ export function GetPostsOffres() {
   });
 }
 
+// GETMODIFDATA
+
+  //DEMANDE
+
+export function getModifDemandeData(id_dmnd) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      let intit = document.getElementById("intitule");
+      let tag_1 = document.getElementById("liste-domaines");
+      let tag_2_container = document.getElementById("liste-spe");
+      let tag2 = document.createElement("option");
+
+      let tag_3_container = document.getElementById("liste-lang");
+      let tag3 = document.createElement("option");
+
+      let description = document.getElementById("bio");
+
+      const DemandeData = ref(
+        database,
+        "Posts/Demande/" + user.uid + "/" + id_dmnd
+      );
+      onValue(DemandeData, (snapshot) => {
+        const data = snapshot.val();
+
+        intit.value = data.intitule;
+        tag_1.value = data.tagdomaine;
+
+        tag2.value = data.tagspecial;
+        tag2.innerHTML = data.tagspecial;
+        tag2.selected;
+
+        tag3.value = data.taglangue;
+        tag3.innerHTML = data.taglangue;
+        tag3.selected;
+
+        description.value = data.desc;
+
+        tag_2_container.appendChild(tag2);
+        tag_3_container.appendChild(tag3);
+      });
+    } else {
+      console.log("Accès Refuser !");
+      window.location.href = "/Pages/Login";
+    }
+  });
+}
+
+  //OFFRE
+
+export function getModifOffreData(id_ofr) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      let intit = document.getElementById("intitule");
+      let tag_1 = document.getElementById("liste-domaines");
+      let tag_2_container = document.getElementById("liste-spe");
+      let tag2 = document.createElement("option");
+
+      let tag_3_container = document.getElementById("liste-lang");
+      let tag3 = document.createElement("option");
+
+      let description = document.getElementById("bio");
+
+      const OffreData = ref(
+        database,
+        "Posts/Offre/" + user.uid + "/" + id_ofr
+      );
+      onValue(OffreData, (snapshot) => {
+        const data = snapshot.val();
+
+        intit.value = data.intitule;
+        tag_1.value = data.tagdomaine;
+
+        tag2.value = data.tagspecial;
+        tag2.innerHTML = data.tagspecial;
+        tag2.selected;
+
+        tag3.value = data.taglangue;
+        tag3.innerHTML = data.taglangue;
+        tag3.selected;
+
+        description.value = data.desc;
+
+        tag_2_container.appendChild(tag2);
+        tag_3_container.appendChild(tag3);
+      });
+    } else {
+      console.log("Accès Refuser !");
+      window.location.href = "/Pages/Login";
+    }
+  });
+}
+
 // UPDATE DATA USER
 
 export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
@@ -851,24 +935,24 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
           let problem = "'Nom Utilisateur'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
           );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
             ErrorRobot(
               "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+                problem +
+                " ! Veuillez réesayez."
             );
           } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
               ErrorRobot(
                 "Les changements sont invalides sur le " +
-                problem +
-                " ! Veuillez réesayez."
+                  problem +
+                  " ! Veuillez réesayez."
               );
             }
           }
@@ -931,6 +1015,101 @@ export function CreateDemande(
     }
   });
 }
+
+// MODIF DEMANDE
+
+export function ModifDemande(
+  id_demande,
+  intitule,
+  tagdomaine,
+  tagspecial,
+  taglangue,
+  desc
+) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+
+      var DateModification = new Date().toLocaleDateString("fr-FR", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      if (intitule.length > 3) {
+        update(ref(database, "Posts/Demande/" + user.uid + "/" + id_demande), {
+          last_modif: DateModification,
+          intitule: intitule,
+          tagdomaine: tagdomaine,
+          tagspecial: tagspecial,
+          taglangue: taglangue,
+          desc: desc,
+        })
+          .then(() => {
+            // Data saved successfully!
+            alert("Données Modifiés avec succès");
+            location.reload();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            ErrorRobot(errorCode);
+          });
+      }
+    }
+  });
+}
+
+// MODIF OFFRE
+
+export function ModifOffre(
+  id_offre,
+  intitule,
+  tagdomaine,
+  tagspecial,
+  taglangue,
+  desc
+) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+
+      var DateModification = new Date().toLocaleDateString("fr-FR", {
+        timeZone: "Europe/Paris",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      if (intitule.length > 3) {
+        update(ref(database, "Posts/Offre/" + user.uid + "/" + id_offre), {
+          last_modif: DateModification,
+          intitule: intitule,
+          tagdomaine: tagdomaine,
+          tagspecial: tagspecial,
+          taglangue: taglangue,
+          desc: desc,
+        })
+          .then(() => {
+            // Data saved successfully!
+            alert("Données Modifiés avec succès !");
+            location.reload();
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            ErrorRobot(errorCode);
+          });
+      }
+    }
+  });
+}
+
 
 // CREATE OFFRE
 
