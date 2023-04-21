@@ -488,7 +488,8 @@ export function GetPostsDemandes() {
         pencilbutton.className = "button-post";
 
         pencilbutton.onclick = function (e) {
-          window.location = "/Pages/Profil/Ajout/Demande/?id=" + id_demande + "&type=demande";
+          window.location =
+            "/Pages/Profil/Ajout/Demande/?id=" + id_demande + "&type=demande";
         };
 
         let imgpencil = document.createElement("img");
@@ -690,7 +691,8 @@ export function GetPostsOffres() {
         pencilbutton.className = "button-post";
 
         pencilbutton.onclick = function (e) {
-          window.location = "/Pages/Profil/Ajout/Offre/?id=" + id_offre + "&type=offre";
+          window.location =
+            "/Pages/Profil/Ajout/Offre/?id=" + id_offre + "&type=offre";
         };
 
         let imgpencil = document.createElement("img");
@@ -798,7 +800,7 @@ export function GetPostsOffres() {
 
 // GETMODIFDATA
 
-  //DEMANDE
+//DEMANDE
 
 export function getModifDemandeData(id_dmnd) {
   onAuthStateChanged(auth, (user) => {
@@ -843,7 +845,7 @@ export function getModifDemandeData(id_dmnd) {
   });
 }
 
-  //OFFRE
+//OFFRE
 
 export function getModifOffreData(id_ofr) {
   onAuthStateChanged(auth, (user) => {
@@ -858,10 +860,7 @@ export function getModifOffreData(id_ofr) {
 
       let description = document.getElementById("bio");
 
-      const OffreData = ref(
-        database,
-        "Posts/Offre/" + user.uid + "/" + id_ofr
-      );
+      const OffreData = ref(database, "Posts/Offre/" + user.uid + "/" + id_ofr);
       onValue(OffreData, (snapshot) => {
         const data = snapshot.val();
 
@@ -1110,7 +1109,6 @@ export function ModifOffre(
   });
 }
 
-
 // CREATE OFFRE
 
 export function CreateOffre(intitule, tagdomaine, tagspecial, taglangue, desc) {
@@ -1151,6 +1149,216 @@ export function CreateOffre(intitule, tagdomaine, tagspecial, taglangue, desc) {
       } else {
         ErrorRobot("Veuillez précisez l'intitulé.");
       }
+    }
+  });
+}
+
+// SEARCH METHOD
+
+export function Search(research) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      function AddFicheForfaitToTable1(
+        intitule,
+        tag1,
+        tag2,
+        tag3,
+        desc,
+        type
+      ) {
+
+        let pub_body = document.getElementById("container");
+
+        let pub_content = document.createElement("div");
+        pub_content.className = "pub-content";
+        let pub_content_header = document.createElement("div");
+        pub_content_header.className = "pub-content-header";
+        let title = document.createElement("h1");
+        title.className = "intitule";
+        title.setAttribute("id", "intitul");
+        let typecontainer = document.createElement("h2");
+        typecontainer.className = "type";
+        typecontainer.innerHTML = type;
+        let div_tags = document.createElement("div");
+        div_tags.className = "div-tags";
+        let h2tag1 = document.createElement("h2");
+        h2tag1.className = "pub-tags _1";
+        h2tag1.setAttribute("id", "pub-tag1");
+        let h2tag2 = document.createElement("h2");
+        h2tag2.className = "pub-tags _2";
+        h2tag2.setAttribute("id", "pub-tag2");
+        let h2tag3 = document.createElement("h2");
+        h2tag3.className = "pub-tags _3";
+        h2tag3.setAttribute("id", "pub-tag3");
+
+        let pub_content_desc = document.createElement("div");
+        pub_content_desc.className = "pub-content-desc";
+        let div_img = document.createElement("div");
+        div_img.className = "div-img";
+        let img = document.createElement("img");
+        img.src = "../../assets/icons/no-photo.svg";
+        img.setAttribute("alt", "img not found");
+        img.className = "img-notfound";
+        img.title = "Not Found Images";
+        let pub_desc = document.createElement("div");
+        pub_desc.className = "pub-desc";
+        let p_desc = document.createElement("p");
+        p_desc.setAttribute("id", "desc");
+
+        let pub_content_footer = document.createElement("div");
+        pub_content_footer.className = "pub-content-footer";
+        let div_publier = document.createElement("div");
+        div_publier.className = "div-publier";
+        let h2autor = document.createElement("h2");
+        h2autor.className = "publierpar";
+        h2autor.innerHTML = "Publié par ";
+        let autorspan = document.createElement("span");
+        autorspan.setAttribute("id", "utilis");
+        let imgautor = document.createElement("img");
+        imgautor.src = "../../assets/icons/loading.gif";
+        imgautor.className = "loading-pp-publication";
+        imgautor.setAttribute("id", "img_util");
+        imgautor.setAttribute("alt", "photo de profil");
+        let div_edits = document.createElement("div");
+        div_edits.className = "div-edits";
+
+        // let pencilbutton = document.createElement("button");
+        // pencilbutton.className = "button-post";
+
+        // pencilbutton.onclick = function (e) {
+        //   window.location =
+        //     "/Pages/Profil/Ajout/Offre/?id=" + id_offre + "&type=offre";
+        // };
+
+        // let imgpencil = document.createElement("img");
+        // imgpencil.src = "../../assets/icons/pencil.svg";
+        // imgpencil.alt = "pencil_edit";
+        // imgpencil.className = "pencil";
+        // imgpencil.setAttribute("id", "edit");
+
+        // let binbutton = document.createElement("button");
+        // binbutton.className = "button-post";
+
+        // binbutton.onclick = function (e) {
+        //   if (confirm("Voulez-vous vraiment suprrimer cette offre ?")) {
+        //     remove(
+        //       ref(database, "Posts/Offre/" + user.uid + "/" + id_offre)
+        //     ).then(() => {
+        //       alert("Demande supprimer avec succès !");
+        //       location.reload();
+        //     });
+        //   } else {
+        //     console.log("Action annulé !");
+        //   }
+        // };
+
+        // let imgbin = document.createElement("img");
+        // imgbin.src = "../../assets/icons/bin.svg";
+        // imgbin.className = "bin";
+        // imgbin.alt = "bin_delete";
+
+        title.innerHTML = intitule;
+        h2tag1.innerHTML = tag1;
+        h2tag2.innerHTML = tag2;
+        h2tag3.innerHTML = tag3;
+
+        p_desc.innerHTML = desc;
+
+        // autorspan.innerHTML = user;
+        // imgautor.src = pp;
+
+        pub_body.appendChild(pub_content);
+        pub_content.appendChild(pub_content_header);
+        pub_content.appendChild(pub_content_desc);
+        pub_content.appendChild(pub_content_footer);
+
+        pub_content_header.appendChild(title);
+        pub_content_header.appendChild(typecontainer);
+        pub_content_header.appendChild(div_tags);
+
+        div_tags.appendChild(h2tag1);
+        div_tags.appendChild(h2tag2);
+        div_tags.appendChild(h2tag3);
+
+        pub_content_desc.appendChild(div_img);
+        div_img.appendChild(img);
+        pub_content_desc.appendChild(pub_desc);
+        pub_desc.appendChild(p_desc);
+
+        pub_content_footer.appendChild(div_publier);
+        div_publier.appendChild(h2autor);
+        h2autor.appendChild(autorspan);
+        div_publier.appendChild(imgautor);
+        pub_content_footer.appendChild(div_edits);
+
+        // div_edits.appendChild(pencilbutton);
+        // pencilbutton.appendChild(imgpencil);
+
+        // div_edits.appendChild(binbutton);
+        // binbutton.appendChild(imgbin);
+      }
+
+      function AddAllFichesForfaitToTable1(FichesForfait1) {
+        FichesForfait1.forEach((element) => {
+          AddFicheForfaitToTable1(
+            element.intitule,
+            element.tagdomaine,
+            element.taglangue,
+            element.tagspecial,
+            element.desc,
+            element.type,
+          );
+        });
+      }
+
+      function GetAllFichesForfaitRT1() {
+        const dbref = ref(database, "Posts/Demande");
+
+        onValue(dbref, (snapshot) => {
+          var fichesforfait1 = [];
+          var child1 = [];
+
+          snapshot.forEach((DataSnapshot) => {
+            fichesforfait1.push(DataSnapshot.val());
+
+            DataSnapshot.forEach(UserSnapshot => {
+
+
+              child1.push(UserSnapshot.val());
+
+              child1.forEach((a) => {a.type = "Demande"})
+
+     
+              console.log(child1);
+            })
+          });
+
+          AddAllFichesForfaitToTable1(child1);
+        });
+      }
+      function GetAllFichesForfaitRT2() {
+        const dbref = ref(database, "Posts/Offre");
+
+        onValue(dbref, (snapshot) => {
+          var fichesforfait1 = [];
+          var child1 = [];
+
+          snapshot.forEach((DataSnapshot) => {
+            fichesforfait1.push(DataSnapshot.val());
+
+            DataSnapshot.forEach(UserSnapshot => {
+              child1.push(UserSnapshot.val());
+              child1.forEach((a) => {a.type = "Offre"})
+
+            })
+          });
+
+          AddAllFichesForfaitToTable1(child1);
+        });
+      }
+
+      window.onload = GetAllFichesForfaitRT1(), GetAllFichesForfaitRT2();
+    } else {
     }
   });
 }

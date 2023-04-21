@@ -1712,13 +1712,15 @@ margin-top: 3rem;
 
 .research .container {
     position: relative;
-    margin: auto;
-    width: 60%;
-    height: 80%;
+    margin: 2rem auto;
+    width: 65%;
+    height: 85%;
     border-radius: 26px;
+    overflow: auto;
     background: #F0C807;
     box-shadow: inset 9px 9px 6px #aa8e05,
         inset -9px -9px 6px #ffff09;
+    
 }
 
 
