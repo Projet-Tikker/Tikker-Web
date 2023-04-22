@@ -289,24 +289,24 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       let problem = "'Nom Utilisateur'";
       ErrorRobot(
         "Les changements sont invalides sur le " +
-          problem +
-          " ! Veuillez réesayez."
+        problem +
+        " ! Veuillez réesayez."
       );
     } else {
       if (nom.length < 3 || /\d/.test(nom) == true) {
         let problem = "'Nom'";
         ErrorRobot(
           "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+          problem +
+          " ! Veuillez réesayez."
         );
       } else {
         if (prenom.length < 3 || /\d/.test(prenom) == true) {
           let problem = "'Prenom'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
           );
         }
       }
@@ -473,7 +473,7 @@ export function GetPostsDemandes() {
         div_publier.className = "div-publier";
         let h2autor = document.createElement("h2");
         h2autor.className = "publierpar";
-        h2autor.innerHTML = "Publié par ";
+        h2autor.innerHTML = "Publier par ";
         let autorspan = document.createElement("span");
         autorspan.setAttribute("id", "utilis");
         let imgautor = document.createElement("img");
@@ -676,7 +676,7 @@ export function GetPostsOffres() {
         div_publier.className = "div-publier";
         let h2autor = document.createElement("h2");
         h2autor.className = "publierpar";
-        h2autor.innerHTML = "Publié par ";
+        h2autor.innerHTML = "Publier par ";
         let autorspan = document.createElement("span");
         autorspan.setAttribute("id", "utilis");
         let imgautor = document.createElement("img");
@@ -827,11 +827,11 @@ export function getModifDemandeData(id_dmnd) {
 
         tag2.value = data.tagspecial;
         tag2.innerHTML = data.tagspecial;
-        tag2.selected;
+        tag2.selected = true;
 
         tag3.value = data.taglangue;
         tag3.innerHTML = data.taglangue;
-        tag3.selected;
+        tag3.selected = true;
 
         description.value = data.desc;
 
@@ -869,11 +869,11 @@ export function getModifOffreData(id_ofr) {
 
         tag2.value = data.tagspecial;
         tag2.innerHTML = data.tagspecial;
-        tag2.selected;
+        tag2.selected = true;
 
         tag3.value = data.taglangue;
         tag3.innerHTML = data.taglangue;
-        tag3.selected;
+        tag3.selected = true;
 
         description.value = data.desc;
 
@@ -934,24 +934,24 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
           let problem = "'Nom Utilisateur'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
           );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
             ErrorRobot(
               "Les changements sont invalides sur le " +
-                problem +
-                " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
             );
           } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
               ErrorRobot(
                 "Les changements sont invalides sur le " +
-                  problem +
-                  " ! Veuillez réesayez."
+                problem +
+                " ! Veuillez réesayez."
               );
             }
           }
@@ -1164,7 +1164,9 @@ export function Search(research) {
         tag2,
         tag3,
         desc,
-        type
+        type,
+        user,
+        pp
       ) {
 
         let pub_body = document.getElementById("container");
@@ -1211,7 +1213,7 @@ export function Search(research) {
         div_publier.className = "div-publier";
         let h2autor = document.createElement("h2");
         h2autor.className = "publierpar";
-        h2autor.innerHTML = "Publié par ";
+        h2autor.innerHTML = "Publier par ";
         let autorspan = document.createElement("span");
         autorspan.setAttribute("id", "utilis");
         let imgautor = document.createElement("img");
@@ -1264,8 +1266,9 @@ export function Search(research) {
 
         p_desc.innerHTML = desc;
 
-        // autorspan.innerHTML = user;
-        // imgautor.src = pp;
+        autorspan.innerHTML = user;
+        imgautor.src = pp;
+
 
         pub_body.appendChild(pub_content);
         pub_content.appendChild(pub_content_header);
@@ -1303,15 +1306,19 @@ export function Search(research) {
           AddFicheForfaitToTable1(
             element.intitule,
             element.tagdomaine,
-            element.taglangue,
             element.tagspecial,
+            element.taglangue,
             element.desc,
             element.type,
+            element.pseudo,
+            element.pp
           );
         });
       }
 
       function GetAllFichesForfaitRT1() {
+
+
         const dbref = ref(database, "Posts/Demande");
 
         onValue(dbref, (snapshot) => {
@@ -1321,34 +1328,65 @@ export function Search(research) {
           snapshot.forEach((DataSnapshot) => {
             fichesforfait1.push(DataSnapshot.val());
 
+            const userid = DataSnapshot.key;
+
+            
+
             DataSnapshot.forEach(UserSnapshot => {
 
 
               child1.push(UserSnapshot.val());
 
-              child1.forEach((a) => {a.type = "Demande"})
+              child1.forEach((a) => { a.type = "Demande" })
 
-     
-              console.log(child1);
+
             })
           });
 
           AddAllFichesForfaitToTable1(child1);
         });
       }
+
       function GetAllFichesForfaitRT2() {
         const dbref = ref(database, "Posts/Offre");
 
+
+
         onValue(dbref, (snapshot) => {
+
           var fichesforfait1 = [];
           var child1 = [];
+          var pseudo = "";
+          var pic = "";
 
           snapshot.forEach((DataSnapshot) => {
             fichesforfait1.push(DataSnapshot.val());
 
+            const userid = DataSnapshot.key;
+
+            const PseudoRef = ref(database, 'users/' + userid +'/pseudo');
+            const PPRef = ref(database, 'users/' + userid+'/pp');
+
+            onValue(PseudoRef, (snapshot) => {
+              const data = snapshot.val();
+              pseudo = data;
+            });
+
+            onValue(PPRef, (snapshot) => {
+              const data = snapshot.val();
+              pic = data;
+            });
+
             DataSnapshot.forEach(UserSnapshot => {
+
               child1.push(UserSnapshot.val());
-              child1.forEach((a) => {a.type = "Offre"})
+
+              child1.forEach((a) => { a.type = "Offre" })
+              child1.forEach((a) => { a.pseudo = pseudo})
+              child1.forEach((a) => { a.pp = pic})
+
+              console.log(child1);
+
 
             })
           });
