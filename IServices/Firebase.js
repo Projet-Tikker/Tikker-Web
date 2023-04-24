@@ -289,24 +289,24 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       let problem = "'Nom Utilisateur'";
       ErrorRobot(
         "Les changements sont invalides sur le " +
-        problem +
-        " ! Veuillez réesayez."
+          problem +
+          " ! Veuillez réesayez."
       );
     } else {
       if (nom.length < 3 || /\d/.test(nom) == true) {
         let problem = "'Nom'";
         ErrorRobot(
           "Les changements sont invalides sur le " +
-          problem +
-          " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
         );
       } else {
         if (prenom.length < 3 || /\d/.test(prenom) == true) {
           let problem = "'Prenom'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
           );
         }
       }
@@ -934,24 +934,24 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
           let problem = "'Nom Utilisateur'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
           );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
             ErrorRobot(
               "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+                problem +
+                " ! Veuillez réesayez."
             );
           } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
               ErrorRobot(
                 "Les changements sont invalides sur le " +
-                problem +
-                " ! Veuillez réesayez."
+                  problem +
+                  " ! Veuillez réesayez."
               );
             }
           }
@@ -1158,16 +1158,15 @@ export function CreateOffre(intitule, tagdomaine, tagspecial, taglangue, desc) {
 export function Search(research) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      function AddFicheForfaitToTable1(
-        intitule,
-        tag1,
-        tag2,
-        tag3,
-        desc,
-        type,
-        user,
-        pp
-      ) {
+
+      let pseudoVar;
+      let ppVar;
+
+      function AddFicheForfaitToTable1(intitule, tag1, tag2, tag3, desc, type) {
+        
+
+        console.log(pseudoVar);
+
 
         let pub_body = document.getElementById("container");
 
@@ -1266,9 +1265,8 @@ export function Search(research) {
 
         p_desc.innerHTML = desc;
 
-        autorspan.innerHTML = user;
-        imgautor.src = pp;
-
+        autorspan.innerHTML = pseudoVar;
+        imgautor.src = ppVar;
 
         pub_body.appendChild(pub_content);
         pub_content.appendChild(pub_content_header);
@@ -1309,16 +1307,12 @@ export function Search(research) {
             element.tagspecial,
             element.taglangue,
             element.desc,
-            element.type,
-            element.pseudo,
-            element.pp
+            element.type
           );
         });
       }
 
       function GetAllFichesForfaitRT1() {
-
-
         const dbref = ref(database, "Posts/Demande");
 
         onValue(dbref, (snapshot) => {
@@ -1328,74 +1322,80 @@ export function Search(research) {
           snapshot.forEach((DataSnapshot) => {
             fichesforfait1.push(DataSnapshot.val());
 
-            const userid = DataSnapshot.key;
-
-            
-
-            DataSnapshot.forEach(UserSnapshot => {
-
-
+            DataSnapshot.forEach((UserSnapshot) => {
               child1.push(UserSnapshot.val());
 
-              child1.forEach((a) => { a.type = "Demande" })
-
-
-            })
+              child1.forEach((a) => {
+                a.type = "Demande";
+              });
+            });
           });
 
           AddAllFichesForfaitToTable1(child1);
         });
       }
+
+      // async function getNameUser(id) {
+      //   var pseudo;
+      //   const snapshot = await get(ref(database, "users/" + id + "/pseudo"));
+      //   pseudo = snapshot.val();
+      //   return pseudo;
+      // }
 
       function GetAllFichesForfaitRT2() {
         const dbref = ref(database, "Posts/Offre");
 
 
-
         onValue(dbref, (snapshot) => {
-
           var fichesforfait1 = [];
           var child1 = [];
-          var pseudo = "";
-          var pic = "";
 
           snapshot.forEach((DataSnapshot) => {
             fichesforfait1.push(DataSnapshot.val());
 
             const userid = DataSnapshot.key;
+            const Userref = ref(database, "users/" + userid + "/pseudo");
 
-            const PseudoRef = ref(database, 'users/' + userid +'/pseudo');
-            const PPRef = ref(database, 'users/' + userid+'/pp');
+            onValue(Userref, (UserPseudo) =>{
+              const data = UserPseudo.val();
 
-            onValue(PseudoRef, (snapshot) => {
-              const data = snapshot.val();
-              pseudo = data;
-            });
-
-            onValue(PPRef, (snapshot) => {
-              const data = snapshot.val();
-              pic = data;
-            });
-
-            DataSnapshot.forEach(UserSnapshot => {
-
-              child1.push(UserSnapshot.val());
-
-              child1.forEach((a) => { a.type = "Offre" })
-              child1.forEach((a) => { a.pseudo = pseudo})
-              child1.forEach((a) => { a.pp = pic})
-
-              console.log(child1);
-
-
+              pseudoVar = data;
             })
+
+            // const printPseudo = async () => {
+            //   const pseudo = await getNameUser(userid);
+            //   pseudoVar = pseudo;
+            // };
+
+            DataSnapshot.forEach((PostsSnapshots) => {
+              // PostsSnapshots.pseudo = pseudo;
+              // if(PostsSnapshots.pseudo = null){
+              //   alert(PostsSnapshots.pseudo);
+              // }
+              child1.push(PostsSnapshots.val());
+
+
+              child1.forEach((post) => {
+                post.type = "Offre";
+              });
+
+              // printPseudo();
+
+              // child1.forEach((post) => {
+              //     printPseudo().then((value) =>{
+              //       post.pseudo = value;
+              //     });
+              // });
+            });
           });
+
+          console.log(child1);
 
           AddAllFichesForfaitToTable1(child1);
         });
       }
 
-      window.onload = GetAllFichesForfaitRT1(), GetAllFichesForfaitRT2();
+      (window.onload = GetAllFichesForfaitRT1()), GetAllFichesForfaitRT2();
     } else {
     }
   });
