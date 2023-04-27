@@ -1156,249 +1156,372 @@ export function CreateOffre(intitule, tagdomaine, tagspecial, taglangue, desc) {
 // SEARCH METHOD
 
 export function Search(research) {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      function AddFicheForfaitToTable1(
-        intitule,
-        tag1,
-        tag2,
-        tag3,
-        desc,
-        type,
-        user,
-        pp
-      ) {
-
-        let pub_body = document.getElementById("container");
-
-        let pub_content = document.createElement("div");
-        pub_content.className = "pub-content";
-        let pub_content_header = document.createElement("div");
-        pub_content_header.className = "pub-content-header";
-        let title = document.createElement("h1");
-        title.className = "intitule";
-        title.setAttribute("id", "intitul");
-        let typecontainer = document.createElement("h2");
-        typecontainer.className = "type";
-        typecontainer.innerHTML = type;
-        let div_tags = document.createElement("div");
-        div_tags.className = "div-tags";
-        let h2tag1 = document.createElement("h2");
-        h2tag1.className = "pub-tags _1";
-        h2tag1.setAttribute("id", "pub-tag1");
-        let h2tag2 = document.createElement("h2");
-        h2tag2.className = "pub-tags _2";
-        h2tag2.setAttribute("id", "pub-tag2");
-        let h2tag3 = document.createElement("h2");
-        h2tag3.className = "pub-tags _3";
-        h2tag3.setAttribute("id", "pub-tag3");
-
-        let pub_content_desc = document.createElement("div");
-        pub_content_desc.className = "pub-content-desc";
-        let div_img = document.createElement("div");
-        div_img.className = "div-img";
-        let img = document.createElement("img");
-        img.src = "../../assets/icons/no-photo.svg";
-        img.setAttribute("alt", "img not found");
-        img.className = "img-notfound";
-        img.title = "Not Found Images";
-        let pub_desc = document.createElement("div");
-        pub_desc.className = "pub-desc";
-        let p_desc = document.createElement("p");
-        p_desc.setAttribute("id", "desc");
-
-        let pub_content_footer = document.createElement("div");
-        pub_content_footer.className = "pub-content-footer";
-        let div_publier = document.createElement("div");
-        div_publier.className = "div-publier";
-        let h2autor = document.createElement("h2");
-        h2autor.className = "publierpar";
-        h2autor.innerHTML = "Publier par ";
-        let autorspan = document.createElement("span");
-        autorspan.setAttribute("id", "utilis");
-        let imgautor = document.createElement("img");
-        imgautor.src = "../../assets/icons/loading.gif";
-        imgautor.className = "loading-pp-publication";
-        imgautor.setAttribute("id", "img_util");
-        imgautor.setAttribute("alt", "photo de profil");
-        let div_edits = document.createElement("div");
-        div_edits.className = "div-edits";
-
-        // let pencilbutton = document.createElement("button");
-        // pencilbutton.className = "button-post";
-
-        // pencilbutton.onclick = function (e) {
-        //   window.location =
-        //     "/Pages/Profil/Ajout/Offre/?id=" + id_offre + "&type=offre";
-        // };
-
-        // let imgpencil = document.createElement("img");
-        // imgpencil.src = "../../assets/icons/pencil.svg";
-        // imgpencil.alt = "pencil_edit";
-        // imgpencil.className = "pencil";
-        // imgpencil.setAttribute("id", "edit");
-
-        // let binbutton = document.createElement("button");
-        // binbutton.className = "button-post";
-
-        // binbutton.onclick = function (e) {
-        //   if (confirm("Voulez-vous vraiment suprrimer cette offre ?")) {
-        //     remove(
-        //       ref(database, "Posts/Offre/" + user.uid + "/" + id_offre)
-        //     ).then(() => {
-        //       alert("Demande supprimer avec succès !");
-        //       location.reload();
-        //     });
-        //   } else {
-        //     console.log("Action annulé !");
-        //   }
-        // };
-
-        // let imgbin = document.createElement("img");
-        // imgbin.src = "../../assets/icons/bin.svg";
-        // imgbin.className = "bin";
-        // imgbin.alt = "bin_delete";
-
-        title.innerHTML = intitule;
-        h2tag1.innerHTML = tag1;
-        h2tag2.innerHTML = tag2;
-        h2tag3.innerHTML = tag3;
-
-        p_desc.innerHTML = desc;
-
-        autorspan.innerHTML = user;
-        imgautor.src = pp;
 
 
-        pub_body.appendChild(pub_content);
-        pub_content.appendChild(pub_content_header);
-        pub_content.appendChild(pub_content_desc);
-        pub_content.appendChild(pub_content_footer);
+  function similar_text(first, second, percent) {
+    //  discuss at: http://phpjs.org/functions/similar_text/
+    // original by: Rafał Kukawski (http://blog.kukawski.pl)
+    // bugfixed by: Chris McMacken
+    // bugfixed by: Jarkko Rantavuori original by findings in stackoverflow (http://stackoverflow.com/questions/14136349/how-does-similar-text-work)
+    // improved by: Markus Padourek (taken from http://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
+    //   example 1: similar_text('Hello World!', 'Hello phpjs!');
+    //   returns 1: 7
+    //   example 2: similar_text('Hello World!', null);
+    //   returns 2: 0
 
-        pub_content_header.appendChild(title);
-        pub_content_header.appendChild(typecontainer);
-        pub_content_header.appendChild(div_tags);
-
-        div_tags.appendChild(h2tag1);
-        div_tags.appendChild(h2tag2);
-        div_tags.appendChild(h2tag3);
-
-        pub_content_desc.appendChild(div_img);
-        div_img.appendChild(img);
-        pub_content_desc.appendChild(pub_desc);
-        pub_desc.appendChild(p_desc);
-
-        pub_content_footer.appendChild(div_publier);
-        div_publier.appendChild(h2autor);
-        h2autor.appendChild(autorspan);
-        div_publier.appendChild(imgautor);
-        pub_content_footer.appendChild(div_edits);
-
-        // div_edits.appendChild(pencilbutton);
-        // pencilbutton.appendChild(imgpencil);
-
-        // div_edits.appendChild(binbutton);
-        // binbutton.appendChild(imgbin);
-      }
-
-      function AddAllFichesForfaitToTable1(FichesForfait1) {
-        FichesForfait1.forEach((element) => {
-          AddFicheForfaitToTable1(
-            element.intitule,
-            element.tagdomaine,
-            element.tagspecial,
-            element.taglangue,
-            element.desc,
-            element.type,
-            element.pseudo,
-            element.pp
-          );
-        });
-      }
-
-      function GetAllFichesForfaitRT1() {
-
-
-        const dbref = ref(database, "Posts/Demande");
-
-        onValue(dbref, (snapshot) => {
-          var fichesforfait1 = [];
-          var child1 = [];
-
-          snapshot.forEach((DataSnapshot) => {
-            fichesforfait1.push(DataSnapshot.val());
-
-            const userid = DataSnapshot.key;
-
-            
-
-            DataSnapshot.forEach(UserSnapshot => {
-
-
-              child1.push(UserSnapshot.val());
-
-              child1.forEach((a) => { a.type = "Demande" })
-
-
-            })
-          });
-
-          AddAllFichesForfaitToTable1(child1);
-        });
-      }
-
-      function GetAllFichesForfaitRT2() {
-        const dbref = ref(database, "Posts/Offre");
-
-
-
-        onValue(dbref, (snapshot) => {
-
-          var fichesforfait1 = [];
-          var child1 = [];
-          var pseudo = "";
-          var pic = "";
-
-          snapshot.forEach((DataSnapshot) => {
-            fichesforfait1.push(DataSnapshot.val());
-
-            const userid = DataSnapshot.key;
-
-            const PseudoRef = ref(database, 'users/' + userid +'/pseudo');
-            const PPRef = ref(database, 'users/' + userid+'/pp');
-
-            onValue(PseudoRef, (snapshot) => {
-              const data = snapshot.val();
-              pseudo = data;
-            });
-
-            onValue(PPRef, (snapshot) => {
-              const data = snapshot.val();
-              pic = data;
-            });
-
-            DataSnapshot.forEach(UserSnapshot => {
-
-              child1.push(UserSnapshot.val());
-
-              child1.forEach((a) => { a.type = "Offre" })
-              child1.forEach((a) => { a.pseudo = pseudo})
-              child1.forEach((a) => { a.pp = pic})
-
-              console.log(child1);
-
-
-            })
-          });
-
-          AddAllFichesForfaitToTable1(child1);
-        });
-      }
-
-      window.onload = GetAllFichesForfaitRT1(), GetAllFichesForfaitRT2();
-    } else {
+    if (first === null || second === null || typeof first === 'undefined' || typeof second === 'undefined') {
+      return 0;
     }
-  });
+
+    first += '';
+    second += '';
+
+    var pos1 = 0,
+      pos2 = 0,
+      max = 0,
+      firstLength = first.length,
+      secondLength = second.length,
+      p, q, l, sum;
+
+    max = 0;
+
+    for (p = 0; p < firstLength; p++) {
+      for (q = 0; q < secondLength; q++) {
+        for (l = 0;
+          (p + l < firstLength) && (q + l < secondLength) && (first.charAt(p + l) === second.charAt(q + l)); l++)
+          ;
+        if (l > max) {
+          max = l;
+          pos1 = p;
+          pos2 = q;
+        }
+      }
+    }
+
+    sum = max;
+
+    if (sum) {
+      if (pos1 && pos2) {
+        sum += this.similar_text(first.substr(0, pos1), second.substr(0, pos2));
+      }
+
+      if ((pos1 + max < firstLength) && (pos2 + max < secondLength)) {
+        sum += this.similar_text(first.substr(pos1 + max, firstLength - pos1 - max), second.substr(pos2 + max,
+          secondLength - pos2 - max));
+      }
+    }
+
+    if (!percent) {
+      return sum;
+    } else {
+      return (sum * 200) / (firstLength + secondLength);
+    }
+  }
+
+
+
+
+
+  function AddFicheForfaitToTable1(
+    intitule,
+    tag1,
+    tag2,
+    tag3,
+    desc,
+    type,
+    user,
+    pp
+  ) {
+
+    let pub_body = document.getElementById("container");
+
+    let pub_content = document.createElement("div");
+    pub_content.className = "pub-content";
+    let pub_content_header = document.createElement("div");
+    pub_content_header.className = "pub-content-header";
+    let title = document.createElement("h1");
+    title.className = "intitule";
+    title.setAttribute("id", "intitul");
+    let typecontainer = document.createElement("h2");
+    typecontainer.className = "type";
+    typecontainer.innerHTML = type;
+    let div_tags = document.createElement("div");
+    div_tags.className = "div-tags";
+    let h2tag1 = document.createElement("h2");
+    h2tag1.className = "pub-tags _1";
+    h2tag1.setAttribute("id", "pub-tag1");
+    let h2tag2 = document.createElement("h2");
+    h2tag2.className = "pub-tags _2";
+    h2tag2.setAttribute("id", "pub-tag2");
+    let h2tag3 = document.createElement("h2");
+    h2tag3.className = "pub-tags _3";
+    h2tag3.setAttribute("id", "pub-tag3");
+
+    let pub_content_desc = document.createElement("div");
+    pub_content_desc.className = "pub-content-desc";
+    let div_img = document.createElement("div");
+    div_img.className = "div-img";
+    let img = document.createElement("img");
+    img.src = "../../assets/icons/no-photo.svg";
+    img.setAttribute("alt", "img not found");
+    img.className = "img-notfound";
+    img.title = "Not Found Images";
+    let pub_desc = document.createElement("div");
+    pub_desc.className = "pub-desc";
+    let p_desc = document.createElement("p");
+    p_desc.setAttribute("id", "desc");
+
+    let pub_content_footer = document.createElement("div");
+    pub_content_footer.className = "pub-content-footer";
+    let div_publier = document.createElement("div");
+    div_publier.className = "div-publier";
+    let h2autor = document.createElement("h2");
+    h2autor.className = "publierpar";
+    h2autor.innerHTML = "Publier par ";
+    let autorspan = document.createElement("span");
+    autorspan.setAttribute("id", "utilis");
+    let imgautor = document.createElement("img");
+    imgautor.src = "../../assets/icons/loading.gif";
+    imgautor.className = "loading-pp-publication";
+    imgautor.setAttribute("id", "img_util");
+    imgautor.setAttribute("alt", "photo de profil");
+    let div_edits = document.createElement("div");
+    div_edits.className = "div-edits";
+
+    let pencilbutton = document.createElement("button");
+    pencilbutton.className = "button-post";
+
+    pencilbutton.onclick = function (e) {
+      if (confirm("Voulez-vous vraiment Signaler ce post ?")) {
+
+        alert("Post Signaler ! Merci pour votre aide.")
+      } else {
+      }
+    };
+
+    let imgpencil = document.createElement("img");
+    imgpencil.src = "../../assets/icons/signaler.svg";
+    imgpencil.alt = "pencil_edit";
+    imgpencil.className = "pencil";
+    imgpencil.setAttribute("id", "edit");
+
+    let binbutton = document.createElement("button");
+    binbutton.className = "button-post";
+
+    // binbutton.onclick = function (e) {
+    //   if (confirm("Voulez-vous vraiment suprrimer cette offre ?")) {
+    //     remove(
+    //       ref(database, "Posts/Offre/" + user.uid + "/" + id_offre)
+    //     ).then(() => {
+    //       alert("Demande supprimer avec succès !");
+    //       location.reload();
+    //     });
+    //   } else {
+    //     console.log("Action annulé !");
+    //   }
+    // };
+
+    let imgbin = document.createElement("img");
+    imgbin.src = "../../assets/icons/messages-icon.svg";
+    imgbin.className = "bin";
+    imgbin.alt = "bin_delete";
+
+    title.innerHTML = intitule;
+    h2tag1.innerHTML = tag1;
+    h2tag2.innerHTML = tag2;
+    h2tag3.innerHTML = tag3;
+
+    p_desc.innerHTML = desc;
+
+    autorspan.innerHTML = user;
+    imgautor.src = pp;
+
+
+    pub_body.appendChild(pub_content);
+    pub_content.appendChild(pub_content_header);
+    pub_content.appendChild(pub_content_desc);
+    pub_content.appendChild(pub_content_footer);
+
+    pub_content_header.appendChild(title);
+    pub_content_header.appendChild(typecontainer);
+    pub_content_header.appendChild(div_tags);
+
+    div_tags.appendChild(h2tag1);
+    div_tags.appendChild(h2tag2);
+    div_tags.appendChild(h2tag3);
+
+    pub_content_desc.appendChild(div_img);
+    div_img.appendChild(img);
+    pub_content_desc.appendChild(pub_desc);
+    pub_desc.appendChild(p_desc);
+
+    pub_content_footer.appendChild(div_publier);
+    div_publier.appendChild(h2autor);
+    h2autor.appendChild(autorspan);
+    div_publier.appendChild(imgautor);
+    pub_content_footer.appendChild(div_edits);
+
+    div_edits.appendChild(pencilbutton);
+    pencilbutton.appendChild(imgpencil);
+
+    div_edits.appendChild(binbutton);
+    binbutton.appendChild(imgbin);
+  }
+
+  function AddAllFichesForfaitToTable1(FichesForfait1) {
+    FichesForfait1.forEach((element) => {
+      AddFicheForfaitToTable1(
+        element.intitule,
+        element.tagdomaine,
+        element.tagspecial,
+        element.taglangue,
+        element.desc,
+        element.type,
+        element.pseudo,
+        element.pp,
+      );
+    });
+  }
+
+  async function GetNameUser(id) {
+    var ppseudo;
+    const PseudoData = await get(ref(database, "users/" + id + "/pseudo"));
+    ppseudo = PseudoData.val();
+    return ppseudo;
+  }
+
+  async function GetUSrPP(id) {
+    var ppvar;
+    const PpData = await get(ref(database, "users/" + id + "/pp"));
+    ppvar = PpData.val();
+    return ppvar;
+  }
+
+
+  // function check3Chars(str, check) {
+  //   alert(check.includes);
+  //  if(check.includes(str)){
+  //   return true;
+  //  }else{
+  //   return false;
+  //  }
+  // }
+
+  function GetAllFichesForfaitRT1() {
+    const dbref = ref(database, "Posts/Demande");
+
+    onValue(dbref, (snapshot) => {
+      var fichesforfait1 = [];
+      var child1 = [];
+      const promises = []; // Tableau de promesses
+
+      snapshot.forEach((DataSnapshot) => {
+        fichesforfait1.push(DataSnapshot.val());
+        const userid = DataSnapshot.key;
+
+        const printPseudo = async () => {
+          const pseudo = await GetNameUser(userid);
+          return pseudo;
+        }
+        const printPPP = async () => {
+          const ppv = await GetUSrPP(userid);
+          return ppv;
+        }
+
+        const pseudoPromise = printPseudo(); // Stockage des promesses
+        const ppvPromise = printPPP();
+
+        DataSnapshot.forEach((UserSnapshot) => {
+          const childValue = UserSnapshot.val();
+
+          Promise.all([pseudoPromise, ppvPromise]).then((values) => {
+
+            if (research != "") {
+
+
+              if (childValue.intitule.toLowerCase().includes(research)) {
+                const childObj = {
+                  ...childValue,
+                  type: "Demande",
+                  pseudo: values[0],
+                  pp: values[1]
+                };
+
+                child1.push(childObj);
+              }
+            }
+          });
+          promises.push(pseudoPromise, ppvPromise);
+
+        });
+
+      });
+
+      // Attente que toutes les promesses soient résolues
+      Promise.all(promises).then(() => {
+        AddAllFichesForfaitToTable1(child1);
+      });
+    });
+  }
+
+  function GetAllFichesForfaitRT2() {
+    const dbref = ref(database, "Posts/Offre");
+
+    onValue(dbref, (snapshot) => {
+      var fichesforfait1 = [];
+      var child1 = [];
+      const promises = []; // Tableau de promesses
+
+      snapshot.forEach((DataSnapshot) => {
+        fichesforfait1.push(DataSnapshot.val());
+        const userid = DataSnapshot.key;
+
+        const printPseudo = async () => {
+          const pseudo = await GetNameUser(userid);
+          return pseudo;
+        }
+        const printPPP = async () => {
+          const ppv = await GetUSrPP(userid);
+          return ppv;
+        }
+
+        const pseudoPromise = printPseudo(); // Stockage des promesses
+        const ppvPromise = printPPP();
+
+        DataSnapshot.forEach((UserSnapshot) => {
+          const childValue = UserSnapshot.val();
+
+          Promise.all([pseudoPromise, ppvPromise]).then((values) => {
+
+            if (research != "") {
+
+
+              if (childValue.intitule.toLowerCase().includes(research)) {
+
+                const childObj = {
+                  ...childValue,
+                  type: "Offre",
+                  pseudo: values[0],
+                  pp: values[1]
+                };
+
+                child1.push(childObj);
+              }
+            }
+          });
+          promises.push(pseudoPromise, ppvPromise);
+
+        });
+      });
+
+      // Attente que toutes les promesses soient résolues
+      Promise.all(promises).then(() => {
+        AddAllFichesForfaitToTable1(child1);
+      });
+    });
+  }
+
+  window.onload = GetAllFichesForfaitRT1(), GetAllFichesForfaitRT2();
 }
 
 // RESET PASSWORD
