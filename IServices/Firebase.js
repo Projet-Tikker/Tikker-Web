@@ -289,24 +289,24 @@ export function Inscription(email, pseudo, prenom, nom, password) {
       let problem = "'Nom Utilisateur'";
       ErrorRobot(
         "Les changements sont invalides sur le " +
-        problem +
-        " ! Veuillez réesayez."
+          problem +
+          " ! Veuillez réesayez."
       );
     } else {
       if (nom.length < 3 || /\d/.test(nom) == true) {
         let problem = "'Nom'";
         ErrorRobot(
           "Les changements sont invalides sur le " +
-          problem +
-          " ! Veuillez réesayez."
+            problem +
+            " ! Veuillez réesayez."
         );
       } else {
         if (prenom.length < 3 || /\d/.test(prenom) == true) {
           let problem = "'Prenom'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
           );
         }
       }
@@ -934,24 +934,24 @@ export function UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro) {
           let problem = "'Nom Utilisateur'";
           ErrorRobot(
             "Les changements sont invalides sur le " +
-            problem +
-            " ! Veuillez réesayez."
+              problem +
+              " ! Veuillez réesayez."
           );
         } else {
           if (nom.length < 3 || /\d/.test(nom) == true) {
             let problem = "'Nom'";
             ErrorRobot(
               "Les changements sont invalides sur le " +
-              problem +
-              " ! Veuillez réesayez."
+                problem +
+                " ! Veuillez réesayez."
             );
           } else {
             if (prenom.length < 3 || /\d/.test(prenom) == true) {
               let problem = "'Prenom'";
               ErrorRobot(
                 "Les changements sont invalides sur le " +
-                problem +
-                " ! Veuillez réesayez."
+                  problem +
+                  " ! Veuillez réesayez."
               );
             }
           }
