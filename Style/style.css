@@ -1658,12 +1658,11 @@ margin-top: 3rem;
 
 .contact .container {
     width: 75%;
-    height: 73%;
+    height: 35rem;
     margin: 2rem auto;
     backdrop-filter: blur(7px);
     overflow: auto;
     padding: 1.5rem;
-
 }
 
 
@@ -1690,8 +1689,8 @@ margin-top: 3rem;
 
 .chatbox .container {
     width: 60%;
-    height: 73%;
-    margin: 9rem auto 4rem auto;
+    height: 33rem;
+    margin: 10rem auto 4rem auto;
     background-color: #F0C807;
     border-radius: 25px;
     overflow: auto;
