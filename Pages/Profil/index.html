@@ -47,14 +47,14 @@
             <div class="user">
                 <ul>
                     <li class="header-static"><button type="button" id="dropdown" class="user-button"> <img
-                                src="../../assets/icons/user-default.svg" class="user-img" id="pp-img" alt="user">
+                                src="../../assets/icons/loading.gif" class="user-img" id="pp-img" alt="user">
                         </button></li>
                 </ul>
 
                 <div id="menu" class="menu">
                     <button class="dropbutton" id="profilbutton">
-                        <span class="material-symbols-outlined"><img src="../../assets/icons/user.svg" alt="modif-profil"
-                                id="icondd"></span>
+                        <span class="material-symbols-outlined"><img src="../../assets/icons/user.svg"
+                                alt="modif-profil" id="icondd"></span>
                         <div class="menu-title" id="menu-1"> Profil</div>
                     </button>
                     <button class="dropbutton" id="Custombutton">
@@ -93,7 +93,11 @@
 
 
             <div class="photo-profil">
-                <img id="imgmain" alt="photo de profil" src="../../assets/users/user-default.svg">
+                <img id="imgmain" alt="photo de profil" src="../../assets/icons/loading.gif">
+                <div class="photo-pro">
+                    <img id="protag" src="../../assets/icons/pro-tag.svg" alt="ProTag" title="Compte Professionel">
+                </div>
+
             </div>
 
 
@@ -121,7 +125,7 @@
                         <div class="container-bio">
                             <h2 class="title-profil"> Bio :</h2>
                             <p class="bio-profil" id="bio">
-                              Aucune Bio.
+                                Aucune Bio.
                             </p>
                         </div>
                     </div>
@@ -130,18 +134,22 @@
                     </div>
                 </div>
                 <div class="publications">
-
                     <div class="container">
                         <div class="pub-title">
                             <h1> Mes Publications</h1>
-
                         </div>
-                        <div class="pub-body">
+                        <div class="types">
+                            <select class="choix-type" name="type-posts" id="type-posts">
+                                <option value="all">Tous</option>
+                                <option value="demande">Demandes</option>
+                                <option value="offre">Offres</option>
+                            </select>
+                        </div>
 
+                        <div class="pub-body" id="pub-bodyy">
+                           <!-- ICI sont GENERER LES POSTS -->
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </section>
@@ -152,6 +160,8 @@
 <script src="../../Services/Controllers/controller.js" type="module"></script>
 <script src="../../Services/Controllers/LogedController.js" type="module"></script>
 <script src="../../Services/Profil/GetProfil.js" type="module"></script>
+<script src="../../Services/Profil/post/GetPost.js" type="module"></script>
+
 
 
 

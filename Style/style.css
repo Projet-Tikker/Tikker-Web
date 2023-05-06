@@ -656,6 +656,10 @@ a.link-header-dynamic:active {
     width: fit-content;
 }
 
+.homepage_search_decoration{
+    text-decoration: none;
+}
+
 .card:hover {
     width: 335px;
     transform: scale(1.15) rotate(5deg);
@@ -675,7 +679,6 @@ a.link-header-dynamic:active {
     background: radial-gradient(#a3e1f0, #19CAFC);
     border-radius: 50%;
     position: absolute;
-    animation: move-up6 10s ease-in infinite alternate-reverse;
     z-index: 1;
 }
 
@@ -690,11 +693,6 @@ a.link-header-dynamic:active {
     animation-name: move-down1;
 }
 
-@keyframes move-up6 {
-    to {
-        transform: translateY(270px);
-    }
-}
 
 @keyframes move-down1 {
     to {
@@ -922,8 +920,8 @@ a.link-header-dynamic:active {
     display: block;
     height: 0.9rem;
     width: .4rem;
-    border-bottom: .10rem solid #a0ffe7;
-    border-right: .10rem solid #a0ffe7;
+    border-bottom: .10rem solid #000;
+    border-right: .10rem solid #000;
     opacity: 0;
     transform: rotate(45deg) translate(-50%, -50%);
     position: absolute;
@@ -1049,7 +1047,7 @@ span {
 
 .section-profil {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 .background-profil {
@@ -1077,6 +1075,23 @@ span {
 
 }
 
+.photo-pro {
+    border-radius: 50%;
+    width: 11vh;
+    height: 11vh;
+    margin-top: -25%;
+    margin-left: 27%;
+    position: absolute;
+    z-index: 1;
+
+}
+
+#protag{
+    width: 100%;
+    height: 100%;
+    display: none; 
+}
+
 .photo-profil>img {
     width: 100%;
     height: 100%;
@@ -1084,7 +1099,7 @@ span {
 
 .profil {
     width: 100%;
-    height: 100%;
+    height: 130%;
     background-color: #19CAFC;
     z-index: 0;
     position: absolute;
@@ -1096,8 +1111,8 @@ span {
     position: relative;
     background-color: white;
     width: 55vh;
-    height: 70%;
-    margin: 5% 1%;
+    height: fit-content;
+    margin: 6% 1%;
     border-radius: 3%;
     box-shadow: 0px 15px 20px #0c0d0d;
     padding: 10px;
@@ -1205,7 +1220,12 @@ span {
 
 }
 
+.types{
+    text-align: center;
+}
+
 .pub-body {
+    position: relative;
     border-radius: 49px;
     background: #19CAFC;
     box-shadow: inset 9px 9px 14px #0d6781,
@@ -1214,10 +1234,161 @@ span {
     height: 80%;
     margin: 2rem auto;
     overflow: auto;
+    scrollbar-color: #F0C807 #19CAFC;
+    scrollbar-width:thin;
+
+}
+
+.pub-content{
+    position: relative;
+    margin: 5rem auto;
+    height: calc(fit-content + 3rem);
+    min-height: fit-content;
+    width: 80%;
+    background-color: #e8e8e8;
+    border-radius: 25px;
+    box-shadow: 5px 15px 20px #0c0d0d;
+
+}
+
+.pub-content-header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.intitule{
+    font-family: "Montez";
+    width: fit-content;
+    margin: 1.5rem;
+    font-size: 3rem;
+}
+
+.type{
+    font-family: "Montez";
+    width: fit-content;
+    margin: 1.5rem 3rem;
+    font-size: 2rem;
+}
+
+.div-tags{
+    width: fit-content;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pub-tags{
+    width: fit-content;
+    height: fit-content;
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+._1{
+    color: #c034eb;
+}
+._2{
+    color: #ed8115;
+}
+._3{
+    color: #152eed;
 }
 
 
 
+.pub-content-desc{
+    position: relative;
+    right: 0;
+    height: 55%;
+    width: 100%;
+    display: flex;
+}
+
+.div-img{
+    padding:3.5rem;
+}
+
+.pub-desc{
+    width: 70%;
+    overflow: auto;
+    padding: 1rem;
+    margin: 0 5%;
+    border: #000 1px solid;
+    border-radius: 25px;
+}
+
+
+.pub-content-footer{
+bottom: 0;
+position: relative;
+margin: 1.5rem;
+padding-bottom: 1rem;
+display: flex;
+justify-content: space-between;
+}
+
+.div-publier{
+    position: relative;
+    display: flex;
+    align-items: end;
+}
+
+.publierpar{
+    font-size: 1rem;
+}
+
+.publierpar span{
+    font-size: 1.2rem;
+    font-style: italic;
+    width: fit-content;
+    height: fit-content;
+}
+
+.loading-pp-publication{
+    width: 3rem;
+    margin-left: 1rem;
+}
+
+.div-edits{
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.pencil{
+    width: 2.5rem;
+}
+
+.bin{
+width: 2.2rem;
+}
+
+.button-post{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.choix-type{
+        height: 3rem;
+        padding: 0px 24px;
+        margin: 0.5rem;
+        font-size: 1rem;
+        color: #000;
+        background-color: transparent;
+        background-image: none;
+        border: 2.5px solid #F0C807;
+        border-radius: 1rem;
+}
+
+
+
+
+.img-notfound{
+    width: 6rem;
+    padding: auto 2rem;
+}
 
 
 
@@ -1233,6 +1404,20 @@ span {
     font-size: 2rem;
     font-family: "Montez";
     text-shadow: 5px 5px 1px #fff;
+}
+
+#goprevious{
+    width: 3rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 2rem;
+}
+
+#previousbutton{
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 .background-modif {
@@ -1306,6 +1491,15 @@ textarea {
     font-size: 0.9rem;
     font-family: "Open Sans";
 
+}
+
+.become-pro{
+margin-top: 3rem;
+}
+
+.pro{
+    font-size: 1.1rem;
+    margin-left: 1rem;
 }
 
 
@@ -1464,12 +1658,11 @@ textarea {
 
 .contact .container {
     width: 75%;
-    height: 73%;
+    height: 35rem;
     margin: 2rem auto;
     backdrop-filter: blur(7px);
     overflow: auto;
     padding: 1.5rem;
-
 }
 
 
@@ -1496,8 +1689,8 @@ textarea {
 
 .chatbox .container {
     width: 60%;
-    height: 73%;
-    margin: 9rem auto 4rem auto;
+    height: 33rem;
+    margin: 10rem auto 4rem auto;
     background-color: #F0C807;
     border-radius: 25px;
     overflow: auto;
@@ -1518,13 +1711,15 @@ textarea {
 
 .research .container {
     position: relative;
-    margin: auto;
-    width: 60%;
-    height: 80%;
+    margin: 2rem auto;
+    width: 65%;
+    height: 85%;
     border-radius: 26px;
+    overflow: auto;
     background: #F0C807;
     box-shadow: inset 9px 9px 6px #aa8e05,
         inset -9px -9px 6px #ffff09;
+    
 }
 
 
@@ -1695,6 +1890,27 @@ textarea {
     width: 100%;
     height: 100%;
 
+}
+
+.ajout{
+    display: block;
+    width: 80%;
+    height: 3rem;
+    padding: 0px 24px;
+    margin: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+    background-color: transparent;
+    background-image: none;
+    border: 2.5px solid #19CAFC;
+    border-radius: 1rem;
+}
+
+.add-photo{
+    margin: 5rem;
+    width: 5rem;
+    filter: drop-shadow(5px 5px 5px #000);
+    cursor: pointer;
 }
 
 /********************* RESPONSIVE ********************/

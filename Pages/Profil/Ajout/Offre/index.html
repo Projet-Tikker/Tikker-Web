@@ -15,7 +15,7 @@
 
     <!-------------- Feuilles Java ------------>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-    <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
 
@@ -31,16 +31,57 @@
                     <li class="header-static"><a class="link-header-static" href="../../../../"><img
                                 src="../../../../assets/icons/home.svg" alt="Accueil" class="header-img"></a></li>
 
+                    <li class="header-static"><button class="search-button" id="search-action"><img
+                                src="../../../../assets/icons/search.svg" alt="Parcourir" class="header-img"></button>
+                        <form action="/Pages/Parcourir/" class="form-search">
+                            <input type="text" id="search-bar" class="bar-closed" name="research"
+                                placeholder="Webapp, App mobile ...">
+                        </form>
+                    </li>
+                    <li class="header-static" id="add-head"><a class="link-header-static"
+                            href="../../../../Pages/Profil/Ajout/"><img src="../../../../assets/icons/add-active.svg"
+                                class="header-img" alt="AddIcon"></a>
+                    </li>
+                    <li class="header-static" id="msg-head"><a class="link-header-static"
+                            href="../../../../Pages/Profil/Messages/"><img
+                                src="../../../../assets/icons/messages-icon.svg" class="header-img"
+                                alt="MessagesIcon"></a>
+                    </li>
                 </ul>
+            </div>
+            <div class="user">
+                <ul>
+                    <li class="header-static"><button type="button" id="dropdown" class="user-button"> <img
+                                src="../../../../assets/icons/user-default.svg" class="user-img" id="pp-img" alt="user">
+                        </button></li>
+                </ul>
+
+                <div id="menu" class="menu">
+                    <button class="dropbutton" id="profilbutton">
+                        <span class="material-symbols-outlined"><img src="../../../../assets/icons/user.svg"
+                                alt="modif-profil" id="icondd"></span>
+                        <div class="menu-title" id="menu-1"> Profil</div>
+                    </button>
+                    <button class="dropbutton" id="Custombutton">
+                        <span class="material-symbols-outlined"> <img src="../../../../assets/icons/custom-user.svg"
+                                alt="modif-profil" id="icondd"> </span>
+                        <div class="menu-title" id="menu-2"> Modifier le Profil</div>
+                    </button>
+                    <button class="dropbutton" id="logoutbutton">
+                        <span class="material-symbols-outlined"> <img src="../../../../assets/icons/log-out.svg"
+                                alt="log-out" id="icondd"> </span>
+                        <div class="menu-title" id="menu-3">Se déconnecter</div>
+                    </button>
+                </div>
             </div>
         </nav>
 
     </header>
 
     <main>
-        <section class="accueil">
+        <section class="background-modif">
             <div class="background-acceuil">
-                <img src="../../../../assets/background/back-connect.jpg" alt="Background-1" id="back">
+                <img src="../../../../../assets/background/back-modif-profil.jpg" alt="Background-1" id="back-4">
             </div>
             <div class="custom-shape-divider-top-1671021536">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -50,19 +91,22 @@
                         class="shape-fill"></path>
                 </svg>
             </div>
-            <div class="background-container-offre">
-                <div class="font-container-offre">
-                    <div class="title-offre">
-                        <h1 class="title-context"> Faire une offre </h1>
-                    </div>
-                    <form>
-                        <div class="back-formulaire-offre">
-                            <div class="back-container-offre-1">
+            <div class="container-modif1">
+                <div class="center-form">
+                    <div class="background-form">
+                        <div class="title-modif">
+                            <button id="previousbutton"><img src="../../../../assets/icons/goBack.svg" alt="go previus"
+                                    id="goprevious"></button>
+                            <h1 id="type">Faire une offre</h1>
+                        </div>
+                        <form>
+                            <div class="space-left">
                                 <div>
+                                    <h1 class="title-titles"> Informations Offre :</h1>
                                     <div class="form-block log">
                                         <div class="input-group" id="login">
                                             <div class="form-control">
-                                                <input type="text" required="" id="pseudo" autocomplete="off" />
+                                                <input type="text" id="intitule">
                                                 <label>
                                                     <span style="transition-delay:0ms">I</span><span
                                                         style="transition-delay:50ms">n</span><span
@@ -76,67 +120,62 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-block log">
+                                        <div><label>Tag Domaine</label>
+                                            <select class="ajout" id="liste-domaines" onchange="changeDomain(this)">
+                                                <option value="none" disabled="true" selected="true">Choisir un domaine</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-block log">
+                                        <div><label>Tag Spécialité</label>
+                                            <select class="ajout" id="liste-spe">
+                                                <option value="none" disabled="true" selected="true">Choisir une Spécialité</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-block log">
+                                        <div><label>Tag Langage</label>
+                                            <select class="ajout" id="liste-lang">
+                                                <option value="none" disabled="true" selected="true">Choisir un Langage</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="ok-btn" id="createok" type="button" >Créer Offre</button>
+                                    </div>
                                 </div>
-                                <div class="desc-offre">
-                                    <p>Descriptifs</p>
-                                    <textarea></textarea>
-                                </div>
-                                <div><label>Tags n°1</label>
-                                    <select>
-                                        <option value="">Site internet</option>
-                                        <option value="">Application Web</option>
-                                        <option value="">Application mobile</option>
-                                        <option value="">Base de donnée</option>
-                                        <option value="">Cybersécurité</option>
-                                        <option value="">Front End</option>
-                                        <option value="">Back End</option>
-                                        <option value="">Full Stack</option>
-                                    </select>
-                                </div>
-                                <div><label>Tags n°2</label>
-                                    <select>
-                                        <option value="">Site internet</option>
-                                        <option value="">Application Web</option>
-                                        <option value="">Application mobile</option>
-                                        <option value="">Base de donnée</option>
-                                        <option value="">Cybersécurité</option>
-                                        <option value="">Front End</option>
-                                        <option value="">Back End</option>
-                                        <option value="">Full Stack</option>
-                                    </select>
-                                </div>
-                                <div><label>Tags n°3</label>
-                                    <select>
-                                        <option value="">Site internet</option>
-                                        <option value="">Application Web</option>
-                                        <option value="">Application mobile</option>
-                                        <option value="">Base de donnée</option>
-                                        <option value="">Cybersécurité</option>
-                                        <option value="">Front End</option>
-                                        <option value="">Back End</option>
-                                        <option value="">Full Stack</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="back-container-offre-2">
-                                <label> Prix </label>
-                                <input />
-                            </div>
-                            <div class="back-container-offre-3">
-                                <div class="container-offre-3-img">
-                                    <img/>
-                                </div>
+                                <div class="modif-desc">
+                                    <h1 class="title-titles">Description : </h1>
+                                    <br>
+                                    <textarea rows="10" cols="55" maxlength="480" id="bio"
+                                        placeholder="Description de votre offre ... vos qualités, vos expériences, votre rémunération, vos servies proposées ..."></textarea>
 
+                                </div>
+                                <div>
+                                    <h1 class="title-titles"> Images(Facultatif) : </h1>
+                                    <br>
+                                    <img src="../../../../assets/icons/add-photo.svg" alt="add_photo" class="add-photo">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
             </div>
         </section>
     </main>
-    <script src="../../../../Services/Auth/connect.js" type="module"></script>
 </body>
+
+<script src="../../../../Style/style.js"></script>
+
+<script src="../../../../Services/Controllers/controller.js" type="module"></script>
+<script src="../../../../Services/Controllers/LogedController.js" type="module"></script>
+<script src="../../../../Services/Controllers/Professionel-account.js" type="module"></script>
+<script src="../../../../Services/Ajout/communAjout.js"></script>
+<script src="../../../../Services/Ajout/offre.js" type="module"></script>
+<script src="../../../../Services/Profil/post/GetPostModif.js" type="module"></script>
+
+
 
 </html>

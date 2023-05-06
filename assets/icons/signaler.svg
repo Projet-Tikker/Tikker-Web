@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#000000"
+   width="800px"
+   height="800px"
+   viewBox="0 -0.54 15.934 15.934"
+   id="alert-triangle-16px"
+   version="1.1"
+   sodipodi:docname="signaler.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.04625"
+     inkscape:cx="399.5221"
+     inkscape:cy="400.4779"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="alert-triangle-16px" />
+  <path
+     id="Path_175"
+     data-name="Path 175"
+     d="M-11.036,16H-22.964a1.985,1.985,0,0,1-1.722-.981,1.985,1.985,0,0,1-.031-1.982l5.965-10.852A1.97,1.97,0,0,1-17,1.148a1.97,1.97,0,0,1,1.752,1.037l5.965,10.852a1.985,1.985,0,0,1-.031,1.982A1.985,1.985,0,0,1-11.036,16ZM-17,2.148a.987.987,0,0,0-.876.518l-5.965,10.852a.991.991,0,0,0,.016.991.993.993,0,0,0,.861.491h11.928a.993.993,0,0,0,.861-.491.989.989,0,0,0,.015-.991L-16.124,2.666A.987.987,0,0,0-17,2.148Zm.5,8.352v-6A.5.5,0,0,0-17,4a.5.5,0,0,0-.5.5v6a.5.5,0,0,0,.5.5A.5.5,0,0,0-16.5,10.5Zm0,3v-1A.5.5,0,0,0-17,12a.5.5,0,0,0-.5.5v1a.5.5,0,0,0,.5.5A.5.5,0,0,0-16.5,13.5Z"
+     transform="translate(24.967 -1.148)"
+     style="fill:#800000" />
+</svg>

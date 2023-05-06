@@ -9,8 +9,10 @@ okmodif.addEventListener("click", function () {
     let bio = document.getElementById("bio").value;
     let pp = document.getElementById("imgmain").src;
 
+    let pro = document.getElementById("pro").checked;
+
     if (confirm("Voulez-vous vraiment Appliquée les changements ?")) {
-        UpdateDataUsr(pseudo, nom, prenom, bio, pp)
+        UpdateDataUsr(pseudo, nom, prenom, bio, pp, pro)
     } else {
         console.log("[Action non-aboutie] - Refus User");
     }

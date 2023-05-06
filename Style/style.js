@@ -67,3 +67,7 @@ const ProfilButtonClicked = () => {
 const LogOutButtonClicked = () => {
   logout.Deconnexion;
 };
+
+previousbutton.addEventListener("click", function () {
+	window.history.back();
+});
