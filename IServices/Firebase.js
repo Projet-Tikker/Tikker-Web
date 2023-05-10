@@ -566,8 +566,8 @@ export function GetPostsDemandes() {
             element.id_demande,
             element.intitule,
             element.tagdomaine,
-            element.taglangue,
             element.tagspecial,
+            element.taglangue,
             element.desc,
             pseudo,
             pp
@@ -769,8 +769,8 @@ export function GetPostsOffres() {
             element.id_offre,
             element.intitule,
             element.tagdomaine,
-            element.taglangue,
             element.tagspecial,
+            element.taglangue,
             element.desc,
             pseudo,
             pp
